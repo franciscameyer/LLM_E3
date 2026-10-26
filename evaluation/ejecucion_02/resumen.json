@@ -1,0 +1,38 @@
+{
+  "fecha_local": "2026-10-26",
+  "version_codigo": "b4336ea",
+  "golden_commit_anterior_al_pipeline": "089b2fb",
+  "pruebas_automatizadas": {
+    "aprobadas": 23,
+    "fallidas": 0
+  },
+  "recuperacion": {
+    "k": 6,
+    "fragmentos_esperados": 18,
+    "encontrados": 18,
+    "recall": 1.0,
+    "complementos_conflicto_no_contados_en_k": true
+  },
+  "generacion": {
+    "preguntas_ejecutadas": 20,
+    "respuestas_sin_error_de_contrato_o_servicio": 20,
+    "abstencion_sin_respuesta": "4/4",
+    "abstencion_con_respuesta": "0/16",
+    "conflicto_estado_y_referencias": "2/2",
+    "version_fragmento_vigente_esperado": "2/2",
+    "segundos_promedio_modelo_ya_cargado": 9.96,
+    "precision_cita": null,
+    "fidelidad": null
+  },
+  "revision_por_agente": {
+    "R10": "La segunda ejecución responde solo sobre roles y prohibición en aprobado automático, citando PRO-ANT §4 v1. Ya no añade la regla aislada de 80 puntos.",
+    "tipo": "Revisión automatizada, no humana"
+  },
+  "pendientes": [
+    "Validación del golden set por representante del cliente",
+    "Revisión humana de fidelidad y precisión de cita",
+    "Documentos MIRA v1.4 pertinentes",
+    "Informe PDF y presentación PPT"
+  ],
+  "integridad_del_excel_verificada": true
+}

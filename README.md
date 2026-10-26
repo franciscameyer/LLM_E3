@@ -149,6 +149,9 @@ El registro del conflicto MAN-REV/POL-DEC es explícito y no elige una fuente.
 - `docs/estado-entrega.md`: cobertura y trabajo pendiente para la entrega académica.
 - `evaluation/golden.json`: 20 preguntas fijadas antes del pipeline, commit `089b2fb`.
 - `evaluation/resultados_recuperacion.json`: medición reproducible por fragmento.
+- `evaluation/ejecucion_01/` y `evaluation/ejecucion_02/`: primera evaluación,
+  fallo encontrado y resultados posteriores a la corrección. La segunda incluye
+  `resumen.json`, huellas del código, respuestas y trazas.
 - `evaluation/revision_manual.csv`: se genera al evaluar respuestas para registrar
   precisión de citas, fidelidad y revisión de conflicto/vigencia.
 

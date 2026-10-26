@@ -1,0 +1,13 @@
+{
+  "tipo": "prueba_fuera_del_golden",
+  "pregunta": "¿Por qué se derivó el caso C-012, qué señales y umbrales lo explican y qué dice la política de decisión?",
+  "observacion_interfaz": {
+    "estado": "error",
+    "mensaje": "El modelo citó fragmentos que no recibió. Se retuvo la respuesta."
+  },
+  "reintento_tecnico": {
+    "estado": "conflicto",
+    "observacion": "Devolvió referencias recibidas y explicó el umbral reportado, el conflicto 80/85 y la aprobación faltante del cambio CU-001."
+  },
+  "limite": "Variabilidad residual de generación; no valida todas las paráfrasis. Validación humana pendiente."
+}
