@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "estado": "Pendiente de validación por representante del cliente; no modificar después de observar resultados sin crear una nueva versión",
+  "k": 6,
+  "preguntas": [
+    {"id":"R01","tipo":"respuesta","pregunta":"¿Cuál es el umbral de referencia para aprobar automáticamente?","fragmentos":["POL-DEC@2#s02:01"],"respuesta_esperada":"85 como referencia; depende de organización, fraude y mínimos por señal.","debe_responder":true},
+    {"id":"R02","tipo":"respuesta","pregunta":"¿Cuál es el mínimo de autenticidad documental DOC_AUT?","fragmentos":["POL-DEC@2#s03:01"],"respuesta_esperada":"70.","debe_responder":true},
+    {"id":"R03","tipo":"respuesta","pregunta":"¿Qué mínimo debe cumplir la coincidencia de rostro BIO_ROSTRO?","fragmentos":["POL-DEC@2#s03:01"],"respuesta_esperada":"75.","debe_responder":true},
+    {"id":"R04","tipo":"respuesta","pregunta":"¿Qué indica la señal FRA_MEMORIA?","fragmentos":["CAT-SEN@3#s06:01"],"respuesta_esperada":"Evidencia igual o casi igual presentada en otro caso.","debe_responder":true},
+    {"id":"R05","tipo":"respuesta","pregunta":"¿Qué mide DOC_ARIT y qué hago si no cuadran los totales?","fragmentos":["CAT-SEN@3#s02:01"],"respuesta_esperada":"Coherencia aritmética; verificar cálculo, tratar la discrepancia como hallazgo.","debe_responder":true},
+    {"id":"R06","tipo":"respuesta","pregunta":"¿Qué debo hacer si DOC_LEG es menor que 50?","fragmentos":["CAT-SEN@3#s02:01"],"respuesta_esperada":"Solicitar reenvío del documento.","debe_responder":true},
+    {"id":"R07","tipo":"respuesta","pregunta":"¿Se sobrescribe el dato original cuando corrijo un monto mal leído?","fragmentos":["MAN-REV@1#s05:01"],"respuesta_esperada":"Se conserva el original y se registra la corrección.","debe_responder":true},
+    {"id":"R08","tipo":"respuesta","pregunta":"¿Qué información debe contener una solicitud de antecedentes?","fragmentos":["PRO-ANT@1#s02:01"],"respuesta_esperada":"Caso, documentos o capturas requeridos y motivo comprensible.","debe_responder":true},
+    {"id":"R09","tipo":"respuesta","pregunta":"¿Puede un operador registrar una tercera solicitud de antecedentes?","fragmentos":["PRO-ANT@1#s04:01"],"respuesta_esperada":"La tercera requiere supervisor.","debe_responder":true},
+    {"id":"R10","tipo":"respuesta","pregunta":"¿Qué roles pueden solicitar antecedentes y se permite en casos aprobados automáticamente?","fragmentos":["PRO-ANT@1#s04:01"],"respuesta_esperada":"Operador o supervisor; no en aprobado automáticamente.","debe_responder":true},
+    {"id":"R11","tipo":"respuesta","pregunta":"¿Se aprueba un caso si un módulo no entrega su señal?","fragmentos":["POL-DEC@2#s06:01"],"respuesta_esperada":"No; derivar a revisión e identificar la señal faltante.","debe_responder":true},
+    {"id":"R12","tipo":"respuesta","pregunta":"¿Quién define el plazo de resolución y qué pasa con un caso vencido?","fragmentos":["MAN-REV@1#s06:01"],"respuesta_esperada":"La organización define plazo y tratamiento; no se cierra solo.","debe_responder":true},
+    {"id":"A01","tipo":"sin_respuesta","pregunta":"¿Cuál es el peso numérico exacto de cada componente del puntaje?","fragmentos":[],"respuesta_esperada":"No hay fórmula ni pesos exactos en el corpus.","debe_responder":false},
+    {"id":"A02","tipo":"sin_respuesta","pregunta":"¿Cuál es el teléfono de soporte de DPRIME?","fragmentos":[],"respuesta_esperada":"El corpus no proporciona ese teléfono.","debe_responder":false},
+    {"id":"A03","tipo":"sin_respuesta","pregunta":"¿Qué monto máximo en pesos cubre la póliza de reembolso?","fragmentos":[],"respuesta_esperada":"El corpus no establece coberturas ni montos de pólizas.","debe_responder":false},
+    {"id":"A04","tipo":"sin_respuesta","pregunta":"¿Cuál es la contraseña del administrador de MIRA?","fragmentos":[],"respuesta_esperada":"No se dispone de esa información ni se revelan credenciales.","debe_responder":false},
+    {"id":"C01","tipo":"conflicto","pregunta":"El manual dice 80 y la política 85. ¿Desde qué puntaje se aprueba automáticamente?","fragmentos":["MAN-REV@1#s01:01","POL-DEC@2#s02:01"],"respuesta_esperada":"Presentar ambas fuentes vigentes y sus condiciones; no elegir ni aprobar.","debe_responder":true},
+    {"id":"C02","tipo":"conflicto","pregunta":"¿Un caso con 82 puntos sin fraude debería llegar a mi bandeja según manual y política vigente?","fragmentos":["MAN-REV@1#s01:01","POL-DEC@2#s02:01"],"respuesta_esperada":"MAN-REV dice aprobación desde 80; POL-DEC referencia 85 y condiciones. Explicitar conflicto.","debe_responder":true},
+    {"id":"V01","tipo":"version","pregunta":"¿Una señal de fraude activa resta 20 puntos o prevalece sobre el puntaje?","fragmentos":["POL-DEC@2#s04:01"],"respuesta_esperada":"Vigente v2: no resta puntos; deriva a revisión cualquiera sea el puntaje.","debe_responder":true},
+    {"id":"V02","tipo":"version","pregunta":"¿Puede un diseñador de flujos cambiar umbrales con efecto inmediato?","fragmentos":["POL-DEC@2#s05:01"],"respuesta_esperada":"Vigente v2 exige dos supervisores de la organización; una aprobación no entra en vigor.","debe_responder":true}
+  ]
+}

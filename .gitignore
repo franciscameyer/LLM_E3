@@ -1,0 +1,9 @@
+.venv/
+.cache/
+.data/
+.env
+__pycache__/
+.pytest_cache/
+*.py[cod]
+evaluation/resultados*.json
+evaluation/revision_manual.csv
