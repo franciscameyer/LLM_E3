@@ -1,0 +1,506 @@
+{
+  "estado": "conflicto",
+  "respuesta": "El caso C-012 se derivó a revisión asistida porque su puntaje de confianza es 86.0, que está por debajo del umbral de aprobación de la organización ORG-01, que es 90.0, según el motivo de derivación registrado en la ficha del caso. La política de decisión vigente establece que los valores de la tabla son de referencia y que cada organización fija sus propios umbrales según la sección 5, por lo que el umbral de referencia general de 85 no es aplicable directamente si la organización ha configurado un valor distinto. Además, existe un conflicto entre el manual de revisión asistida, que afirma aprobación automática desde 80 sin señales de fraude, y la política de decisión v2, que fija referencia 85 con condiciones por señal y configuración por organización. El historial de cambios del umbral de la organización muestra un cambio de 85.0 a 90.0 con una sola aprobación, lo cual no cumple el requisito de dos aprobaciones distintas para que el cambio entre en vigor, por lo que no se puede asumir que el valor de la plataforma acredita vigencia normativa.\n\nFuentes citadas por el modelo: [MAN-REV@1#s01:01] [POL-DEC@2#s02:01] [POL-DEC@2#s05:01]",
+  "citas": [
+    {
+      "codigo": "MAN-REV",
+      "version": "1",
+      "estado": "vigente",
+      "vigencia": "Desde el 15 de julio de 2026",
+      "desde": "2026-07-15",
+      "hasta": "",
+      "fuente": "MAN-REV_manual_revision_asistida.md",
+      "titulo": "Manual de revisión asistida para operadores",
+      "origen": "kit docente",
+      "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+      "id": "MAN-REV@1#s01:01",
+      "seccion": "1. Qué casos llegan a su bandeja",
+      "texto": "A su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+      "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 1. Qué casos llegan a su bandeja\nA su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha."
+    },
+    {
+      "codigo": "POL-DEC",
+      "version": "2",
+      "estado": "vigente",
+      "vigencia": "Desde el 1 de septiembre de 2026",
+      "desde": "2026-09-01",
+      "hasta": "",
+      "fuente": "POL-DEC_v2_vigente.md",
+      "titulo": "Política de decisión y umbrales",
+      "origen": "kit docente",
+      "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+      "id": "POL-DEC@2#s02:01",
+      "seccion": "2. Umbrales de referencia",
+      "texto": "Los valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+      "texto_busqueda": "POL-DEC Política de decisión y umbrales 2. Umbrales de referencia\nLos valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona."
+    },
+    {
+      "codigo": "POL-DEC",
+      "version": "2",
+      "estado": "vigente",
+      "vigencia": "Desde el 1 de septiembre de 2026",
+      "desde": "2026-09-01",
+      "hasta": "",
+      "fuente": "POL-DEC_v2_vigente.md",
+      "titulo": "Política de decisión y umbrales",
+      "origen": "kit docente",
+      "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+      "id": "POL-DEC@2#s05:01",
+      "seccion": "5. Configuración por organización",
+      "texto": "Cada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+      "texto_busqueda": "POL-DEC Política de decisión y umbrales 5. Configuración por organización\nCada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor."
+    }
+  ],
+  "trazas": [
+    {
+      "id": "TR-2d5b8fec98a94b08969d8c45a64eb640",
+      "fecha": "2026-10-26T20:11:48+00:00",
+      "usuario": "U-01",
+      "herramienta": "buscar_reglas",
+      "argumentos": {
+        "pregunta": "¿Por qué se derivó el caso C-012 si su puntaje es 86? ¿Qué dice la política de decisión?",
+        "k": 6,
+        "historico": false
+      },
+      "ok": true,
+      "resultado": {
+        "datos": {
+          "fragmentos": [
+            {
+              "codigo": "MAN-REV",
+              "version": "1",
+              "estado": "vigente",
+              "vigencia": "Desde el 15 de julio de 2026",
+              "desde": "2026-07-15",
+              "hasta": "",
+              "fuente": "MAN-REV_manual_revision_asistida.md",
+              "titulo": "Manual de revisión asistida para operadores",
+              "origen": "kit docente",
+              "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+              "id": "MAN-REV@1#s01:01",
+              "seccion": "1. Qué casos llegan a su bandeja",
+              "texto": "A su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+              "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 1. Qué casos llegan a su bandeja\nA su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha."
+            },
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s02:01",
+              "seccion": "2. Umbrales de referencia",
+              "texto": "Los valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 2. Umbrales de referencia\nLos valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona."
+            },
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s01:01",
+              "seccion": "1. Propósito",
+              "texto": "Esta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 1. Propósito\nEsta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+              "relevancia": 5.5037
+            },
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s07:01",
+              "seccion": "7. Componentes del puntaje",
+              "texto": "El puntaje se presenta acompañado de cuatro componentes: autenticidad de los documentos, coherencia biométrica, cruce entre fuentes y presencia de señales de fraude. La interfaz de revisión debe mostrar qué componente empujó el puntaje hacia arriba o hacia abajo.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 7. Componentes del puntaje\nEl puntaje se presenta acompañado de cuatro componentes: autenticidad de los documentos, coherencia biométrica, cruce entre fuentes y presencia de señales de fraude. La interfaz de revisión debe mostrar qué componente empujó el puntaje hacia arriba o hacia abajo.",
+              "relevancia": 4.3862
+            },
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s04:01",
+              "seccion": "4. Precedencia de las señales de fraude",
+              "texto": "Una señal de fraude activa deriva el caso a revisión, cualquiera sea su puntaje. Las señales de fraude no restan puntos: prevalecen sobre el puntaje. El catálogo de señales (CAT-SEN) identifica cuáles son señales de fraude.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 4. Precedencia de las señales de fraude\nUna señal de fraude activa deriva el caso a revisión, cualquiera sea su puntaje. Las señales de fraude no restan puntos: prevalecen sobre el puntaje. El catálogo de señales (CAT-SEN) identifica cuáles son señales de fraude.",
+              "relevancia": 4.3292
+            },
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s03:01",
+              "seccion": "3. Mínimos por señal",
+              "texto": "Algunas señales tienen un mínimo propio. Si una de ellas queda bajo su mínimo, el caso se deriva a revisión aunque el puntaje total alcance el umbral de aprobación.\n\n| Señal | Mínimo |\n|---|---|\n| DOC_AUT, autenticidad documental | 70 |\n| BIO_ROSTRO, coincidencia de rostro | 75 |\n| CRUCE_MONTO, cruce de montos entre fuentes | 60 |\n| CRUCE_FECHA, cruce de fechas entre fuentes | 60 |\n\nEl resto de las señales no tiene mínimo propio y solo aporta al puntaje total.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 3. Mínimos por señal\nAlgunas señales tienen un mínimo propio. Si una de ellas queda bajo su mínimo, el caso se deriva a revisión aunque el puntaje total alcance el umbral de aprobación.\n\n| Señal | Mínimo |\n|---|---|\n| DOC_AUT, autenticidad documental | 70 |\n| BIO_ROSTRO, coincidencia de rostro | 75 |\n| CRUCE_MONTO, cruce de montos entre fuentes | 60 |\n| CRUCE_FECHA, cruce de fechas entre fuentes | 60 |\n\nEl resto de las señales no tiene mínimo propio y solo aporta al puntaje total.",
+              "relevancia": 3.503
+            }
+          ],
+          "conflictos": [
+            {
+              "id": "CONF-01",
+              "fragmentos": [
+                "MAN-REV@1#s01:01",
+                "POL-DEC@2#s02:01"
+              ],
+              "descripcion": "MAN-REV vigente afirma aprobación desde 80 sin fraude; POL-DEC v2 fija referencia 85, condiciones por señal y configuración por organización. No elegir una fuente por cuenta propia."
+            }
+          ],
+          "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."
+        }
+      }
+    },
+    {
+      "id": "TR-ba7a8b56c54e4fb8b16da079556a1ce7",
+      "fecha": "2026-10-26T20:11:52+00:00",
+      "usuario": "U-01",
+      "herramienta": "consultar_caso",
+      "argumentos": {
+        "caso_id": "C-012"
+      },
+      "ok": true,
+      "resultado": {
+        "datos": {
+          "caso": {
+            "caso_id": "C-012",
+            "org_id": "ORG-01",
+            "tipo_proceso": "reembolso_gastos_medicos",
+            "fecha_ingreso": "2026-10-21",
+            "estado": "en_revision",
+            "puntaje": 86.0,
+            "decision_sugerida": "revisar",
+            "motivo_derivacion": "Puntaje bajo el umbral de aprobación de la organización (90)",
+            "operador_asignado": "U-01",
+            "vence_el": "2026-10-26",
+            "version_flujo": "REM-v4",
+            "estado_actual": "en_revision"
+          },
+          "organizacion": {
+            "org_id": "ORG-01",
+            "nombre": "Seguros Cordillera Austral",
+            "industria": "seguros",
+            "pais": "Chile",
+            "umbral_aprobacion": 90.0,
+            "umbral_revision": 60.0,
+            "plazo_resolucion_dias_habiles": 3.0,
+            "plazo_antecedentes_dias_habiles": 10.0
+          },
+          "cambios_umbral": [
+            {
+              "cambio_id": "CU-001",
+              "org_id": "ORG-01",
+              "parametro": "umbral_aprobacion",
+              "valor_anterior": 85.0,
+              "valor_nuevo": 90.0,
+              "autor": "U-02",
+              "aprobador_1": "U-02",
+              "aprobador_2": null,
+              "fecha": "2026-09-20"
+            }
+          ],
+          "senales": [
+            {
+              "senal_id": "S-011",
+              "caso_id": "C-012",
+              "codigo": "DOC_AUT",
+              "valor": 88.0,
+              "minimo": 70.0,
+              "bajo_minimo": "no",
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-012",
+              "caso_id": "C-012",
+              "codigo": "DOC_ARIT",
+              "valor": 90.0,
+              "minimo": null,
+              "bajo_minimo": null,
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-013",
+              "caso_id": "C-012",
+              "codigo": "DOC_LEG",
+              "valor": 87.0,
+              "minimo": null,
+              "bajo_minimo": null,
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-014",
+              "caso_id": "C-012",
+              "codigo": "CRUCE_MONTO",
+              "valor": 84.0,
+              "minimo": 60.0,
+              "bajo_minimo": "no",
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-015",
+              "caso_id": "C-012",
+              "codigo": "CRUCE_FECHA",
+              "valor": 86.0,
+              "minimo": 60.0,
+              "bajo_minimo": "no",
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            }
+          ],
+          "evidencias": [
+            {
+              "evidencia_id": "E-003",
+              "caso_id": "C-012",
+              "tipo": "pdf",
+              "nombre_archivo": "boleta_7720.pdf",
+              "paginas": 1.0,
+              "legible": "sí",
+              "texto_extraido": "Boleta N° 7720. Clínica Río Claro. Consulta especialidad. Total $68.000. Fecha 18-10-2026."
+            },
+            {
+              "evidencia_id": "E-004",
+              "caso_id": "C-012",
+              "tipo": "imagen",
+              "nombre_archivo": "bono_atencion.jpg",
+              "paginas": 1.0,
+              "legible": "sí",
+              "texto_extraido": "Bono de atención N° 553201. Monto $68.000. Fecha 18-10-2026."
+            }
+          ],
+          "solicitudes": [],
+          "discrepancias": [
+            {
+              "tipo": "dato_vs_politica",
+              "cambio": "CU-001",
+              "descripcion": "El historial no acredita dos aprobaciones distintas. No asumir que el valor de la plataforma acredita vigencia normativa.",
+              "regla": "POL-DEC@2#s05:01"
+            }
+          ],
+          "reglas_relevantes": [
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s05:01",
+              "seccion": "5. Configuración por organización",
+              "texto": "Cada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 5. Configuración por organización\nCada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "TR-87aadecd61bd4b6ba738eb45babaf776",
+      "fecha": "2026-10-26T20:11:55+00:00",
+      "usuario": "U-01",
+      "herramienta": "consultar_caso",
+      "argumentos": {
+        "caso_id": "C-012"
+      },
+      "ok": true,
+      "resultado": {
+        "datos": {
+          "caso": {
+            "caso_id": "C-012",
+            "org_id": "ORG-01",
+            "tipo_proceso": "reembolso_gastos_medicos",
+            "fecha_ingreso": "2026-10-21",
+            "estado": "en_revision",
+            "puntaje": 86.0,
+            "decision_sugerida": "revisar",
+            "motivo_derivacion": "Puntaje bajo el umbral de aprobación de la organización (90)",
+            "operador_asignado": "U-01",
+            "vence_el": "2026-10-26",
+            "version_flujo": "REM-v4",
+            "estado_actual": "en_revision"
+          },
+          "organizacion": {
+            "org_id": "ORG-01",
+            "nombre": "Seguros Cordillera Austral",
+            "industria": "seguros",
+            "pais": "Chile",
+            "umbral_aprobacion": 90.0,
+            "umbral_revision": 60.0,
+            "plazo_resolucion_dias_habiles": 3.0,
+            "plazo_antecedentes_dias_habiles": 10.0
+          },
+          "cambios_umbral": [
+            {
+              "cambio_id": "CU-001",
+              "org_id": "ORG-01",
+              "parametro": "umbral_aprobacion",
+              "valor_anterior": 85.0,
+              "valor_nuevo": 90.0,
+              "autor": "U-02",
+              "aprobador_1": "U-02",
+              "aprobador_2": null,
+              "fecha": "2026-09-20"
+            }
+          ],
+          "senales": [
+            {
+              "senal_id": "S-011",
+              "caso_id": "C-012",
+              "codigo": "DOC_AUT",
+              "valor": 88.0,
+              "minimo": 70.0,
+              "bajo_minimo": "no",
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-012",
+              "caso_id": "C-012",
+              "codigo": "DOC_ARIT",
+              "valor": 90.0,
+              "minimo": null,
+              "bajo_minimo": null,
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-013",
+              "caso_id": "C-012",
+              "codigo": "DOC_LEG",
+              "valor": 87.0,
+              "minimo": null,
+              "bajo_minimo": null,
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-014",
+              "caso_id": "C-012",
+              "codigo": "CRUCE_MONTO",
+              "valor": 84.0,
+              "minimo": 60.0,
+              "bajo_minimo": "no",
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            },
+            {
+              "senal_id": "S-015",
+              "caso_id": "C-012",
+              "codigo": "CRUCE_FECHA",
+              "valor": 86.0,
+              "minimo": 60.0,
+              "bajo_minimo": "no",
+              "es_fraude": "no",
+              "activa": null,
+              "detalle": null
+            }
+          ],
+          "evidencias": [
+            {
+              "evidencia_id": "E-003",
+              "caso_id": "C-012",
+              "tipo": "pdf",
+              "nombre_archivo": "boleta_7720.pdf",
+              "paginas": 1.0,
+              "legible": "sí",
+              "texto_extraido": "Boleta N° 7720. Clínica Río Claro. Consulta especialidad. Total $68.000. Fecha 18-10-2026."
+            },
+            {
+              "evidencia_id": "E-004",
+              "caso_id": "C-012",
+              "tipo": "imagen",
+              "nombre_archivo": "bono_atencion.jpg",
+              "paginas": 1.0,
+              "legible": "sí",
+              "texto_extraido": "Bono de atención N° 553201. Monto $68.000. Fecha 18-10-2026."
+            }
+          ],
+          "solicitudes": [],
+          "discrepancias": [
+            {
+              "tipo": "dato_vs_politica",
+              "cambio": "CU-001",
+              "descripcion": "El historial no acredita dos aprobaciones distintas. No asumir que el valor de la plataforma acredita vigencia normativa.",
+              "regla": "POL-DEC@2#s05:01"
+            }
+          ],
+          "reglas_relevantes": [
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s05:01",
+              "seccion": "5. Configuración por organización",
+              "texto": "Cada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 5. Configuración por organización\nCada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "propuestas": [],
+  "conflictos": [
+    {
+      "id": "CONF-01",
+      "fragmentos": [
+        "MAN-REV@1#s01:01",
+        "POL-DEC@2#s02:01"
+      ],
+      "descripcion": "MAN-REV vigente afirma aprobación desde 80 sin fraude; POL-DEC v2 fija referencia 85, condiciones por señal y configuración por organización. No elegir una fuente por cuenta propia."
+    }
+  ]
+}

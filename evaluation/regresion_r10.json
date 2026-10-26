@@ -1,0 +1,187 @@
+{
+  "estado": "evidencia",
+  "respuesta": "Solo los usuarios con rol de operador o supervisor pueden registrar una solicitud de antecedentes [PRO-ANT@1#s04:01]. No se puede solicitar antecedentes sobre un caso aprobado automáticamente, porque ese caso no vuelve a revisarse [PRO-ANT@1#s04:01].",
+  "citas": [
+    {
+      "codigo": "PRO-ANT",
+      "version": "1",
+      "estado": "vigente",
+      "vigencia": "Desde el 15 de julio de 2026",
+      "desde": "2026-07-15",
+      "hasta": "",
+      "fuente": "PRO-ANT_solicitud_antecedentes.md",
+      "titulo": "Procedimiento de solicitud de antecedentes",
+      "origen": "kit docente",
+      "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+      "id": "PRO-ANT@1#s04:01",
+      "seccion": "4. Límites",
+      "texto": "- Solo usuarios con rol de operador o supervisor pueden registrar una solicitud.\n- No se pueden registrar más de dos solicitudes de antecedentes sobre un mismo caso. Una tercera solicitud requiere que la registre un supervisor.\n- No se puede solicitar antecedentes sobre un caso aprobado automáticamente: ese caso no vuelve a revisarse.",
+      "texto_busqueda": "PRO-ANT Procedimiento de solicitud de antecedentes 4. Límites\n- Solo usuarios con rol de operador o supervisor pueden registrar una solicitud.\n- No se pueden registrar más de dos solicitudes de antecedentes sobre un mismo caso. Una tercera solicitud requiere que la registre un supervisor.\n- No se puede solicitar antecedentes sobre un caso aprobado automáticamente: ese caso no vuelve a revisarse.",
+      "relevancia": 10.3102
+    }
+  ],
+  "trazas": [
+    {
+      "id": "TR-a67b279357f84e14beaee42799b8a470",
+      "fecha": "2026-10-26T20:24:12+00:00",
+      "usuario": "U-01",
+      "herramienta": "buscar_reglas",
+      "argumentos": {
+        "pregunta": "¿Qué roles pueden solicitar antecedentes y se permite en casos aprobados automáticamente?",
+        "k": 6,
+        "historico": false
+      },
+      "ok": true,
+      "resultado": {
+        "datos": {
+          "fragmentos": [
+            {
+              "codigo": "PRO-ANT",
+              "version": "1",
+              "estado": "vigente",
+              "vigencia": "Desde el 15 de julio de 2026",
+              "desde": "2026-07-15",
+              "hasta": "",
+              "fuente": "PRO-ANT_solicitud_antecedentes.md",
+              "titulo": "Procedimiento de solicitud de antecedentes",
+              "origen": "kit docente",
+              "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+              "id": "PRO-ANT@1#s04:01",
+              "seccion": "4. Límites",
+              "texto": "- Solo usuarios con rol de operador o supervisor pueden registrar una solicitud.\n- No se pueden registrar más de dos solicitudes de antecedentes sobre un mismo caso. Una tercera solicitud requiere que la registre un supervisor.\n- No se puede solicitar antecedentes sobre un caso aprobado automáticamente: ese caso no vuelve a revisarse.",
+              "texto_busqueda": "PRO-ANT Procedimiento de solicitud de antecedentes 4. Límites\n- Solo usuarios con rol de operador o supervisor pueden registrar una solicitud.\n- No se pueden registrar más de dos solicitudes de antecedentes sobre un mismo caso. Una tercera solicitud requiere que la registre un supervisor.\n- No se puede solicitar antecedentes sobre un caso aprobado automáticamente: ese caso no vuelve a revisarse.",
+              "relevancia": 10.3102
+            },
+            {
+              "codigo": "PRO-ANT",
+              "version": "1",
+              "estado": "vigente",
+              "vigencia": "Desde el 15 de julio de 2026",
+              "desde": "2026-07-15",
+              "hasta": "",
+              "fuente": "PRO-ANT_solicitud_antecedentes.md",
+              "titulo": "Procedimiento de solicitud de antecedentes",
+              "origen": "kit docente",
+              "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+              "id": "PRO-ANT@1#s01:01",
+              "seccion": "1. Cuándo solicitar antecedentes",
+              "texto": "Se solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+              "texto_busqueda": "PRO-ANT Procedimiento de solicitud de antecedentes 1. Cuándo solicitar antecedentes\nSe solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+              "relevancia": 7.2072
+            },
+            {
+              "codigo": "MAN-REV",
+              "version": "1",
+              "estado": "vigente",
+              "vigencia": "Desde el 15 de julio de 2026",
+              "desde": "2026-07-15",
+              "hasta": "",
+              "fuente": "MAN-REV_manual_revision_asistida.md",
+              "titulo": "Manual de revisión asistida para operadores",
+              "origen": "kit docente",
+              "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+              "id": "MAN-REV@1#s01:01",
+              "seccion": "1. Qué casos llegan a su bandeja",
+              "texto": "A su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+              "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 1. Qué casos llegan a su bandeja\nA su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+              "relevancia": 5.7189
+            },
+            {
+              "codigo": "FAQ-OPE",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de octubre de 2026",
+              "desde": "2026-10-01",
+              "hasta": "",
+              "fuente": "FAQ-OPE_preguntas_frecuentes_operadores.md",
+              "titulo": "Preguntas frecuentes de operadores",
+              "origen": "kit docente",
+              "sha256": "ae22e500d1eb6dd031299d2d26dbaa3240c66278d2f4694b511e1c45598a3786",
+              "id": "FAQ-OPE@2#s03:01",
+              "seccion": "¿Puedo ver casos de otra organización?",
+              "texto": "No. Solo ve los casos de su organización. Esa separación aplica también al asistente.",
+              "texto_busqueda": "FAQ-OPE Preguntas frecuentes de operadores ¿Puedo ver casos de otra organización?\nNo. Solo ve los casos de su organización. Esa separación aplica también al asistente.",
+              "relevancia": 3.6757
+            },
+            {
+              "codigo": "MAN-REV",
+              "version": "1",
+              "estado": "vigente",
+              "vigencia": "Desde el 15 de julio de 2026",
+              "desde": "2026-07-15",
+              "hasta": "",
+              "fuente": "MAN-REV_manual_revision_asistida.md",
+              "titulo": "Manual de revisión asistida para operadores",
+              "origen": "kit docente",
+              "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+              "id": "MAN-REV@1#s06:01",
+              "seccion": "6. Plazos",
+              "texto": "Cada organización define el plazo de resolución de sus casos en días hábiles. La bandeja muestra el tiempo restante y marca en rojo los casos a los que les queda menos del 20 % del plazo. Un caso vencido no se cierra solo: la organización define si se cierra, se escala o se mantiene abierto.",
+              "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 6. Plazos\nCada organización define el plazo de resolución de sus casos en días hábiles. La bandeja muestra el tiempo restante y marca en rojo los casos a los que les queda menos del 20 % del plazo. Un caso vencido no se cierra solo: la organización define si se cierra, se escala o se mantiene abierto.",
+              "relevancia": 3.0642
+            },
+            {
+              "codigo": "MAN-REV",
+              "version": "1",
+              "estado": "vigente",
+              "vigencia": "Desde el 15 de julio de 2026",
+              "desde": "2026-07-15",
+              "hasta": "",
+              "fuente": "MAN-REV_manual_revision_asistida.md",
+              "titulo": "Manual de revisión asistida para operadores",
+              "origen": "kit docente",
+              "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+              "id": "MAN-REV@1#s03:01",
+              "seccion": "3. Decisiones disponibles",
+              "texto": "| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+              "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 3. Decisiones disponibles\n| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+              "relevancia": 2.979
+            }
+          ],
+          "complementarios_conflicto": [
+            {
+              "codigo": "POL-DEC",
+              "version": "2",
+              "estado": "vigente",
+              "vigencia": "Desde el 1 de septiembre de 2026",
+              "desde": "2026-09-01",
+              "hasta": "",
+              "fuente": "POL-DEC_v2_vigente.md",
+              "titulo": "Política de decisión y umbrales",
+              "origen": "kit docente",
+              "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+              "id": "POL-DEC@2#s02:01",
+              "seccion": "2. Umbrales de referencia",
+              "texto": "Los valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+              "texto_busqueda": "POL-DEC Política de decisión y umbrales 2. Umbrales de referencia\nLos valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona."
+            }
+          ],
+          "conflictos": [
+            {
+              "id": "CONF-01",
+              "fragmentos": [
+                "MAN-REV@1#s01:01",
+                "POL-DEC@2#s02:01"
+              ],
+              "obligatorio": false,
+              "descripcion": "Alerta de fuente: si usas la regla de aprobación del manual o de la política, presenta ambas y su conflicto 80/85. Si la pregunta trata otro tema, evita añadir esa regla ajena."
+            }
+          ],
+          "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."
+        }
+      }
+    }
+  ],
+  "propuestas": [],
+  "conflictos": [
+    {
+      "id": "CONF-01",
+      "fragmentos": [
+        "MAN-REV@1#s01:01",
+        "POL-DEC@2#s02:01"
+      ],
+      "obligatorio": false,
+      "descripcion": "Alerta de fuente: si usas la regla de aprobación del manual o de la política, presenta ambas y su conflicto 80/85. Si la pregunta trata otro tema, evita añadir esa regla ajena."
+    }
+  ]
+}

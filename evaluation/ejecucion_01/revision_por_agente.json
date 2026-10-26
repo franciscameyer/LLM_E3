@@ -1,0 +1,15 @@
+{
+  "evaluador": "Agente de desarrollo (revisión automatizada, no validación humana)",
+  "validacion_cliente": "pendiente",
+  "concordancia_con_revisor_humano": null,
+  "hallazgos": [
+    {
+      "id": "R10",
+      "tipo": "generacion",
+      "evidencia": "Añade sin advertencia la aprobación desde 80 de MAN-REV §1, aunque POL-DEC v2 §2 vigente discrepa.",
+      "correccion": "Mantener la contraparte de la fuente en el contexto, ordenar por relevancia y validar el conflicto por las fuentes citadas, no solo por palabras de la pregunta.",
+      "regresion": "evaluation/regresion_r10.json"
+    }
+  ],
+  "limite": "Las tasas automáticas de abstención y los IDs válidos no acreditan fidelidad ni precisión semántica de cita."
+}

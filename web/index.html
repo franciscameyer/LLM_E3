@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MIRA · Revisión asistida</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <section id="login-view" class="login-view">
+    <div class="login-intro"><div class="wordmark">MIRA<span> / CU-1</span></div><p class="eyebrow">REVISIÓN ASISTIDA</p><h1>Una explicación.<br>Sus fuentes.<br>Tu decisión.</h1><p>Consulta las reglas y los casos de tu organización. Revisa la evidencia antes de actuar.</p><div class="demo-label">Demostración educativa · datos ficticios del kit</div></div>
+    <form id="login-form" class="login-form"><p class="eyebrow">ESPACIO DEL OPERADOR</p><h2>Iniciar sesión</h2><label for="usuario">Usuario del kit</label><select id="usuario" required></select><label for="password">Contraseña de demostración</label><input id="password" type="password" value="mira-demo" autocomplete="current-password" required><p class="muted">Acceso local de prueba. La contraseña predeterminada es <code>mira-demo</code>.</p><button class="primary" type="submit">Entrar a revisión <span>→</span></button><p id="login-error" class="error" role="alert"></p></form>
+  </section>
+  <div id="app-view" class="app-view" hidden>
+    <aside class="sidebar">
+      <div class="wordmark">MIRA<span> / REVISIÓN</span></div>
+      <div class="workspace"><span class="eyebrow">ORGANIZACIÓN</span><strong id="org-name"></strong><span id="user-name" class="muted"></span></div>
+      <div class="section-heading"><h2>Casos</h2><button id="refresh-cases" class="icon-button" aria-label="Actualizar casos">↻</button></div>
+      <p class="muted small">Solo los autorizados para tu usuario</p>
+      <div id="case-list" class="case-list" aria-live="polite"></div>
+      <button id="corpus-button" class="secondary full">Consultar inventario documental</button>
+      <div class="sidebar-footer"><span>Kit docente · CU-1</span><button id="logout" class="text-button">Cerrar sesión</button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">ASISTENTE DEL OPERADOR</p><h1>Revisión con evidencia</h1></div><div id="model-status" class="model-status" role="status">Comprobando Bonsai…</div></header>
+      <div class="demo-strip">Entorno de demostración. El asistente explica y prepara; la decisión es de la persona.</div>
+      <section id="case-detail" class="case-detail" hidden aria-label="Ficha del caso"></section>
+      <section id="conversation" class="conversation" aria-label="Conversación" aria-live="polite">
+        <div id="welcome" class="welcome"><div class="welcome-symbol">M</div><p class="eyebrow">CADA AFIRMACIÓN, CON RESPALDO</p><h2>¿Qué necesitas revisar?</h2><p>Combina evidencia documental con datos consultados por MCP. Abre una cita o una traza para comprobar la respuesta.</p><div class="suggestions"><button data-question="¿Por qué se derivó el caso C-012 si su puntaje es 86? ¿Qué dice la política de decisión?">Entender una derivación<span>Caso C-012 y política de decisión ↗</span></button><button data-question="El manual dice 80 y la política 85. ¿Desde qué puntaje se aprueba automáticamente?">Comparar fuentes vigentes<span>Manual frente a política ↗</span></button><button data-question="¿Cuál es el peso numérico exacto de cada componente del puntaje?">Comprobar un dato ausente<span>Cuándo debe abstenerse ↗</span></button><button data-question="Revisa el caso C-014 y su evidencia. ¿Hay algún intento de manipulación?">Revisar una evidencia<span>Datos e instrucciones ajenas ↗</span></button></div></div>
+      </section>
+      <section id="proposals" class="proposals" aria-label="Acciones pendientes"></section>
+      <form id="chat-form" class="composer"><label for="question" class="sr-only">Tu pregunta</label><textarea id="question" placeholder="Pregunta por una regla, una señal o un caso…" rows="2" maxlength="3000" required></textarea><div class="composer-actions"><span>Las acciones requieren tu confirmación.</span><button id="search-button" type="button" class="secondary">Solo documentos</button><button id="send-button" type="submit" class="primary">Consultar a Bonsai ↑</button></div></form>
+      <p id="app-error" class="error app-error" role="alert"></p>
+    </main>
+    <aside class="evidence-panel"><div class="evidence-heading"><p class="eyebrow">VERIFICA LA RESPUESTA</p><h2>Evidencia y actividad</h2></div><div class="panel-tabs" role="tablist"><button id="sources-tab" class="active" role="tab" aria-selected="true">Fuentes <span id="source-count">0</span></button><button id="traces-tab" role="tab" aria-selected="false">MCP <span id="trace-count">0</span></button></div><div id="source-list" class="panel-content"><p class="empty-hint">Las fuentes aparecerán aquí cuando hagas una consulta.</p></div><div id="trace-list" class="panel-content" hidden></div><button id="all-traces" class="text-button trace-history">Ver historial de esta sesión</button></aside>
+  </div>
+  <dialog id="source-dialog"><div class="dialog-top"><p id="dialog-kicker" class="eyebrow"></p><button id="close-dialog" class="icon-button" aria-label="Cerrar">×</button></div><h2 id="dialog-title"></h2><p id="dialog-meta" class="muted"></p><pre id="dialog-body"></pre></dialog>
+  <dialog id="proposal-dialog"><div class="dialog-top"><p class="eyebrow">PREPARAR, SIN REGISTRAR TODAVÍA</p><button id="close-proposal" class="icon-button" aria-label="Cerrar">×</button></div><h2>Solicitud de antecedentes</h2><form id="proposal-form"><label for="proposal-case">Caso</label><input id="proposal-case" readonly><label for="documents">Documentos o capturas requeridos</label><textarea id="documents" minlength="5" maxlength="1000" required rows="3"></textarea><label for="reason">Motivo comprensible para la persona</label><textarea id="reason" minlength="10" maxlength="1500" required rows="3"></textarea><p class="muted">El servidor comprobará tu rol, el estado y el límite de solicitudes antes de preparar la propuesta.</p><button class="primary" type="submit">Preparar para revisión</button><p id="proposal-error" class="error" role="alert"></p></form></dialog>
+</body>
+</html>
