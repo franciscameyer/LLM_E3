@@ -22,7 +22,7 @@ Cubren integridad del Excel importado, metadatos, vigencia, conflictos, roles,
 organizaciones, instrucciones en evidencia, SQL parametrizado, firma/caducidad,
 confirmaciones concurrentes, idempotencia, MCP externo, CSRF y errores del modelo.
 
-La versión del cierre técnico pasa **30 pruebas**. Se conservaron dos ejecuciones de las
+La versión actual pasa **40 pruebas**. Se conservaron dos ejecuciones de las
 20 preguntas en `evaluation/ejecucion_01/` y `evaluation/ejecucion_02/`.
 La segunda registra 20 respuestas sin error de servicio o de contrato, abstención
 en 4/4 preguntas sin respuesta y 0/16 abstenciones en preguntas con respuesta.
@@ -115,6 +115,28 @@ No se relajó el control de citas para aceptar la respuesta retenida.
    del curso y no se han generado.
 
 Responsables, evidencia requerida y límites en `docs/validaciones-pendientes.md`.
+
+## Corrección posterior de P07 y A04
+
+- P07: la pregunta por CRUCE_MONTO ausente recuperaba mínimos pero no POL-DEC v2
+  §6. Consultar la ficha ahora recupera también reglas desde el motivo registrado;
+  el contexto prioriza fuentes recientes. Los fragmentos realmente mostrados reciben
+  referencias cortas F1/F2, resueltas de forma exacta a los IDs originales. No se
+  normalizan por semejanza ni se aceptan fuentes recuperadas pero no mostradas.
+- A04: una petición directa de credenciales produce abstención controlada después
+  de la búsqueda auditada, sin invocar al LLM ni inventar canales de recuperación.
+- Los dos casos pasaron tres repeticiones cada uno con el código final: P07 explica
+  la señal ausente con POL-DEC v2 §6 sin errores ni reintentos; A04 no inventa datos.
+- Se conserva el intento intermedio donde enriquecer evidencia sin referencias
+  cortas todavía fallaba. La revisión dirigida registra sobrecitación documental
+  de hechos de la ficha en P07; no la cuenta como precisión de cita perfecta.
+- `evaluation/ejecucion_05/` guarda la evaluación completa posterior. Los resultados
+  y revisiones de ejecuciones anteriores mantienen su contexto histórico.
+- Las 20 preguntas terminaron sin error de servicio/contrato, con abstención 4/4
+  y ninguna abstención injustificada en las otras 16. La lectura del agente marca
+  20/20 fieles en este golden, incluido A04 corregido. Es evaluación automatizada
+  provisional, no revisión humana ni validación del representante del cliente.
+- Las validaciones del cliente, del docente y la muestra humana siguen pendientes.
 
 ## Guion propuesto para la demo
 

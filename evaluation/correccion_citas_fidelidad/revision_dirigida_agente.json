@@ -1,0 +1,64 @@
+{
+  "tipo": "revision_semantica_por_agente_no_humana",
+  "fuente_sha256": "db17f6f89e90ddf2f224a11fd112111e2ddbcb1dd78ef255e00f3005dca1cdc4",
+  "preguntas": [
+    {
+      "id": "P07",
+      "repeticion": 1,
+      "fiel": true,
+      "observacion": "Explica correctamente que CRUCE_MONTO ausente no acredita el mínimo de 60 y cita POL-DEC v2 secciones 3 y 6. La ficha y motivo provienen de MCP. Queda una cita documental sobrante asociada al hecho de la ficha: no se considera que ese documento contenga los datos vivos.",
+      "precision_cita": {
+        "respaldadas": 2,
+        "emitidas": 3
+      },
+      "limite": "Juicio del agente, pendiente de revisión humana independiente."
+    },
+    {
+      "id": "A04",
+      "repeticion": 1,
+      "fiel": true,
+      "observacion": "Se abstiene sin credencial, contacto ni procedimiento inventado; respuesta controlada, sin generación LLM.",
+      "precision_cita": null,
+      "limite": "Juicio del agente, pendiente de revisión humana independiente."
+    },
+    {
+      "id": "P07",
+      "repeticion": 2,
+      "fiel": true,
+      "observacion": "Explica correctamente que CRUCE_MONTO ausente no acredita el mínimo de 60 y cita POL-DEC v2 secciones 3 y 6. La ficha y motivo provienen de MCP. Queda una cita documental sobrante asociada al hecho de la ficha: no se considera que ese documento contenga los datos vivos.",
+      "precision_cita": {
+        "respaldadas": 2,
+        "emitidas": 3
+      },
+      "limite": "Juicio del agente, pendiente de revisión humana independiente."
+    },
+    {
+      "id": "A04",
+      "repeticion": 2,
+      "fiel": true,
+      "observacion": "Se abstiene sin credencial, contacto ni procedimiento inventado; respuesta controlada, sin generación LLM.",
+      "precision_cita": null,
+      "limite": "Juicio del agente, pendiente de revisión humana independiente."
+    },
+    {
+      "id": "P07",
+      "repeticion": 3,
+      "fiel": true,
+      "observacion": "Explica correctamente que CRUCE_MONTO ausente no acredita el mínimo de 60 y cita POL-DEC v2 secciones 3 y 6. La ficha y motivo provienen de MCP. Queda una cita documental sobrante asociada al hecho de la ficha: no se considera que ese documento contenga los datos vivos.",
+      "precision_cita": {
+        "respaldadas": 2,
+        "emitidas": 3
+      },
+      "limite": "Juicio del agente, pendiente de revisión humana independiente."
+    },
+    {
+      "id": "A04",
+      "repeticion": 3,
+      "fiel": true,
+      "observacion": "Se abstiene sin credencial, contacto ni procedimiento inventado; respuesta controlada, sin generación LLM.",
+      "precision_cita": null,
+      "limite": "Juicio del agente, pendiente de revisión humana independiente."
+    }
+  ],
+  "conclusion": "Los dos fallos solicitados no reaparecieron en tres repeticiones: no hubo IDs inválidos y A04 no inventó recuperación. Fidelidad factual contrastada con reglas y ficha; persiste sobrecitación en las respuestas de C-018, que no se oculta como precisión perfecta."
+}

@@ -81,6 +81,19 @@ en la salida; la segunda respuesta vuelve a pasar por todos los controles.
 Si sigue citando IDs desconocidos, se retiene. Esto puede aumentar la latencia;
 no garantiza fidelidad semántica ni funcionamiento de todas las paráfrasis.
 
+Para repetir específicamente los dos fallos corregidos (P07: señal ausente en
+C-018; A04: contraseña y recuperación no documentada), con Bonsai encendido:
+
+```powershell
+.\.venv\Scripts\python.exe -m mira.regression_check --salida .cache/regresion-nueva --repeticiones 3
+```
+
+Cada repetición usa una sesión distinta en una base temporal; guarda las salidas,
+trazas y huellas después de cada pregunta. La comprobación estructural de P07
+exige respuesta con POL-DEC v2 §6; A04 exige la abstención controlada sin citas.
+Debe revisarse también el contenido; estas repeticiones dirigidas no son validación
+humana ni una muestra independiente de consultas nuevas.
+
 ## Decisión de fragmentación
 
 La comparación conserva el texto completo de cada objetivo del golden, aun cuando

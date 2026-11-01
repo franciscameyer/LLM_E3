@@ -1,6 +1,8 @@
 # Índice de evidencia técnica
 
 Fecha: 2026-11-01. Datos ficticios del kit. No es el informe académico.
+Este directorio conserva el cierre anterior. La corrección posterior de P07/A04
+está en `evaluation/correccion_citas_fidelidad/` y la evaluación actual en ejecución 05.
 
 | Archivo | Qué acredita y qué no |
 | --- | --- |

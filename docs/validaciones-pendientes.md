@@ -32,7 +32,7 @@ La evaluación semántica del agente es un juicio automatizado, no aprobación d
 El enunciado permite evaluador automático, pero exige muestra manual y concordancia.
 
 1. Leer las respuestas y fragmentos de la ejecución indicada en cada archivo de revisión.
-2. Completar `evaluation/ejecucion_04/muestra_humana.csv` para la versión actual;
+2. Completar `evaluation/ejecucion_05/muestra_humana.csv` para la versión actual;
    la muestra cubre R01, R08, A01, A02, A04, C01, C02 y V02 (8 de 20, todos los tipos
    y preguntas con fallos previos o actuales). Es muestra dirigida, no aleatoria ni
    una estimación estadística de todas las consultas posibles. Las muestras anteriores se conservan aparte.
@@ -63,12 +63,20 @@ de recuperación de credenciales de MIRA no documentados. La muestra debe contra
 este juicio; no se afirma que tales canales existan ni que no existan. Las cifras
 son provisionales y no prueban ausencia de fallos en consultas nuevas.
 
-La exploración dirigida final mantiene P07 sin respuesta útil por citas inválidas
+La exploración dirigida del cierre previo mantuvo P07 sin respuesta útil por citas inválidas
 (retenidas incluso tras reintento). P01 muestra sobrecitación y P06 lenguaje que
-puede aparentar una decisión. Esto requiere seguimiento técnico y revisión del
+podía aparentar una decisión. Esto requirió seguimiento técnico y revisión del
 equipo, no una aprobación del cliente para darlo por solucionado. Conservar el
 error honesto es preferible a presentar una salida como verificada sin respaldo;
 no se desactivaron los controles para mejorar la cifra.
+
+Actualización posterior: esos resultados corresponden al cierre previo (ejecución
+04 y su exploración). La corrección de `evaluation/correccion_citas_fidelidad/`
+resolvió ambos fallos solicitados en tres repeticiones con el código final:
+P07 ya responde citando la regla de señal ausente y A04 se abstiene sin inventar
+recuperación. La ejecución 05 conserva la nueva evaluación completa. La
+sobrecitación de hechos MCP en P07 sigue registrada como limitación de precisión,
+sin confundirla con una nueva aprobación externa pendiente.
 
 ## Equipo: VE-02 y VE-03, pendientes
 

@@ -65,7 +65,15 @@ def consultar_caso(caso_id: str) -> dict:
     """
     def read(db, user, sid):
         data = store.detalle(db, user, caso_id)
-        data["reglas_relevantes"] = [rag.fragmento(w["regla"]) for w in data["discrepancias"]]
+        # El motivo es un dato autorizado del caso, no una consulta inventada por
+        # el modelo. Recuperar sus reglas evita perder la política que explica
+        # una señal ausente cuando la pregunta solo menciona el nombre de la señal.
+        reason = data["caso"].get("motivo_derivacion") or ""
+        rules = rag.buscar(reason, k=3) if reason.strip() else {}
+        related = rules.get("fragmentos", []) + rules.get("complementarios_conflicto", [])
+        related += [rag.fragmento(w["regla"]) for w in data["discrepancias"]]
+        data["reglas_relevantes"] = list({c["id"]: c for c in related if c}.values())
+        data["conflictos_documentales"] = rules.get("conflictos", [])
         return data
     return execute("consultar_caso", {"caso_id": caso_id}, read)
 

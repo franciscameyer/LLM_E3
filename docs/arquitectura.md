@@ -99,6 +99,15 @@ de resultados en auditoría se excluyen para no duplicar el contexto.
 - Lista explícita de herramientas permitidas; confirmación fuera del modelo.
 - Citas verificadas contra los fragmentos recibidos, sin confundir esa comprobación
   estructural con respaldo semántico.
+- El modelo cita referencias cortas F1/F2 asignadas a los fragmentos realmente
+  mostrados en esa consulta. El backend resuelve solo el mapeo exacto y entrega
+  los IDs originales a la interfaz. Un ID recuperado pero nunca mostrado tampoco
+  se acepta. Las referencias no se comparten entre consultas.
+- Consultar una ficha recupera además reglas a partir de su motivo de derivación,
+  con vigencia y conflictos conservados. El contexto prioriza la evidencia más
+  reciente sin borrar las fuentes anteriores; se mantiene el límite de ocho fuentes.
+- Las peticiones directas de credenciales se abstienen tras la búsqueda registrada,
+  sin pedir al modelo que improvise credenciales, contactos o canales de recuperación.
 - Si aparecen IDs desconocidos, se permite un único reintento de generación con
   la misma evidencia y sin herramientas. Se aplican otra vez todos los controles;
   no se sustituyen IDs por semejanza ni se acepta una cita inválida tras el reintento.

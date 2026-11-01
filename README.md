@@ -55,6 +55,11 @@ y advierte que el historial no acredita el requisito de POL-DEC §5 v2.
 una respuesta generada. Sirve para revisar recuperación cuando el modelo está apagado.
 Si el modelo falla, el chat muestra el error y no sustituye su respuesta con una invención.
 
+El modelo usa referencias cortas asignadas al contexto; la interfaz recibe las citas
+originales con fuente/sección/versión. La ficha incorpora reglas recuperadas desde
+el motivo de derivación y el contexto prioriza las fuentes nuevas. Las peticiones
+directas de credenciales reciben abstención sin inventar recuperación de acceso.
+
 ## Configuración del modelo
 
 La configuración predeterminada usa `http://127.0.0.1:8080/v1`, descubre el nombre
@@ -181,6 +186,10 @@ El registro del conflicto MAN-REV/POL-DEC es explícito y no elige una fuente.
   inválidas, sin herramientas adicionales y sin debilitar el control de referencias.
   Completó las 20 preguntas sin errores estructurales; la revisión del agente marca
   19/20 fieles y deja la muestra humana vacía para validación independiente.
+- `evaluation/ejecucion_05/`: evaluación tras corregir P07 y A04; las referencias
+  cortas se resuelven a IDs originales, y las credenciales no se delegan al modelo.
+- `evaluation/correccion_citas_fidelidad/`: pruebas, repeticiones dirigidas y lectura
+  del agente que conserva también los intentos previos fallidos y la sobrecitación residual.
 
 Las respuestas esperadas siguen **pendientes de validación por el representante
 del cliente**. La revisión semántica del agente se declara como automatizada:

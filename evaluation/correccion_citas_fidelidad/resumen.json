@@ -1,0 +1,82 @@
+{
+  "fecha_local": "2026-11-01",
+  "codigo_sha256": {
+    "agent.py": "b08ba0d0e9724999bd032686850d865a4a57812476e7718645d2bedbb0dc1bff",
+    "api.py": "d3b5ef7fc9b21d8ca414555dc79dbae31d636a0a97f882e4792f60211888be2a",
+    "bridge.py": "a3dc255e0cc819f5c522a99b2769fb138e252b44a492ceff0d4dbe244ed92285",
+    "check_delivery.py": "6101fe2d37583f7f2b0925a8f8c5714fa7863a5637fb9fc252a0b69c1c249960",
+    "cli.py": "278fa34e3ed6b043013dba0db8ec5e047413a5bebcc614d65588ffddecc0a70a",
+    "config.py": "d21ddd44619480d1303b017c5c3429e61444616d80036000a282f980bef2264c",
+    "evaluate.py": "72667cd71e0d15b744af7abd78426bb4e7705aed93c0589db49b8f569f5632f9",
+    "launch_model.py": "0fc7c6ed63faf90a0444413e6329e4e705b7d74fd1bed2876e4085462cdab207",
+    "mcp_server.py": "6fc1a6fafad381970162f05f19e8ad4bcf2ef6ad90914189221db322887ac9d8",
+    "rag.py": "b325be30ede3fff3e90e006187c249bbdfd9ac85aa6abec22029c33b3efec438",
+    "regression_check.py": "4140740421de5cccfebd9068d8db7908b67650e0949cc11e961ad2a3e2fde3a7",
+    "security.py": "41a6a1831d204a99bebfdb0cfd808518c26f66714385de190c8d96d14644b934",
+    "store.py": "aa7618f2356bae105f5bca656188c35a0a907ef56d52b076546d205ab68c9790",
+    "validation.py": "52b99a1a1754d4d615f441ee672ccadfc92c032e5637b3725b6c96bcc1dfad3e",
+    "__init__.py": "af345a58ba4f592624b0709c8d2da15f9d315add0371e474e4b60138f128beba"
+  },
+  "golden_sha256": "b159f19d9942461eeafe20b5976ec8931bd904f32773543d826bd1c36da4c8c5",
+  "cambios": [
+    "Reglas recuperadas desde el motivo autorizado del caso",
+    "Contexto prioriza nueva evidencia y conserva conflictos",
+    "Referencias cortas resueltas por mapeo exacto; citas no mostradas siguen rechazadas",
+    "Abstención de credenciales sin generación ni recuperación inventada"
+  ],
+  "pruebas": {
+    "aprobadas": 40,
+    "fallidas": 0,
+    "evidencia": "pruebas.xml"
+  },
+  "regresiones_dirigidas": {
+    "P07": "3/3 evidencia con POL-DEC v2 sección 6, sin reintento",
+    "A04": "3/3 abstención controlada sin credenciales ni canales inventados",
+    "evidencia": "verificacion_final/resultados.json",
+    "revision_agente": "revision_dirigida_agente.json"
+  },
+  "golden": {
+    "preguntas": 20,
+    "sin_error_servicio_contrato": 20,
+    "modelo": "bonsai-27b",
+    "abstenciones": {
+      "abstencion_en_sin_respuesta": 1.0,
+      "abstencion_en_con_respuesta": 0.0,
+      "precision_cita": null,
+      "fidelidad": null,
+      "nota": "Precisión y fidelidad pendientes de juicio sobre el contenido, no sobre el formato."
+    },
+    "revision_semantica_agente": {
+      "tipo": "evaluacion_semantica_por_agente",
+      "revisor": "Codex (agente; no revisor humano ni representante del cliente)",
+      "ejecucion_sha256": "8c717c94d4b3e3a100b82f40dd5feba8ea8c3964bf25cf91b2a0399789e6f535",
+      "preguntas": 20,
+      "citas_respaldadas": 30,
+      "citas_emitidas": 30,
+      "precision_cita": 1.0,
+      "respuestas_fieles": 20,
+      "fidelidad": 1.0,
+      "conflicto_vigencia_correctos": 4,
+      "conflicto_vigencia_total": 4,
+      "manejo_conflicto_vigencia": 1.0,
+      "revision_humana": "Pendiente de muestra independiente y concordancia; esto no es aprobación del cliente.",
+      "unidad_cita": "Par (respuesta, ID de fragmento) único; las repeticiones del mismo ID dentro de una respuesta no se cuentan de nuevo.",
+      "fallos": [],
+      "juicios_sha256": "b1822970df7fe41d59b946c08682ce2f4c8f80240f34094d775d3e4bcabe4b29"
+    },
+    "evidencia": "evaluation/ejecucion_05",
+    "nota": "A04 se resuelve mediante abstención controlada; 19 consultas usan generación LLM. Juicios automáticos pendientes de muestra humana."
+  },
+  "exploracion_general": {
+    "preguntas": 8,
+    "sin_error_servicio_contrato": 8,
+    "reintentos_citas": 0,
+    "evidencia": "verificacion_general.json",
+    "nota": "No se equipara la validez estructural a precisión semántica de cada cita."
+  },
+  "limites": [
+    "Sobrecitación de datos MCP en P07: la revisión dirigida cuenta 2/3 citas respaldadas por respuesta; los hechos se verificaron en la ficha, no en esa cita adicional.",
+    "Repeticiones dirigidas no son muestra independiente ni garantía para todas las consultas."
+  ],
+  "validaciones_externas": "Golden por representante del cliente, D1–D8/v3.0 por docente y muestra humana/concordancia siguen pendientes. No se registró aprobación externa."
+}

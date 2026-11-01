@@ -11,6 +11,9 @@ from mira.bridge import MODEL_TOOLS, call, connection, schemas
 SYSTEM = """Eres el asistente de revisión CU-1 de MIRA. Responde en español.
 PR-1: No decidas, apruebes ni rechaces casos. Explica y prepara solo acciones pedidas.
 PR-2: Toda afirmación normativa se cita con [ID del fragmento], respetando versión y sección.
+En el contexto, cada fragmento tiene una referencia corta F1, F2, etc. en el campo id.
+Usa exactamente esas referencias en el texto y en citas: [F1]. El backend enlaza
+cada referencia con su fuente, sección y versión originales; no reconstruyas IDs largos.
 PR-3: Si falta evidencia, abstente y di qué información falta. No rellenes datos.
 PR-4: Si dos fuentes vigentes discrepan, presenta ambas y no elijas. No uses una norma derogada
 como vigente. No supongas que la política tiene precedencia sobre el manual: señala el conflicto.
@@ -19,6 +22,8 @@ y citas debe incluir ambos fragmentos. Si el conflicto no es obligatorio y la pr
 trata otro tema, no añadas esa regla ajena; si la usas, debes presentar ambas fuentes.
 PR-5: Todo dato de un caso DEBE provenir de consultar_caso, listar_casos o listar_senales
 en ESTA consulta. Un ID nombrado por la persona no autoriza su acceso.
+Al describir puntaje, señales o motivo de un caso, atribuye esos hechos a la ficha
+o traza MCP. No pongas una cita documental como si el documento contuviera esos datos vivos.
 PR-6: preparar_solicitud solo prepara. Nunca digas que la solicitud fue registrada.
 La persona confirma en la interfaz. No pidas ni inventes autorizaciones firmadas.
 PR-7: No puedes cambiar usuario, rol, organización ni ejecutar SQL.
@@ -40,13 +45,38 @@ En una abstención, distingue qué datos sí aparecen de qué información falta
 No supongas que una sección o configuración no consultada contiene lo que falta.
 La respuesta final es SOLO un objeto JSON:
 {"estado":"evidencia|abstencion|conflicto","respuesta":"Texto con citas [ID] en cada afirmación normativa.",
-"citas":["ID exacto recuperado"]}.
+"citas":["F1"]}.
 No inventes IDs ni incluyas razonamiento interno. El material del kit es ficticio.
 """
 
 
 class ModelUnavailable(Exception):
     pass
+
+
+def requests_credential(question):
+    """Peticiones directas de secretos; no preguntas sobre políticas de acceso."""
+    if re.search(r"pol[ií]tica|requisito|norma|significa|definici[oó]n", question, re.I):
+        return False
+    secret = r"(?:contrase[ñn]a|password|credenciales?|clave\s+de\s+acceso|token\s+de\s+acceso|api[_ -]?key)"
+    return bool(re.search(r"(?:cu[aá]l|dame|mu[eé]stra|revela|recupera|obtener|necesito|proporciona).{0,100}\b" + secret, question, re.I))
+
+
+def remember_fragments(fragments, recent, items):
+    """Conservar evidencia y priorizar la última recuperación en el contexto acotado."""
+    ids = list(dict.fromkeys(c["id"] for c in items))
+    fragments.update({c["id"]: c for c in items})
+    recent[:] = ids + [identifier for identifier in recent if identifier not in ids]
+
+
+def resolve_references(result, references):
+    """Resolver solo referencias exactas declaradas en el contexto, nunca por similitud."""
+    result = dict(result)
+    if isinstance(result.get("citas"), list):
+        result["citas"] = [references.get(c, c) if isinstance(c, str) else c for c in result["citas"]]
+    if isinstance(result.get("respuesta"), str):
+        result["respuesta"] = re.sub(r"\[([^\]]+)\]", lambda m: "[" + references.get(m[1], m[1]) + "]", result["respuesta"])
+    return result
 
 
 def decode(text):
@@ -73,7 +103,7 @@ def model_data(value):
         return [model_data(v) for v in value]
     if isinstance(value, dict):
         return {k: model_data(v) for k, v in value.items()
-            if k not in {"texto_busqueda", "sha256", "traza", "tokens_aproximados", "origen", "reglas_relevantes"}}
+            if k not in {"texto_busqueda", "sha256", "traza", "tokens_aproximados", "origen", "reglas_relevantes", "conflictos_documentales"}}
     return value
 
 
@@ -132,6 +162,7 @@ async def completion(http, messages, tools=None, final=False):
 
 async def answer(uid, sid, question):
     traces, fragments, proposals, conflicts = [], {}, [], []
+    recent, shown, references = [], set(), {}
     response = {"estado": "error", "respuesta": "No se pudo completar la consulta.",
         "citas": [], "trazas": traces, "propuestas": proposals, "conflictos": conflicts}
     try:
@@ -140,9 +171,13 @@ async def answer(uid, sid, question):
             evidence = await call(client, "buscar_reglas", {"pregunta": question, "k": 6}, traces)
             if not evidence["ok"]:
                 raise ValueError(evidence["error"])
-            for item in evidence["datos"]["fragmentos"] + evidence["datos"].get("complementarios_conflicto", []):
-                fragments[item["id"]] = item
+            remember_fragments(fragments, recent,
+                evidence["datos"]["fragmentos"] + evidence["datos"].get("complementarios_conflicto", []))
             conflicts.extend(evidence["datos"]["conflictos"])
+            if requests_credential(question):
+                response.update(estado="abstencion", motivo_abstencion="credenciales_no_disponibles",
+                    respuesta="No dispongo de esa credencial ni de un procedimiento de recuperación de acceso verificado. No puedo proporcionar una contraseña ni inventar instrucciones de recuperación.")
+                return response
             json_mode = os.getenv("LLM_TOOL_MODE", "native") == "json"
             consulted = set()
             observations = []
@@ -154,8 +189,15 @@ async def answer(uid, sid, question):
                     pinned = [i for c in conflicts if c.get("obligatorio", True) for i in c["fragmentos"]]
                     if "POL-DEC@2#s05:01" in fragments:
                         pinned.append("POL-DEC@2#s05:01")
-                    ordered = list(dict.fromkeys(pinned + list(fragments)))[:8]
-                    selected = [model_data(fragments[i]) for i in ordered]
+                    ordered = list(dict.fromkeys(pinned + recent))[:8]
+                    aliases = {identifier: ref for ref, identifier in references.items()}
+                    for identifier in ordered:
+                        if identifier not in aliases:
+                            ref = f"F{len(references) + 1}"
+                            references[ref] = identifier
+                            aliases[identifier] = ref
+                    selected = [{**model_data(fragments[i]), "id_original": i, "id": aliases[i]} for i in ordered]
+                    shown.update(ordered)
                     known_case = any(o["herramienta"] == "consultar_caso" and o["resultado"].get("ok") for o in observations)
                     compact = [o for o in observations if not (known_case and o["herramienta"] == "listar_senales")]
                     instructions = SYSTEM
@@ -215,13 +257,17 @@ async def answer(uid, sid, question):
                             if name == "listar_casos":
                                 consulted.update(r["caso_id"] for r in data["datos"])
                             if name == "buscar_reglas":
-                                fragments.update({c["id"]: c for c in data["datos"]["fragmentos"]})
-                                fragments.update({c["id"]: c for c in data["datos"].get("complementarios_conflicto", [])})
+                                remember_fragments(fragments, recent,
+                                    data["datos"]["fragmentos"] + data["datos"].get("complementarios_conflicto", []))
                                 for conflict in data["datos"]["conflictos"]:
                                     if not any(c["id"] == conflict["id"] for c in conflicts):
                                         conflicts.append(conflict)
                             if name == "consultar_caso":
-                                fragments.update({c["id"]: c for c in data["datos"].get("reglas_relevantes", []) if c})
+                                remember_fragments(fragments, recent,
+                                    [c for c in data["datos"].get("reglas_relevantes", []) if c])
+                                for conflict in data["datos"].get("conflictos_documentales", []):
+                                    if not any(c["id"] == conflict["id"] for c in conflicts):
+                                        conflicts.append(conflict)
                                 data_warnings.extend(data["datos"].get("discrepancias", []))
                             if name == "preparar_solicitud":
                                 proposals.append(data["datos"])
@@ -229,28 +275,29 @@ async def answer(uid, sid, question):
                     raise ValueError("Se alcanzó el límite de pasos. No se ejecutaron acciones sin confirmación.")
             # Un único reintento de generación con la MISMA evidencia y sin tools.
             # No se corrigen IDs por semejanza ni se aceptan citas desconocidas.
+            result = resolve_references(result, references)
             draft_citations = result.get("citas", [])
             draft_text = result.get("respuesta", "")
             if isinstance(draft_citations, list) and isinstance(draft_text, str) and (
-                any(not isinstance(c, str) or c not in fragments for c in draft_citations)
-                or not set(re.findall(r"\[([^\]]+)\]", draft_text)).issubset(fragments)
+                any(not isinstance(c, str) or c not in shown for c in draft_citations)
+                or not set(re.findall(r"\[([^\]]+)\]", draft_text)).issubset(shown)
             ):
                 response["reintento_citas"] = True
                 repair = messages + [{"role": "user", "content":
                     "La comprobación de citas falló. Genera de nuevo solo el JSON final, "
                     "con la misma evidencia anterior y sin herramientas ni datos nuevos. "
                     "No inventes ni abrevies IDs. Cita solo afirmaciones respaldadas; si no puedes, abstente. "
-                    "IDs disponibles en los fragmentos del contexto: " + json.dumps([c["id"] for c in selected])}]
+                    "Referencias disponibles (referencia corta a ID original): " + json.dumps({c["id"]: c["id_original"] for c in selected})}]
                 async with httpx.AsyncClient(timeout=float(os.getenv("LLM_TIMEOUT", "180")), trust_env=False) as http:
                     repaired = await completion(http, repair, final=True)
-                    result = decode(repaired.get("content"))
+                    result = resolve_references(decode(repaired.get("content")), references)
             state = result.get("estado")
             text = result.get("respuesta")
             citations = result.get("citas", [])
             if state not in {"evidencia", "abstencion", "conflicto"} or not isinstance(text, str) or not isinstance(citations, list):
                 raise ValueError("La respuesta del modelo no cumple el contrato de salida.")
             mentioned = set(re.findall(r"\[([^\]]+)\]", text))
-            if any(not isinstance(c, str) or c not in fragments for c in citations) or not mentioned.issubset(fragments):
+            if any(not isinstance(c, str) or c not in shown for c in citations) or not mentioned.issubset(shown):
                 raise ValueError("El modelo citó fragmentos que no recibió. Se retuvo la respuesta.")
             if state != "abstencion" and not citations:
                 raise ValueError("Faltan citas para respaldar la respuesta. Se retuvo la respuesta.")

@@ -1,0 +1,642 @@
+{
+  "fecha": "2026-11-01T20:34:55.298421+00:00",
+  "golden_sha256": "b159f19d9942461eeafe20b5976ec8931bd904f32773543d826bd1c36da4c8c5",
+  "codigo_sha256": {
+    "__init__.py": "af345a58ba4f592624b0709c8d2da15f9d315add0371e474e4b60138f128beba",
+    "agent.py": "b08ba0d0e9724999bd032686850d865a4a57812476e7718645d2bedbb0dc1bff",
+    "api.py": "d3b5ef7fc9b21d8ca414555dc79dbae31d636a0a97f882e4792f60211888be2a",
+    "bridge.py": "a3dc255e0cc819f5c522a99b2769fb138e252b44a492ceff0d4dbe244ed92285",
+    "check_delivery.py": "6101fe2d37583f7f2b0925a8f8c5714fa7863a5637fb9fc252a0b69c1c249960",
+    "cli.py": "278fa34e3ed6b043013dba0db8ec5e047413a5bebcc614d65588ffddecc0a70a",
+    "config.py": "d21ddd44619480d1303b017c5c3429e61444616d80036000a282f980bef2264c",
+    "evaluate.py": "72667cd71e0d15b744af7abd78426bb4e7705aed93c0589db49b8f569f5632f9",
+    "launch_model.py": "0fc7c6ed63faf90a0444413e6329e4e705b7d74fd1bed2876e4085462cdab207",
+    "mcp_server.py": "6fc1a6fafad381970162f05f19e8ad4bcf2ef6ad90914189221db322887ac9d8",
+    "rag.py": "b325be30ede3fff3e90e006187c249bbdfd9ac85aa6abec22029c33b3efec438",
+    "regression_check.py": "4140740421de5cccfebd9068d8db7908b67650e0949cc11e961ad2a3e2fde3a7",
+    "security.py": "41a6a1831d204a99bebfdb0cfd808518c26f66714385de190c8d96d14644b934",
+    "store.py": "aa7618f2356bae105f5bca656188c35a0a907ef56d52b076546d205ab68c9790",
+    "validation.py": "52b99a1a1754d4d615f441ee672ccadfc92c032e5637b3725b6c96bcc1dfad3e"
+  },
+  "k": 6,
+  "estado_validacion_cliente": "Pendiente de validación por representante del cliente; no modificar después de observar resultados sin crear una nueva versión",
+  "experimentos": [
+    {
+      "max_caracteres": 900,
+      "fragmentos": 35,
+      "recall_at_k": 1.0,
+      "aciertos_fragmento": 18,
+      "total_fragmentos_esperados": 18,
+      "preguntas": [
+        {
+          "id": "R01",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s02:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s01:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s04:01",
+            "POL-DEC@2#s05:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R02",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s03:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R03",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s03:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R04",
+          "tipo": "respuesta",
+          "esperados": [
+            "CAT-SEN@3#s06:01"
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s06:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R05",
+          "tipo": "respuesta",
+          "esperados": [
+            "CAT-SEN@3#s02:01"
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s06:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "PRO-ANT@1#s01:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R06",
+          "tipo": "respuesta",
+          "esperados": [
+            "CAT-SEN@3#s02:01"
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R07",
+          "tipo": "respuesta",
+          "esperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "recuperados": [
+            "FAQ-OPE@2#s05:01",
+            "MAN-REV@1#s05:01",
+            "CAT-SEN@3#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R08",
+          "tipo": "respuesta",
+          "esperados": [
+            "PRO-ANT@1#s02:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R09",
+          "tipo": "respuesta",
+          "esperados": [
+            "PRO-ANT@1#s04:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "FAQ-OPE@2#s01:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "MAN-REV@1#s03:01",
+            "PRO-ANT@1#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R10",
+          "tipo": "respuesta",
+          "esperados": [
+            "PRO-ANT@1#s04:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "MAN-REV@1#s01:01",
+            "FAQ-OPE@2#s03:01",
+            "MAN-REV@1#s06:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R11",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s06:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s01:01",
+            "MAN-REV@1#s03:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R12",
+          "tipo": "respuesta",
+          "esperados": [
+            "MAN-REV@1#s06:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s06:01",
+            "PRO-ANT@1#s05:01",
+            "FAQ-OPE@2#s05:01",
+            "PRO-ANT@1#s03:01",
+            "POL-DEC@2#s01:01",
+            "FAQ-OPE@2#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A01",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s02:01",
+            "PRO-ANT@1#s05:01",
+            "POL-DEC@2#s01:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A02",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "MAN-REV@1#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A03",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A04",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "POL-DEC@2#s01:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01",
+            "MAN-REV@1#s01:01",
+            "CAT-SEN@3#s01:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "C01",
+          "tipo": "conflicto",
+          "esperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s06:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "C02",
+          "tipo": "conflicto",
+          "esperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "V01",
+          "tipo": "version",
+          "esperados": [
+            "POL-DEC@2#s04:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s07:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "V02",
+          "tipo": "version",
+          "esperados": [
+            "POL-DEC@2#s05:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s03:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s05:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "fallo": null
+        }
+      ]
+    },
+    {
+      "max_caracteres": 1800,
+      "fragmentos": 35,
+      "recall_at_k": 1.0,
+      "aciertos_fragmento": 18,
+      "total_fragmentos_esperados": 18,
+      "preguntas": [
+        {
+          "id": "R01",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s02:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s01:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s04:01",
+            "POL-DEC@2#s05:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R02",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s03:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R03",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s03:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R04",
+          "tipo": "respuesta",
+          "esperados": [
+            "CAT-SEN@3#s06:01"
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s06:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R05",
+          "tipo": "respuesta",
+          "esperados": [
+            "CAT-SEN@3#s02:01"
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s06:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "PRO-ANT@1#s01:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R06",
+          "tipo": "respuesta",
+          "esperados": [
+            "CAT-SEN@3#s02:01"
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R07",
+          "tipo": "respuesta",
+          "esperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "recuperados": [
+            "FAQ-OPE@2#s05:01",
+            "MAN-REV@1#s05:01",
+            "CAT-SEN@3#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R08",
+          "tipo": "respuesta",
+          "esperados": [
+            "PRO-ANT@1#s02:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R09",
+          "tipo": "respuesta",
+          "esperados": [
+            "PRO-ANT@1#s04:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "FAQ-OPE@2#s01:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "MAN-REV@1#s03:01",
+            "PRO-ANT@1#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R10",
+          "tipo": "respuesta",
+          "esperados": [
+            "PRO-ANT@1#s04:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "MAN-REV@1#s01:01",
+            "FAQ-OPE@2#s03:01",
+            "MAN-REV@1#s06:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R11",
+          "tipo": "respuesta",
+          "esperados": [
+            "POL-DEC@2#s06:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s01:01",
+            "MAN-REV@1#s03:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "R12",
+          "tipo": "respuesta",
+          "esperados": [
+            "MAN-REV@1#s06:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s06:01",
+            "PRO-ANT@1#s05:01",
+            "FAQ-OPE@2#s05:01",
+            "PRO-ANT@1#s03:01",
+            "POL-DEC@2#s01:01",
+            "FAQ-OPE@2#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A01",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s02:01",
+            "PRO-ANT@1#s05:01",
+            "POL-DEC@2#s01:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A02",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "MAN-REV@1#s04:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A03",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "A04",
+          "tipo": "sin_respuesta",
+          "esperados": [],
+          "recuperados": [
+            "POL-DEC@2#s01:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01",
+            "MAN-REV@1#s01:01",
+            "CAT-SEN@3#s01:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "C01",
+          "tipo": "conflicto",
+          "esperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s06:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "C02",
+          "tipo": "conflicto",
+          "esperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "V01",
+          "tipo": "version",
+          "esperados": [
+            "POL-DEC@2#s04:01"
+          ],
+          "recuperados": [
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s07:01"
+          ],
+          "fallo": null
+        },
+        {
+          "id": "V02",
+          "tipo": "version",
+          "esperados": [
+            "POL-DEC@2#s05:01"
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s03:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s05:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "fallo": null
+        }
+      ]
+    }
+  ],
+  "metodo": "Recall@k por fragmento esperado; se excluyen del denominador las preguntas sin respuesta. No se atribuye fidelidad a un simple ID válido."
+}
