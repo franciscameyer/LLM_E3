@@ -31,6 +31,15 @@ equipo son opcionales; los seis Markdown del kit CU-1 son obligatorios y están 
 La evaluación semántica del agente es un juicio automatizado, no aprobación del cliente.
 El enunciado permite evaluador automático, pero exige muestra manual y concordancia.
 
+A petición del usuario, Codex completó las ocho preguntas en
+`evaluation/ejecucion_05/muestra_revision_codex.csv`, tras releer respuestas y
+fuentes. Resultado: 14/14 citas respaldadas y 8/8 respuestas fieles. La comparación
+con la primera evaluación del mismo agente coincide en cantidad de citas (8/8),
+fidelidad (8/8) y conflicto/vigencia donde aplica (3/3). Los hashes y el detalle
+están en `concordancia_interna_codex.json`. Es concordancia interna del mismo agente;
+no se declara revisión humana independiente. La plantilla `muestra_humana.csv`
+se conserva para esa revisión y el golden sigue pendiente del cliente.
+
 1. Leer las respuestas y fragmentos de la ejecución indicada en cada archivo de revisión.
 2. Completar `evaluation/ejecucion_05/muestra_humana.csv` para la versión actual;
    la muestra cubre R01, R08, A01, A02, A04, C01, C02 y V02 (8 de 20, todos los tipos

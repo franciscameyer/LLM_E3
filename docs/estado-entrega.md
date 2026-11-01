@@ -137,6 +137,11 @@ Responsables, evidencia requerida y límites en `docs/validaciones-pendientes.md
   20/20 fieles en este golden, incluido A04 corregido. Es evaluación automatizada
   provisional, no revisión humana ni validación del representante del cliente.
 - Las validaciones del cliente, del docente y la muestra humana siguen pendientes.
+- A petición del usuario se completó la muestra de ocho preguntas como revisión de
+  Codex, con 14/14 citas respaldadas y 8/8 respuestas fieles. La concordancia con
+  la primera evaluación del mismo agente es 8/8 para cantidad de citas, 8/8 para
+  fidelidad y 3/3 para conflicto/vigencia. Se identifica como revisión del agente,
+  no como sustitución de la muestra humana independiente ni aprobación del cliente.
 
 ## Guion propuesto para la demo
 

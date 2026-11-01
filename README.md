@@ -188,6 +188,8 @@ El registro del conflicto MAN-REV/POL-DEC es explícito y no elige una fuente.
   19/20 fieles y deja la muestra humana vacía para validación independiente.
 - `evaluation/ejecucion_05/`: evaluación tras corregir P07 y A04; las referencias
   cortas se resuelven a IDs originales, y las credenciales no se delegan al modelo.
+  Incluye `muestra_revision_codex.csv` con ocho preguntas revisadas y
+  `concordancia_interna_codex.json`; la revisión humana independiente sigue pendiente.
 - `evaluation/correccion_citas_fidelidad/`: pruebas, repeticiones dirigidas y lectura
   del agente que conserva también los intentos previos fallidos y la sobrecitación residual.
 

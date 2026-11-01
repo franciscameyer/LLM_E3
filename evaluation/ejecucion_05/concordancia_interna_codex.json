@@ -1,0 +1,79 @@
+{
+  "tipo": "concordancia_interna_entre_revisiones_del_mismo_agente",
+  "fecha": "2026-11-01",
+  "revisor": "Codex (agente; no humano ni representante del cliente)",
+  "ejecucion_sha256": "8c717c94d4b3e3a100b82f40dd5feba8ea8c3964bf25cf91b2a0399789e6f535",
+  "revision_anterior_sha256": "b1822970df7fe41d59b946c08682ce2f4c8f80240f34094d775d3e4bcabe4b29",
+  "muestra_completada": "evaluation/ejecucion_05/muestra_revision_codex.csv",
+  "muestra_sha256": "a663d0f7c5aa27202fb172fd9a81012abda3b752dd39fe43f558063dad5abe0b",
+  "metodo": "Nueva lectura de ocho preguntas y fragmentos. Comparación posterior contra la primera evaluación del mismo agente. Muestra dirigida, no aleatoria. La comparación de cantidades de citas es por respuesta, no juicio independiente por cita.",
+  "preguntas": 8,
+  "citas_respaldadas": 14,
+  "citas_emitidas": 14,
+  "respuestas_fieles": 8,
+  "concordancia_cantidad_citas": {
+    "acuerdos": 8,
+    "comparaciones": 8
+  },
+  "concordancia_fidelidad": {
+    "acuerdos": 8,
+    "comparaciones": 8
+  },
+  "concordancia_conflicto_vigencia": {
+    "acuerdos": 3,
+    "comparaciones": 3
+  },
+  "detalle": [
+    {
+      "id": "R01",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": null
+    },
+    {
+      "id": "R08",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": null
+    },
+    {
+      "id": "A01",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": null
+    },
+    {
+      "id": "A02",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": null
+    },
+    {
+      "id": "A04",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": null
+    },
+    {
+      "id": "C01",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": true
+    },
+    {
+      "id": "C02",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": true
+    },
+    {
+      "id": "V02",
+      "acuerdo_cantidad_citas": true,
+      "acuerdo_fidelidad": true,
+      "acuerdo_conflicto_vigencia": true
+    }
+  ],
+  "revision_humana_independiente": "Pendiente; la plantilla muestra_humana.csv permanece vacía para una persona real.",
+  "validacion_cliente": "Pendiente. Esta revisión no modifica el estado del golden.",
+  "limite": "La coincidencia del mismo agente consigo mismo no satisface la muestra manual ni la concordancia humana exigidas por la pauta."
+}
