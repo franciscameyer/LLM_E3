@@ -187,6 +187,22 @@ def test_agente_rechaza_citas_inventadas(isolated, monkeypatch):
     assert "no recibió" in result["respuesta"]
 
 
+def test_reintento_citas_no_ejecuta_tools_y_revalida_salida(isolated, monkeypatch):
+    calls = []
+    async def fake(http, messages, tools=None, final=False):
+        calls.append((tools, final))
+        if len(calls) == 1:
+            return {"content": json.dumps({"estado": "evidencia", "respuesta": "70 [INVENTADA]", "citas": ["INVENTADA"]})}
+        assert len(calls) == 2 and tools is None and final
+        assert "POL-DEC@2#s03:01" in messages[-1]["content"]
+        return {"content": json.dumps({"estado": "evidencia", "respuesta": "Mínimo DOC_AUT: 70 [POL-DEC@2#s03:01]", "citas": ["POL-DEC@2#s03:01"]})}
+    monkeypatch.setattr(agent, "completion", fake)
+    result = asyncio.run(agent.answer("U-01", "test-repair", "¿Cuál es el mínimo DOC_AUT?"))
+    assert result["estado"] == "evidencia"
+    assert result["reintento_citas"] is True
+    assert len(calls) == 2
+
+
 def test_agente_reporta_caida_del_modelo_sin_respuesta_inventada(isolated, monkeypatch):
     async def fail(*args, **kwargs):
         raise agent.ModelUnavailable("Bonsai no está disponible")
@@ -216,6 +232,22 @@ def test_agente_se_abstiene_si_no_consulto_el_caso(isolated, monkeypatch):
     assert result["estado"] == "abstencion"
     assert "99" not in result["respuesta"]
     assert "ficha autorizada" in result["respuesta"]
+
+
+@pytest.mark.parametrize("uid,case", [("U-03", "C-012"), ("U-01", "C-020")])
+def test_denegacion_mcp_se_muestra_sin_otro_turno_del_modelo(isolated, monkeypatch, uid, case):
+    calls = []
+    async def fake(*args, **kwargs):
+        calls.append(True)
+        assert len(calls) == 1, "No debe pedir al modelo reformular una denegación definitiva"
+        return {"tool_calls": [{"function": {"name": "consultar_caso",
+            "arguments": json.dumps({"caso_id": case})}}]}
+    monkeypatch.setattr(agent, "completion", fake)
+    result = asyncio.run(agent.answer(uid, "test-denied", f"Consulta {case}"))
+    assert result["estado"] == "abstencion"
+    assert result["motivo_abstencion"] == "acceso_denegado"
+    assert result["citas"] == []
+    assert not result["trazas"][-1]["ok"]
 
 
 def test_guardia_no_afirma_vigencia_de_umbral_incompleto():

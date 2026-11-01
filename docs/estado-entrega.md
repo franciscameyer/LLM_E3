@@ -22,7 +22,7 @@ Cubren integridad del Excel importado, metadatos, vigencia, conflictos, roles,
 organizaciones, instrucciones en evidencia, SQL parametrizado, firma/caducidad,
 confirmaciones concurrentes, idempotencia, MCP externo, CSRF y errores del modelo.
 
-La versión verificada pasa **23 pruebas**. Se conservaron dos ejecuciones de las
+La versión del cierre técnico pasa **30 pruebas**. Se conservaron dos ejecuciones de las
 20 preguntas en `evaluation/ejecucion_01/` y `evaluation/ejecucion_02/`.
 La segunda registra 20 respuestas sin error de servicio o de contrato, abstención
 en 4/4 preguntas sin respuesta y 0/16 abstenciones en preguntas con respuesta.
@@ -30,12 +30,13 @@ Los dos conflictos y las dos preguntas de versiones incluyen los fragmentos
 esperados en la comprobación estructural. Esto no acredita fidelidad semántica.
 El tiempo medio fue 9,96 segundos, en secuencia y con el modelo ya cargado.
 
-`python -m mira.cli evaluar` produce métricas de recuperación por fragmento y dos
-configuraciones de tamaño máximo. Con este corpus de secciones breves, 900 y
-1800 caracteres producen los mismos 35 fragmentos y ambos recuperan los 18
-fragmentos esperados entre los seis resultados. Ese experimento no demuestra
-superioridad de una configuración: se mantiene el límite de 1800 y la separación
-por secciones por trazabilidad. Debe ampliarse la comparación si crece el corpus.
+La comparación ampliada `python -m mira.validation comparar --salida <archivo-nuevo>`
+usa 300, 600, 900 y 1800 caracteres: produce 50, 36, 35 y 35 fragmentos. Exige
+recuperar TODO el texto original esperado, no solo el ID :01. Recupera objetivos
+completos en 10/18, 17/18, 18/18 y 18/18, respectivamente, dentro de k=6.
+Se mantiene 1800 para preservar secciones/tablas y contratos existentes; empata
+con 900. El método incluye la relación de conflicto existente y excluye complementos
+fuera de k. Datos, denominadores y límites en `docs/reproduccion.md`.
 
 El primer control encontró un fallo de metadatos: una columna «Código» del cuerpo
 de CAT-SEN reemplazaba el código del encabezado. Se corrigió el parser para leer
@@ -56,18 +57,64 @@ explicó el conflicto y el historial incompleto. Esto evidencia variabilidad
 residual: las 20 preguntas no prueban el comportamiento en todas las consultas.
 No se relajó el control de citas para aceptar la respuesta retenida.
 
-## Pendiente antes de entregar
+## Cierre técnico del 2026-11-01
+
+- Especificación del CU-1 con requisitos, fuentes, flujos y criterios verificables.
+- Contratos MCP con entradas/salidas/permisos y mapa de riesgos, controles y pruebas.
+- Comparación real de fragmentación y métricas recalculables sin modificar el golden.
+- Lectura semántica de las 20 respuestas de la ejecución 02: el agente juzgó
+  respaldadas 31/31 citas únicas por respuesta, fieles 20/20 respuestas y correcto
+  el manejo de los cuatro casos de conflicto/vigencia. Es evaluación automatizada
+  provisional; no validación del cliente ni revisión humana. Ver juicios por ID.
+- Ocho consultas exploratorias con Bonsai y cliente MCP externo, en base temporal.
+  La primera exploración detectó una abstención con afirmaciones no respaldadas
+  sobre pesos y una denegación por rol que terminaba en error de cita. No se
+  presentan esas consultas como ocho éxitos semánticos.
+- Corrección: las denegaciones MCP por rol/organización se muestran directamente,
+  sin reformulación del modelo; pruebas de regresión para ambos casos. Se refuerzan
+  instrucciones para no añadir citas ajenas ni contenido de secciones no recibidas.
+- Una repetición exploratoria conservada en `verificacion_posterior.json` mostró
+  tres respuestas retenidas por IDs inválidos (P01/P06/P07). Se añadió un único
+  reintento con la misma evidencia, sin tools y con validación completa posterior;
+  un ID incorrecto nunca se acepta ni se corrige por semejanza. La cuarta ejecución
+  conserva la evaluación completa de esa versión.
+- La ejecución 04 terminó 20/20 sin errores de contrato/servicio, con abstención
+  en 4/4 preguntas sin respuesta y 0/16 en las demás. La lectura semántica del
+  agente es 19/20 fieles: A04 presupone canales de recuperación de credenciales
+  no documentados, aunque no revela ninguna contraseña. C01/C02 no repiten la
+  localización incorrecta observada en ejecución 03. No se atribuye causalidad
+  garantizada a un cambio de prompt ni se infiere generalización de esta muestra.
+- La repetición dirigida de P01/P06/P07 con el reintento obtuvo dos salidas
+  estructuralmente aceptadas y mantuvo P07 retenida por citas inválidas. La revisión
+  exploratoria advierte sobrecitación en P01 y lenguaje con apariencia de decisión
+  en P06. Son límites técnicos medidos, no pendientes que deba aprobar el cliente.
+  Ver `evaluation/cierre_tecnico/analisis_exploratorio.json`.
+- Reejecución completa del golden en `evaluation/ejecucion_03/`; no reutilizar
+  automáticamente las métricas semánticas de la ejecución 02 para nuevas respuestas.
+  Las 20 preguntas terminaron sin error de servicio/contrato; abstención correcta
+  4/4 y sin abstenciones en 16 con respuesta. La nueva lectura del agente marca
+  dos fallos de fidelidad (C01/C02): ubican ambiguamente la configuración efectiva
+  en la sección 5 de la política. Las reglas citadas son correctas, pero el dato vivo
+  debe provenir de MCP. No se declara la generación perfecta ni se oculta esa regresión.
+- Instalación en venv nuevo y copia de fuentes sin entorno/datos previos; evidencia
+  inicial en `evaluation/cierre_tecnico/instalacion_limpia.json` y versión final en
+  `instalacion_final.json`. No acredita otro equipo físico.
+- Lanzadores unificados y rutas de modelo/CUDA configurables por `.env`.
+
+## Pendiente de validación externa y del equipo
 
 1. Validación de las respuestas esperadas por el representante del cliente.
-2. Incorporar los documentos pertinentes de MIRA v1.4 y las referencias del equipo.
-3. Revisar humanamente la evaluación completa de generación ejecutada y repetirla
-   si el equipo cambia modelo, corpus o configuración antes de la demo.
-   Precisión de cita y fidelidad requieren juicio del contenido. El evaluador
-   genera una hoja CSV de revisión y deja esas métricas sin valor hasta medirlas.
-4. Preparar el informe PDF con las extensiones de la pauta y una presentación PPT
-   coherente con los resultados finales. No se han generado documentos que afirmen
-   una validación, una métrica de generación o una aprobación inexistentes.
-5. Acordar con el docente el alcance de D1–D8/v3.0, que la pauta referencia sin detallar.
+2. Docente: aclarar D1–D8 y qué exige la etiqueta v3.0. No se creó una etiqueta final.
+3. Equipo humano: revisar una muestra independiente y medir concordancia con el
+   evaluador automático; continuar revisión si hay desacuerdos. Planilla y procedimiento
+   preparados. Repetir evaluación si cambia corpus, modelo o comportamiento.
+4. Equipo: contrastar MIRA v1.4/entrevistas y retroalimentación cuando aporte esos
+   antecedentes; no es obligatorio añadirlos al corpus del kit.
+5. Equipo: ensayo visual en el hardware definitivo, cliente externo y defensa individual.
+6. Informe/PPT: fuera del alcance solicitado al agente; siguen siendo entregables
+   del curso y no se han generado.
+
+Responsables, evidencia requerida y límites en `docs/validaciones-pendientes.md`.
 
 ## Guion propuesto para la demo
 

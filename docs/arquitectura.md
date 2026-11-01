@@ -99,7 +99,12 @@ de resultados en auditoría se excluyen para no duplicar el contexto.
 - Lista explícita de herramientas permitidas; confirmación fuera del modelo.
 - Citas verificadas contra los fragmentos recibidos, sin confundir esa comprobación
   estructural con respaldo semántico.
+- Si aparecen IDs desconocidos, se permite un único reintento de generación con
+  la misma evidencia y sin herramientas. Se aplican otra vez todos los controles;
+  no se sustituyen IDs por semejanza ni se acepta una cita inválida tras el reintento.
 - No se presentan datos de casos nombrados si no se obtuvieron por MCP en esa consulta.
+- Una denegación por rol u organización se muestra directamente como abstención
+  con traza, sin pedir al modelo reformularla ni permitirle completar datos.
 - Conflictos conocidos omitidos y decisiones atribuidas al asistente se retienen.
 - Cuando una fuente recuperada contiene la regla en conflicto, se incorpora su
   contraparte como complemento identificado. Recall@k se calcula sobre los seis

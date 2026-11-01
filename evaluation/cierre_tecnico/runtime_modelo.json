@@ -1,0 +1,30 @@
+{
+  "modelo_archivo": "Ternary-Bonsai-2-27B-PQ2_0.gguf",
+  "modelo_bytes": 7206168928,
+  "modelo_sha256": "3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1",
+  "servidor_archivo": "llama-server.exe",
+  "servidor_sha256": "d5897802f2bc893214fa86abf9b7276bf409f5f661751c4ef0e9981443a005f6",
+  "alias_api": "bonsai-27b",
+  "python": "3.12.14",
+  "plataforma": "Windows-11-10.0.26200-SP0",
+  "parametros_lanzador": {
+    "contexto": 8192,
+    "parallel": 1,
+    "n_gpu_layers": "all",
+    "cache_type_k": "q4_0",
+    "cache_type_v": "q4_0",
+    "batch_size": 512,
+    "ubatch_size": 128,
+    "flash_attn": "on",
+    "jinja": true,
+    "reasoning": "off",
+    "host": "127.0.0.1",
+    "port": 8080
+  },
+  "parametros_generacion": {
+    "temperature": 0.1,
+    "max_tokens": 1000,
+    "enable_thinking": false
+  },
+  "nota": "Identidad medida de los archivos locales usados en este cierre; no se distribuyen binarios ni pesos. Las rutas son configurables."
+}

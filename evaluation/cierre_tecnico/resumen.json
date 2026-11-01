@@ -1,0 +1,130 @@
+{
+  "fecha_local": "2026-11-01",
+  "version": "Cierre técnico, no etiqueta v3.0 aprobada",
+  "codigo_sha256": {
+    "__init__.py": "af345a58ba4f592624b0709c8d2da15f9d315add0371e474e4b60138f128beba",
+    "agent.py": "43e16f07eb105a90f0845faca1e7d1ade4efdf5888b6a887396c56b47903360a",
+    "api.py": "d3b5ef7fc9b21d8ca414555dc79dbae31d636a0a97f882e4792f60211888be2a",
+    "bridge.py": "a3dc255e0cc819f5c522a99b2769fb138e252b44a492ceff0d4dbe244ed92285",
+    "check_delivery.py": "6101fe2d37583f7f2b0925a8f8c5714fa7863a5637fb9fc252a0b69c1c249960",
+    "cli.py": "278fa34e3ed6b043013dba0db8ec5e047413a5bebcc614d65588ffddecc0a70a",
+    "config.py": "d21ddd44619480d1303b017c5c3429e61444616d80036000a282f980bef2264c",
+    "evaluate.py": "72667cd71e0d15b744af7abd78426bb4e7705aed93c0589db49b8f569f5632f9",
+    "launch_model.py": "0fc7c6ed63faf90a0444413e6329e4e705b7d74fd1bed2876e4085462cdab207",
+    "mcp_server.py": "ed582f4a179be431638c1545424f2e74465dd4b081007a2a24ed0d0414e21032",
+    "rag.py": "b325be30ede3fff3e90e006187c249bbdfd9ac85aa6abec22029c33b3efec438",
+    "security.py": "41a6a1831d204a99bebfdb0cfd808518c26f66714385de190c8d96d14644b934",
+    "store.py": "aa7618f2356bae105f5bca656188c35a0a907ef56d52b076546d205ab68c9790",
+    "validation.py": "52b99a1a1754d4d615f441ee672ccadfc92c032e5637b3725b6c96bcc1dfad3e"
+  },
+  "golden_sha256": "b159f19d9942461eeafe20b5976ec8931bd904f32773543d826bd1c36da4c8c5",
+  "pruebas": {
+    "aprobadas": 30,
+    "fallidas": 0,
+    "evidencia": "pruebas.xml"
+  },
+  "instalacion_aislada": {
+    "correcta": true,
+    "evidencia": "instalacion_final.json",
+    "limite": "Mismo equipo físico, venv y copia de fuentes separados"
+  },
+  "recuperacion": {
+    "configuracion": 1800,
+    "k": 6,
+    "objetivos_completos": 18,
+    "objetivos_totales": 18,
+    "evidencia": "comparacion_fragmentacion.json",
+    "metodo": "Mismo contenido esperado entre fragmentaciones; complementos fuera de k excluidos; BM25 con regla de conflicto"
+  },
+  "generacion": {
+    "ejecucion": "evaluation/ejecucion_04",
+    "modelo": "bonsai-27b",
+    "preguntas": 20,
+    "sin_error_contrato_servicio": 20,
+    "metricas_automaticas": {
+      "abstencion_en_sin_respuesta": 1.0,
+      "abstencion_en_con_respuesta": 0.0,
+      "precision_cita": null,
+      "fidelidad": null,
+      "nota": "Precisión y fidelidad pendientes de juicio sobre el contenido, no sobre el formato."
+    },
+    "metricas_semanticas_agente": {
+      "tipo": "evaluacion_semantica_por_agente",
+      "revisor": "Codex (agente; no revisor humano ni representante del cliente)",
+      "ejecucion_sha256": "7ae8fe2e9113b4cc52cbad238969569ea78fb0d637f7c58a7cde4e93da233986",
+      "preguntas": 20,
+      "citas_respaldadas": 31,
+      "citas_emitidas": 31,
+      "precision_cita": 1.0,
+      "respuestas_fieles": 19,
+      "fidelidad": 0.95,
+      "conflicto_vigencia_correctos": 4,
+      "conflicto_vigencia_total": 4,
+      "manejo_conflicto_vigencia": 1.0,
+      "revision_humana": "Pendiente de muestra independiente y concordancia; esto no es aprobación del cliente.",
+      "unidad_cita": "Par (respuesta, ID de fragmento) único; las repeticiones del mismo ID dentro de una respuesta no se cuentan de nuevo.",
+      "fallos": [
+        {
+          "id": "A04",
+          "tipo": "generacion"
+        }
+      ],
+      "juicios_sha256": "61249563b180868164d74c5bbd08ab888ed289ede65b84ff410f9600b1b65cb0"
+    },
+    "segundos_promedio": 7.71
+  },
+  "exploracion_dirigida": {
+    "preguntas": 3,
+    "errores_retenidos": 1,
+    "evidencia": "verificacion_reintento.json",
+    "analisis": "analisis_exploratorio.json",
+    "limite": "No valida semánticamente las salidas aceptadas ni generaliza a preguntas nuevas"
+  },
+  "validaciones_pendientes": [
+    {
+      "id": "VC-01",
+      "responsable": "Representante del cliente",
+      "estado": "pendiente",
+      "objeto": "Validar respuestas y fragmentos esperados del golden"
+    },
+    {
+      "id": "VD-01",
+      "responsable": "Docente",
+      "estado": "pendiente",
+      "objeto": "Definir D1–D8"
+    },
+    {
+      "id": "VD-02",
+      "responsable": "Docente",
+      "estado": "pendiente",
+      "objeto": "Aclarar etiqueta v3.0"
+    },
+    {
+      "id": "VE-01",
+      "responsable": "Equipo humano",
+      "estado": "pendiente",
+      "objeto": "Completar muestra independiente de ejecución 04 y concordancia"
+    },
+    {
+      "id": "VE-02",
+      "responsable": "Equipo",
+      "estado": "pendiente",
+      "objeto": "Contrastar antecedentes MIRA v1.4 y retroalimentación no suministrados"
+    },
+    {
+      "id": "VE-03",
+      "responsable": "Equipo",
+      "estado": "pendiente",
+      "objeto": "Ensayo visual, cliente externo elegido y defensa individual"
+    }
+  ],
+  "limitaciones_tecnicas": [
+    "Fidelidad semántica provisional 19/20, observación en A04",
+    "P07 exploratoria sigue retenida por citas inválidas tras reintento",
+    "Sobrecitación y lenguaje con apariencia de decisión en exploración; ver análisis"
+  ],
+  "fuera_de_alcance_solicitado": [
+    "Informe académico",
+    "Presentación PPT"
+  ]
+}

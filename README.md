@@ -64,7 +64,8 @@ Nunca versiones claves ni `.env`.
 
 `mira/launch_model.py` contiene las rutas verificadas del ejecutable y del GGUF en
 este equipo. Acepta `--server`, `--model`, `--cuda12` y `--port` para otro entorno.
-También se conserva un lanzador PowerShell con los parámetros equivalentes.
+También lee `LLAMA_SERVER`, `LLAMA_MODEL` y `LLAMA_CUDA12` de `.env`.
+El lanzador PowerShell delega en ese mismo módulo y acepta parámetros equivalentes.
 El ejecutable necesita CUDA 12: el script añade al PATH de su proceso las DLL ya
 instaladas en `miniconda3/Lib/site-packages/torch/lib`. La carpeta de llama.cpp
 contenía DLL de CUDA 13, insuficientes para esos binarios. El PATH global no cambia.
@@ -103,6 +104,15 @@ y ejecuta. La interfaz de negocio y la confirmación no cambian.
 
 # Evaluación de las 20 preguntas, con Bonsai encendido; puede tardar bastante
 .\.venv\Scripts\python.exe -m mira.cli evaluar --generacion
+
+# Conservar otra ejecución sin sobrescribir las anteriores
+.\.venv\Scripts\python.exe -m mira.cli evaluar --generacion --salida evaluation/ejecucion_nueva
+
+# Comparar fragmentaciones que realmente producen contenidos distintos
+.\.venv\Scripts\python.exe -m mira.validation comparar --salida .cache/comparacion-nueva.json
+
+# Cliente MCP externo y preguntas exploratorias en una base temporal aislada
+.\.venv\Scripts\python.exe -m mira.check_delivery --generacion --salida .cache/verificacion-nueva.json
 ```
 
 Usa siempre el Python de `.venv`, para no ejecutar el proyecto desde el entorno
@@ -147,6 +157,11 @@ El registro del conflicto MAN-REV/POL-DEC es explícito y no elige una fuente.
 - `docs/arquitectura.md`: componentes, secuencia y contratos.
 - `docs/analisis-corpus.md`: fuentes, discrepancias y límites del kit.
 - `docs/estado-entrega.md`: cobertura y trabajo pendiente para la entrega académica.
+- `docs/especificacion-cu1.md`: flujos, necesidades y requisitos con fuente y aceptación técnica.
+- `docs/contratos-mcp.md`: entradas, salidas, permisos, efectos y errores.
+- `docs/riesgos-controles.md`: controles, pruebas, límites y aporte del agente.
+- `docs/reproduccion.md`: instalación, comparación experimental y ensayo técnico.
+- `docs/validaciones-pendientes.md`: pendientes separados del cliente, docente y equipo.
 - `evaluation/golden.json`: 20 preguntas fijadas antes del pipeline, commit `089b2fb`.
 - `evaluation/resultados_recuperacion.json`: medición reproducible por fragmento.
 - `evaluation/ejecucion_01/` y `evaluation/ejecucion_02/`: primera evaluación,
@@ -154,10 +169,24 @@ El registro del conflicto MAN-REV/POL-DEC es explícito y no elige una fuente.
   `resumen.json`, huellas del código, respuestas y trazas.
 - `evaluation/revision_manual.csv`: se genera al evaluar respuestas para registrar
   precisión de citas, fidelidad y revisión de conflicto/vigencia.
+- `evaluation/cierre_tecnico/`: comparación por contenido completo, revisión
+  semántica automatizada de la ejecución 02, muestra humana aún vacía, contratos
+  obtenidos desde MCP real y comprobaciones de instalación/pruebas.
+- `evaluation/ejecucion_03/`: nueva ejecución del golden con instrucciones de
+  citas reforzadas y denegación determinista de acceso. Conserva respuestas,
+  trazas, modelo efectivo y huellas; no reemplaza los históricos. Su revisión
+  semántica automatizada registra dos fallos de fidelidad en C01/C02 y deja
+  preparada una muestra para revisión humana independiente.
+- `evaluation/ejecucion_04/`: ejecución de la versión con un solo reintento de citas
+  inválidas, sin herramientas adicionales y sin debilitar el control de referencias.
+  Completó las 20 preguntas sin errores estructurales; la revisión del agente marca
+  19/20 fieles y deja la muestra humana vacía para validación independiente.
 
 Las respuestas esperadas siguen **pendientes de validación por el representante
-del cliente**. IDs válidos y Recall@k no demuestran fidelidad de la generación.
-No deben presentarse como métricas aprobadas de una entrega final.
+del cliente**. La revisión semántica del agente se declara como automatizada:
+falta una muestra humana independiente y su concordancia. Los resultados no
+son métricas aprobadas por el cliente. D1–D8 y la etiqueta v3.0 requieren
+aclaración del docente; el guion técnico es una propuesta del proyecto.
 
 ## Instalar en otro equipo
 

@@ -5,13 +5,19 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import os
+from pathlib import Path
 import time
 
 from mira.config import ROOT
 from mira.rag import build_chunks, buscar
 
 
-async def evaluate(generation=False):
+async def evaluate(generation=False, output_dir=None):
+    destination = Path(output_dir) if output_dir else ROOT / "evaluation"
+    destination.mkdir(parents=True, exist_ok=True)
+    if output_dir and any((destination / name).exists() for name in (
+        "resultados_recuperacion.json", "resultados_generacion.json", "revision_manual.csv")):
+        raise ValueError("La carpeta de salida ya contiene evidencia. Usa una carpeta nueva.")
     golden_path = ROOT / "evaluation" / "golden.json"
     golden_bytes = golden_path.read_bytes()
     golden = json.loads(golden_bytes)
@@ -33,15 +39,19 @@ async def evaluate(generation=False):
         report["experimentos"].append({"max_caracteres": size, "fragmentos": len(chunks),
             "recall_at_k": found / expected if expected else None, "aciertos_fragmento": found,
             "total_fragmentos_esperados": expected, "preguntas": results})
-    path = ROOT / "evaluation" / "resultados_recuperacion.json"
+    path = destination / "resultados_recuperacion.json"
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     for exp in report["experimentos"]:
         print(f"Tamaño {exp['max_caracteres']}: Recall@{golden['k']} = {exp['recall_at_k']:.3f} ({exp['aciertos_fragmento']}/{exp['total_fragmentos_esperados']})")
     if generation:
-        from mira.agent import answer
-        output = ROOT / "evaluation" / "resultados_generacion.json"
+        from mira.agent import answer, model_info
+        info = await model_info()
+        configured = os.getenv("LLM_MODEL", "auto")
+        output = destination / "resultados_generacion.json"
         run = {"fecha": datetime.now(timezone.utc).isoformat(), "codigo_sha256": code_hashes,
-            "golden_sha256": report["golden_sha256"], "modelo": os.getenv("LLM_MODEL", "auto"),
+            "golden_sha256": report["golden_sha256"], "modelo_configurado": configured,
+            "modelo": info["modelos"][0] if configured == "auto" and len(info["modelos"]) == 1 else configured,
+            "estado_modelo_al_inicio": info,
             "base_url": os.getenv("LLM_BASE_URL", "http://127.0.0.1:8080/v1"),
             "modo_herramientas": os.getenv("LLM_TOOL_MODE", "native"), "preguntas": [],
             "revision_humana": "Pendiente: precisión de cita, fidelidad y semántica de conflicto/vigencia; no inferidas automáticamente."}
@@ -68,7 +78,7 @@ async def evaluate(generation=False):
             "precision_cita": None, "fidelidad": None,
             "nota": "Precisión y fidelidad pendientes de juicio sobre el contenido, no sobre el formato."}
         output.write_text(json.dumps(run, ensure_ascii=False, indent=2), encoding="utf-8")
-        with (ROOT / "evaluation" / "revision_manual.csv").open("w", encoding="utf-8-sig", newline="") as file:
+        with (destination / "revision_manual.csv").open("w", encoding="utf-8-sig", newline="") as file:
             writer = csv.writer(file)
             writer.writerow(["id", "citas_emitidas", "citas_respaldan", "respuesta_totalmente_fiel_0_1", "conflicto_o_vigencia_correcto_0_1", "fallo_recuperacion_generacion", "observacion", "revisor"])
             for q in run["preguntas"]:

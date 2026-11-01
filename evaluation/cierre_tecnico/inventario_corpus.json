@@ -1,0 +1,84 @@
+{
+  "documentos": [
+    {
+      "codigo": "CAT-SEN",
+      "version": "3",
+      "estado": "vigente",
+      "vigencia": "Desde el 1 de septiembre de 2026",
+      "desde": "2026-09-01",
+      "hasta": "",
+      "fuente": "CAT-SEN_catalogo_senales.md",
+      "titulo": "Catálogo de señales de MIRA",
+      "origen": "kit docente",
+      "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+      "tokens_aproximados": 752
+    },
+    {
+      "codigo": "FAQ-OPE",
+      "version": "2",
+      "estado": "vigente",
+      "vigencia": "Desde el 1 de octubre de 2026",
+      "desde": "2026-10-01",
+      "hasta": "",
+      "fuente": "FAQ-OPE_preguntas_frecuentes_operadores.md",
+      "titulo": "Preguntas frecuentes de operadores",
+      "origen": "kit docente",
+      "sha256": "ae22e500d1eb6dd031299d2d26dbaa3240c66278d2f4694b511e1c45598a3786",
+      "tokens_aproximados": 383
+    },
+    {
+      "codigo": "MAN-REV",
+      "version": "1",
+      "estado": "vigente",
+      "vigencia": "Desde el 15 de julio de 2026",
+      "desde": "2026-07-15",
+      "hasta": "",
+      "fuente": "MAN-REV_manual_revision_asistida.md",
+      "titulo": "Manual de revisión asistida para operadores",
+      "origen": "kit docente",
+      "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+      "tokens_aproximados": 607
+    },
+    {
+      "codigo": "POL-DEC",
+      "version": "1",
+      "estado": "derogada",
+      "vigencia": "2 de marzo de 2026 al 31 de agosto de 2026",
+      "desde": "2026-03-02",
+      "hasta": "2026-08-31",
+      "fuente": "POL-DEC_v1_derogada.md",
+      "titulo": "Política de decisión y umbrales",
+      "origen": "kit docente",
+      "sha256": "9e4371354966832cb053fceff37d7c2bf0ff84e61ed3df65a7d128901dde6550",
+      "tokens_aproximados": 359
+    },
+    {
+      "codigo": "POL-DEC",
+      "version": "2",
+      "estado": "vigente",
+      "vigencia": "Desde el 1 de septiembre de 2026",
+      "desde": "2026-09-01",
+      "hasta": "",
+      "fuente": "POL-DEC_v2_vigente.md",
+      "titulo": "Política de decisión y umbrales",
+      "origen": "kit docente",
+      "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+      "tokens_aproximados": 704
+    },
+    {
+      "codigo": "PRO-ANT",
+      "version": "1",
+      "estado": "vigente",
+      "vigencia": "Desde el 15 de julio de 2026",
+      "desde": "2026-07-15",
+      "hasta": "",
+      "fuente": "PRO-ANT_solicitud_antecedentes.md",
+      "titulo": "Procedimiento de solicitud de antecedentes",
+      "origen": "kit docente",
+      "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+      "tokens_aproximados": 471
+    }
+  ],
+  "tokens": "Aproximación palabras/0.75, no tokenizador del modelo.",
+  "fuentes": "Seis documentos originales del kit CU-1, sin modificaciones."
+}

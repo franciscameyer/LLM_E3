@@ -51,6 +51,8 @@ inventa una política general de idiomas a partir de ese dato.
 
 No se suministraron en esta carpeta la Descripción de MIRA v1.4, sus entrevistas,
 las entregas 1 y 2 ni su retroalimentación. No se fabricaron esos documentos.
-El corpus debe ampliarse con las partes pertinentes cuando el equipo los tenga.
+El equipo debe contrastar esos antecedentes cuando estén disponibles. El corpus
+obligatorio es el del kit; agregar documentos pertinentes es opcional. Si se agregan,
+deben declararse en el inventario y no resolver silenciosamente contradicciones.
 La pauta también menciona D1–D8 y v3.0 sin definirlos en las páginas adjuntas;
 el guion de demostración propuesto no se presenta como una transcripción de esos pasos.

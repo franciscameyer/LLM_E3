@@ -34,6 +34,10 @@ añadas umbrales de aprobación ajenos a esa pregunta. MAN-REV §1 y POL-DEC v2 
 están en conflicto incluso si solo una aparece en una búsqueda: si citas una regla
 de esas secciones sobre aprobación, debes recuperar y presentar ambas fuentes.
 Usa herramientas cuando sean necesarias. Para preguntas sobre casos, consulta la ficha.
+Incluye cada cita junto a la afirmación concreta que respalda. No listes fuentes
+adicionales por precaución ni atribuyas a una sección contenido que no recibiste.
+En una abstención, distingue qué datos sí aparecen de qué información falta.
+No supongas que una sección o configuración no consultada contiene lo que falta.
 La respuesta final es SOLO un objeto JSON:
 {"estado":"evidencia|abstencion|conflicto","respuesta":"Texto con citas [ID] en cada afirmación normativa.",
 "citas":["ID exacto recuperado"]}.
@@ -191,6 +195,16 @@ async def answer(uid, sid, question):
                             raise ValueError("El modelo intentó usar una herramienta fuera de sus permisos.")
                         args = json.loads(fn["arguments"])
                         data = await call(client, name, args, traces)
+                        # Una denegación del servidor es definitiva para esta consulta.
+                        # No pedir al modelo que la reformule: podría inventar datos o citas.
+                        if not data["ok"] and name in {"consultar_caso", "listar_senales", "listar_casos"} and data.get("error") in {
+                            "Caso no disponible para el usuario conectado.",
+                            "Este rol no tiene permiso para consultar ni modificar casos individuales.",
+                        }:
+                            response.update(estado="abstencion", respuesta=data["error"] +
+                                " No se muestran datos del caso. Consulta la traza MCP.",
+                                motivo_abstencion="acceso_denegado")
+                            return response
                         view = model_data(data)
                         if name == "buscar_reglas" and data["ok"]:
                             view = {"ok": True, "fragmentos_recuperados": [c["id"] for c in data["datos"]["fragmentos"]]}
@@ -213,6 +227,23 @@ async def answer(uid, sid, question):
                                 proposals.append(data["datos"])
                 else:
                     raise ValueError("Se alcanzó el límite de pasos. No se ejecutaron acciones sin confirmación.")
+            # Un único reintento de generación con la MISMA evidencia y sin tools.
+            # No se corrigen IDs por semejanza ni se aceptan citas desconocidas.
+            draft_citations = result.get("citas", [])
+            draft_text = result.get("respuesta", "")
+            if isinstance(draft_citations, list) and isinstance(draft_text, str) and (
+                any(not isinstance(c, str) or c not in fragments for c in draft_citations)
+                or not set(re.findall(r"\[([^\]]+)\]", draft_text)).issubset(fragments)
+            ):
+                response["reintento_citas"] = True
+                repair = messages + [{"role": "user", "content":
+                    "La comprobación de citas falló. Genera de nuevo solo el JSON final, "
+                    "con la misma evidencia anterior y sin herramientas ni datos nuevos. "
+                    "No inventes ni abrevies IDs. Cita solo afirmaciones respaldadas; si no puedes, abstente. "
+                    "IDs disponibles en los fragmentos del contexto: " + json.dumps([c["id"] for c in selected])}]
+                async with httpx.AsyncClient(timeout=float(os.getenv("LLM_TIMEOUT", "180")), trust_env=False) as http:
+                    repaired = await completion(http, repair, final=True)
+                    result = decode(repaired.get("content"))
             state = result.get("estado")
             text = result.get("respuesta")
             citations = result.get("citas", [])

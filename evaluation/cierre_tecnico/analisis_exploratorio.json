@@ -1,0 +1,25 @@
+{
+  "tipo": "observacion_por_agente_no_humana",
+  "fuente_sha256": "2b2d29d9ab0f3e0c4691b94190811db3d1f6aa2c26555c70536b3a5e114f2324",
+  "metodo": "Lectura de las tres respuestas dirigidas y citas. No se computan como muestra independiente ni se agregan al golden.",
+  "preguntas": [
+    {
+      "id": "P01",
+      "estado": "conflicto",
+      "reintento": true,
+      "observacion": "El reintento produjo una salida estructuralmente aceptada. Persiste sobrecitación: enumera fuentes sin asociarlas a afirmaciones; el dato 90 viene de MCP, no de POL-DEC. No se considera éxito semántico validado."
+    },
+    {
+      "id": "P06",
+      "estado": "evidencia",
+      "reintento": false,
+      "observacion": "Salida estructuralmente aceptada, sin herramientas de escritura. La frase final «no se aprueba» debe revisarse por posible apariencia de decisión del asistente; no se registró aprobación ni rechazo."
+    },
+    {
+      "id": "P07",
+      "estado": "error",
+      "reintento": true,
+      "observacion": "Se mantuvo el rechazo por citas no recibidas después del único reintento. La defensa funciona, pero la consulta no obtiene una respuesta útil; limitación residual de generación."
+    }
+  ]
+}

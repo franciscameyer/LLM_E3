@@ -1,0 +1,68 @@
+{
+  "entorno": "Venv nuevo Python 3.12 y copia de fuentes sin .env, .data ni entorno anterior. Instalación pip -r requirements-lock.txt completada antes de estas comprobaciones. No equivale a prueba en otro equipo físico.",
+  "python": "Python 3.12.14",
+  "requirements_sha256": "8673721411ad14f604ba726fbe662f1786856e10108f24e9676ac128a984dae5",
+  "codigo_sha256": {
+    "agent.py": "f4c9ce5a17aed2d9dc1edef8a7d017293cbabea5c29e539126cbe1396eaa481e",
+    "api.py": "d3b5ef7fc9b21d8ca414555dc79dbae31d636a0a97f882e4792f60211888be2a",
+    "bridge.py": "a3dc255e0cc819f5c522a99b2769fb138e252b44a492ceff0d4dbe244ed92285",
+    "check_delivery.py": "6101fe2d37583f7f2b0925a8f8c5714fa7863a5637fb9fc252a0b69c1c249960",
+    "cli.py": "278fa34e3ed6b043013dba0db8ec5e047413a5bebcc614d65588ffddecc0a70a",
+    "config.py": "d21ddd44619480d1303b017c5c3429e61444616d80036000a282f980bef2264c",
+    "evaluate.py": "72667cd71e0d15b744af7abd78426bb4e7705aed93c0589db49b8f569f5632f9",
+    "launch_model.py": "0fc7c6ed63faf90a0444413e6329e4e705b7d74fd1bed2876e4085462cdab207",
+    "mcp_server.py": "ed582f4a179be431638c1545424f2e74465dd4b081007a2a24ed0d0414e21032",
+    "rag.py": "b325be30ede3fff3e90e006187c249bbdfd9ac85aa6abec22029c33b3efec438",
+    "security.py": "41a6a1831d204a99bebfdb0cfd808518c26f66714385de190c8d96d14644b934",
+    "store.py": "aa7618f2356bae105f5bca656188c35a0a907ef56d52b076546d205ab68c9790",
+    "validation.py": "52b99a1a1754d4d615f441ee672ccadfc92c032e5637b3725b6c96bcc1dfad3e",
+    "__init__.py": "af345a58ba4f592624b0709c8d2da15f9d315add0371e474e4b60138f128beba"
+  },
+  "resultados": [
+    {
+      "comando": [
+        "python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    },
+    {
+      "comando": [
+        "python",
+        "-m",
+        "mira.cli",
+        "preparar"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"datos\": {\n    \"estado\": \"importado\",\n    \"tablas\": {\n      \"organizaciones\": 3,\n      \"usuarios\": 8,\n      \"casos\": 14,\n      \"senales\": 68,\n      \"evidencias\": 15,\n      \"solicitudes_antecedentes\": 2,\n      \"cambios_umbral\": 2\n    }\n  },\n  \"rag\": {\n    \"documentos\": 6,\n    \"fragmentos\": 35,\n    \"motor\": \"BM25\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "comando": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "C:\\Users\\PC RST\\Desktop\\LLM-RAC\\.cache\\repro-entrega\\tests",
+        "--junitxml=C:\\Users\\PC RST\\Desktop\\LLM-RAC\\evaluation\\cierre_tecnico\\pruebas_instalacion_limpia.xml"
+      ],
+      "exit_code": 0,
+      "stdout": ".............................                                            [100%]\n============================== warnings summary ===============================\n..\\venv\\Lib\\site-packages\\fastapi\\testclient.py:1\n  C:\\Users\\PC RST\\Desktop\\LLM-RAC\\.cache\\repro-entrega\\venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n29 passed, 1 warning in 14.35s\n",
+      "stderr": ""
+    },
+    {
+      "comando": "Smoke HTTP mediante TestClient en la copia limpia",
+      "exit_code": 0,
+      "stdout": "HTML, JS, estado, login y consulta MCP de casos: OK\n",
+      "stderr": "C:\\Users\\PC RST\\Desktop\\LLM-RAC\\.cache\\repro-entrega\\venv\\Lib\\site-packages\\fastapi\\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n[11/01/26 17:08:00] INFO     Starting MCP server 'mira-cu1'    transport.py:241\n                             with transport 'stdio'                            \n"
+    }
+  ],
+  "correcto": true
+}

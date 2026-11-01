@@ -26,6 +26,7 @@ def main():
     mcp.add_argument("--sesion", default="cliente-externo")
     evaluate = sub.add_parser("evaluar", help="Medir Recall@k y comparar fragmentación")
     evaluate.add_argument("--generacion", action="store_true", help="Ejecutar también las 20 preguntas con el modelo; puede tardar")
+    evaluate.add_argument("--salida", help="Carpeta nueva para conservar una ejecución sin sobrescribir las anteriores")
     args = parser.parse_args()
     try:
         if args.command == "preparar":
@@ -56,7 +57,7 @@ def main():
             mcp.run(transport="stdio", show_banner=False)
         elif args.command == "evaluar":
             from mira.evaluate import evaluate
-            asyncio.run(evaluate(args.generacion))
+            asyncio.run(evaluate(args.generacion, args.salida))
     except (ValueError, OSError) as error:
         print(f"Error: {error}", file=sys.stderr)
         return 1
