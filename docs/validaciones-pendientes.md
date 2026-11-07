@@ -41,8 +41,8 @@ no se declara revisión humana independiente. La plantilla `muestra_humana.csv`
 se conserva para esa revisión y el golden sigue pendiente del cliente.
 
 1. Leer las respuestas y fragmentos de la ejecución indicada en cada archivo de revisión.
-2. Completar `evaluation/ejecucion_05/muestra_humana.csv` para la versión actual;
-   la muestra cubre R01, R08, A01, A02, A04, C01, C02 y V02 (8 de 20, todos los tipos
+2. Para el corpus ampliado, usar `evaluation/ejecucion_06/revision_manual.csv`.
+   La selección propuesta cubre R01, R08, A01, A02, A04, C01, C02 y V02 (8 de 20, todos los tipos
    y preguntas con fallos previos o actuales). Es muestra dirigida, no aleatoria ni
    una estimación estadística de todas las consultas posibles. Las muestras anteriores se conservan aparte.
 3. Para ejecuciones posteriores, crear otra planilla referida explícitamente a su
@@ -89,9 +89,9 @@ sin confundirla con una nueva aprobación externa pendiente.
 
 ## Equipo: VE-02 y VE-03, pendientes
 
-- VE-02: revisar MIRA v1.4, entrevistas y retroalimentación E1/E2 que no estaban en
-  esta carpeta. Son antecedentes; no es obligatorio añadirlos al corpus. Si se añade
-  material, declararlo en el inventario y repetir las evaluaciones afectadas.
+- VE-02: contrastar las entrevistas de MIRA v1.4 y la retroalimentación de E1/E2.
+  Las cuatro secciones pertinentes de la Descripción ya están indexadas con
+  procedencia y contrastes en `docs/analisis-corpus.md`.
 - VE-03: ensayo visual en el equipo definitivo y cliente MCP externo elegido.
   La verificación programática de MCP no acredita por sí sola la operación de VS Code
   ni que todo el equipo domine la defensa técnica. Recorrer citas, trazas, escrituras

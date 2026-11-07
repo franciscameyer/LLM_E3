@@ -8,7 +8,7 @@ import math
 import re
 import unicodedata
 
-from mira.config import DATA, INDEX, KIT, ensure_data
+from mira.config import DATA, INDEX, KIT, ROOT, ensure_data
 
 STOP = set("a al ante bajo con contra de del desde el ella en entre es esta este hay la las lo los o para por que se si sin sobre su sus un una y cual como cuando donde quien puedo puede debe".split())
 MONTHS = {m: i for i, m in enumerate(
@@ -31,12 +31,16 @@ def _date(text):
 
 def build_chunks(max_chars=1800):
     chunks, inventory = [], []
-    for path in sorted((KIT / "corpus").glob("*.md")):
+    sources = [(path, "kit docente") for path in sorted((KIT / "corpus").glob("*.md"))]
+    sources += [(path, "Descripción") for path in sorted((ROOT / "corpus" / "descripcion").glob("*.md"))]
+    for path, origin in sources:
         text = path.read_text(encoding="utf-8-sig")
         header = re.split(r"^##\s+", text, maxsplit=1, flags=re.M)[0]
         fields = dict(re.findall(r"^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*$", header, re.M))
         code, version = fields["Código"].strip(), fields["Versión"].strip()
         status = "derogada" if "derogad" in fields["Estado"].casefold() else "vigente"
+        if origin == "Descripción":
+            status = "contexto"
         validity = fields["Vigencia"].strip()
         dates = re.findall(r"\d{1,2} de \w+ de \d{4}", validity)
         meta = {
@@ -44,8 +48,11 @@ def build_chunks(max_chars=1800):
             "desde": _date(dates[0]) if dates else "",
             "hasta": _date(dates[1]) if len(dates) > 1 else "",
             "fuente": path.name, "titulo": text.splitlines()[0].lstrip("# "),
-            "origen": "kit docente", "sha256": hashlib.sha256(text.encode()).hexdigest(),
+            "origen": origin, "sha256": hashlib.sha256(text.encode()).hexdigest(),
         }
+        if origin == "Descripción":
+            meta.update(fecha_documento=fields["Fecha del documento"],
+                fuente_original=fields["Fuente original"], sha256_original=fields["SHA-256 original"])
         inventory.append({**meta, "tokens_aproximados": math.ceil(len(text.split()) / 0.75)})
         sections = re.split(r"^##\s+", text, flags=re.M)[1:]
         for number, section in enumerate(sections, 1):
@@ -99,7 +106,11 @@ def buscar(pregunta: str, k=6, incluir_derogados=False, chunks=None) -> dict:
     if not pregunta.strip() or not 1 <= k <= 12:
         raise ValueError("Indica una consulta y k entre 1 y 12.")
     docs = chunks if chunks is not None else load_index()["fragmentos"]
-    docs = [d for d in docs if incluir_derogados or vigente(d)]
+    description_requested = bool(re.search(
+        r"\b(?:v(?:ersi[oó]n)?\s*1[.,]4|mira\s+1[.,]4|descripci[oó]n (?:del proyecto|de mira)|levantamiento)\b",
+        pregunta, re.I))
+    docs = [d for d in docs if (description_requested if d["estado"] == "contexto"
+        else incluir_derogados or vigente(d))]
     query = Counter(tokens(pregunta))
     counts = [Counter(tokens(d["texto_busqueda"])) for d in docs]
     avg = sum(map(lambda c: sum(c.values()), counts)) / max(1, len(docs))
@@ -111,10 +122,17 @@ def buscar(pregunta: str, k=6, incluir_derogados=False, chunks=None) -> dict:
             idf = math.log(1 + (len(docs) - n + 0.5) / (n + 0.5))
             tf = c[term]
             score += idf * tf * 2.5 / (tf + 1.5 * (0.25 + 0.75 * sum(c.values()) / max(avg, 1)))
+        if d["estado"] == "contexto":
+            score += 2 * len(query.keys() & set(tokens(d["seccion"])))
         if score > 0:
             scores.append(({**d, "relevancia": round(score, 4)}, score))
     scores.sort(key=lambda pair: (-pair[1], pair[0]["id"]))
     selected = [d for d, _ in scores[:k]]
+    # En una pregunta sobre la Descripción se reserva un lugar para su sección más relevante.
+    if description_requested:
+        contextual = next((d for d, _ in scores if d["estado"] == "contexto"), None)
+        if contextual:
+            selected = ([contextual] + [d for d in selected if d["id"] != contextual["id"]])[:k]
     # Relación de conflicto identificada por lectura del corpus; no es una regla de precedencia.
     conflicts = []
     if (re.search(r"umbral|bandeja|puntaje|\b8[025]\b", pregunta, re.I)
@@ -136,6 +154,22 @@ def buscar(pregunta: str, k=6, incluir_derogados=False, chunks=None) -> dict:
             complementary = [d for d in pair if d["id"] not in present]
             conflicts = [{"id": "CONF-01", "fragmentos": sorted(pair_ids), "obligatorio": False,
                 "descripcion": "Alerta de fuente: si usas la regla de aprobación del manual o de la política, presenta ambas y su conflicto 80/85. Si la pregunta trata otro tema, evita añadir esa regla ajena."}]
+    if description_requested:
+        available = {d["id"]: d for d in docs}
+        comparisons = []
+        if re.search(r"\b(?:80|85)\b|2\.6|aprobaci[oó]n autom|rechazo autom|umbral(?:es)? de (?:decisi[oó]n|aprobaci[oó]n)|escalamiento|bajo 60", pregunta, re.I):
+            comparisons.append(("DESC-DECISION", ["MIRA-DESC@1.4#s01:01", "POL-DEC@2#s02:01", "MAN-REV@1#s01:01"],
+                "MIRA v1.4 §2.6 es contexto de levantamiento: contiene referencias de 85 y 80 y contempla escalamiento o rechazo bajo 60. Contrástala con MAN-REV v1 §1 y POL-DEC v2 §2, que establece escalamiento bajo 60 y no contempla rechazo automático. Atribuye cada regla a su fuente."))
+        if (re.search(r"umbral", pregunta, re.I)
+                and re.search(r"cambi|configur|ajust|modifi|diseñ|supervisor|autoriz", pregunta, re.I)):
+            comparisons.append(("DESC-UMBRALES", ["MIRA-DESC@1.4#s04:01", "POL-DEC@2#s05:01"],
+                "MIRA v1.4 §2.13 atribuye la configuración al diseñador. POL-DEC v2 §5 exige dos supervisores para aprobar el cambio. Distingue levantamiento, procedimiento vigente y valor configurado del caso."))
+        for identifier, ids, description in comparisons:
+            if all(i in available for i in ids):
+                conflicts.append({"id": identifier, "fragmentos": ids, "obligatorio": True, "descripcion": description})
+                for i in ids:
+                    if i not in present and all(c["id"] != i for c in complementary):
+                        complementary.append(available[i])
     return {"fragmentos": selected, "complementarios_conflicto": complementary, "conflictos": conflicts,
         "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."}
 

@@ -39,8 +39,9 @@ def test_importacion_y_originales_inmutables(isolated):
 
 def test_metadatos_no_se_confunden_con_tablas_del_cuerpo(isolated):
     data = rag.load_index()
-    assert len(data["documentos"]) == 6
-    assert {d["codigo"] for d in data["documentos"]} == {"POL-DEC", "PRO-ANT", "CAT-SEN", "MAN-REV", "FAQ-OPE"}
+    kit = [d for d in data["documentos"] if d["origen"] == "kit docente"]
+    assert len(kit) == 6
+    assert {d["codigo"] for d in kit} == {"POL-DEC", "PRO-ANT", "CAT-SEN", "MAN-REV", "FAQ-OPE"}
     assert rag.fragmento("CAT-SEN@3#s06:01")["codigo"] == "CAT-SEN"
 
 
@@ -49,6 +50,43 @@ def test_recuperacion_vigente_y_historico(isolated):
     assert all(c["estado"] == "vigente" for c in regular)
     historical = rag.buscar("¿El fraude resta 20 puntos?", 12, True)["fragmentos"]
     assert any(c["estado"] == "derogada" for c in historical)
+    assert all(c["estado"] != "contexto" for c in historical)
+
+
+def test_descripcion_se_indexa_como_contexto_con_procedencia(isolated):
+    index = rag.load_index()
+    entry = next(d for d in index["documentos"] if d["codigo"] == "MIRA-DESC")
+    assert (entry["version"], entry["origen"], entry["estado"]) == ("1.4", "Descripción", "contexto")
+    assert len(entry["sha256_original"]) == 64
+    assert not entry["desde"] and not rag.vigente(entry)
+    result = rag.buscar("¿Qué dice MIRA v1.4 sobre auditoría?", k=1)
+    assert result["fragmentos"][0]["seccion"].startswith("2.11 ")
+
+
+@pytest.mark.parametrize("question,identifier,required", [
+    ("¿Qué diferencias hay entre MIRA v1.4 y POL-DEC v2 para la aprobación automática con 80 o 85 puntos y el rechazo bajo 60?",
+     "DESC-DECISION", {"MIRA-DESC@1.4#s01:01", "POL-DEC@2#s02:01", "MAN-REV@1#s01:01"}),
+    ("¿Quién puede configurar los umbrales según MIRA v1.4 y qué exige POL-DEC v2?",
+     "DESC-UMBRALES", {"MIRA-DESC@1.4#s04:01", "POL-DEC@2#s05:01"}),
+])
+def test_contraste_descripcion_recupera_fuentes_incluso_con_k_bajo(isolated, question, identifier, required):
+    result = rag.buscar(question, k=1)
+    relation = next(c for c in result["conflictos"] if c["id"] == identifier)
+    assert relation["obligatorio"] and set(relation["fragmentos"]) == required
+    returned = result["fragmentos"] + result["complementarios_conflicto"]
+    assert required <= {d["id"] for d in returned}
+
+
+def test_contraste_retiene_respuesta_que_omite_politica_vigente(isolated, monkeypatch):
+    async def fake(*args, **kwargs):
+        return {"content": json.dumps({"estado": "conflicto",
+            "respuesta": "El diseñador configura los umbrales [MIRA-DESC@1.4#s04:01].",
+            "citas": ["MIRA-DESC@1.4#s04:01"]})}
+    monkeypatch.setattr(agent, "completion", fake)
+    result = asyncio.run(agent.answer("U-01", "descripcion-sin-contraparte",
+        "¿Quién configura los umbrales según MIRA v1.4 y qué exige POL-DEC v2?"))
+    assert result["estado"] == "error"
+    assert "conflicto documental" in result["respuesta"]
 
 
 def test_conflicto_preserva_ambas_fuentes(isolated):

@@ -156,6 +156,12 @@ una base vectorial. Chroma es opcional en la pauta. Esta elección evita cargar
 otro modelo en el equipo; sus límites de sinónimos se evalúan en el golden set.
 El registro del conflicto MAN-REV/POL-DEC es explícito y no elige una fuente.
 
+El índice también incluye los extractos de la Descripción MIRA v1.4 (§2.6, §2.7,
+§2.11 y §2.13) en `corpus/descripcion/MIRA_v1.4.md`. Preguntar por la Descripción
+o por MIRA v1.4 activa su recuperación como contexto de levantamiento. En las
+consultas operativas se buscan las políticas vigentes del kit. Los contrastes de
+umbrales y permisos conservan las citas de cada fuente.
+
 ## Documentación y evaluación
 
 - `docs/constitucion.md`: principios PR-1 a PR-7.
@@ -192,6 +198,8 @@ El registro del conflicto MAN-REV/POL-DEC es explícito y no elige una fuente.
   `concordancia_interna_codex.json`; la revisión humana independiente sigue pendiente.
 - `evaluation/correccion_citas_fidelidad/`: pruebas, repeticiones dirigidas y lectura
   del agente que conserva también los intentos previos fallidos y la sobrecitación residual.
+- `evaluation/descripcion_v14/`: pruebas, contrastes con la Descripción y comparación
+  de fragmentación. `evaluation/ejecucion_06/` conserva la reevaluación del golden.
 
 Las respuestas esperadas siguen **pendientes de validación por el representante
 del cliente**. La revisión semántica del agente se declara como automatizada:

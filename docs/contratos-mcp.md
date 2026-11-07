@@ -23,7 +23,7 @@ se ofrecen al modelo. Las demás se usan desde la aplicación o clientes de desa
 
 | Nombre | Entrada | Salida `datos` | Permisos, errores y efecto |
 | --- | --- | --- | --- |
-| `buscar_reglas` | `pregunta: str`, `k: int=6`, `historico: bool=false` | `fragmentos[]`, `complementarios_conflicto[]`, `conflictos[]`, `advertencia` | Usuario identificado; consulta no vacía, k entre 1 y 12. Solo vigentes por defecto. No contiene datos vivos. El filtro de conflicto puede devolver al menos dos fragmentos incluso con k=1; las evaluaciones fijan k=6. Sin efecto de negocio |
+| `buscar_reglas` | `pregunta: str`, `k: int=6`, `historico: bool=false` | `fragmentos[]`, `complementarios_conflicto[]`, `conflictos[]`, `advertencia` | Usuario identificado y k entre 1 y 12. Consultas operativas sobre fuentes vigentes. Las menciones explícitas a la Descripción o v1.4 incorporan contexto y sus contrapartes. El contraste del kit puede devolver dos fragmentos con k=1. Sin efecto de negocio |
 | `listar_casos` | Sin argumentos | Lista de `caso_id,tipo_proceso,puntaje,motivo_derivacion,vence_el,estado` | Operador/supervisor; solo organización conectada. Estado considera eventos anexos |
 | `consultar_caso` | `caso_id: str` | `caso,organizacion,cambios_umbral,senales,evidencias,solicitudes,discrepancias,reglas_relevantes,conflictos_documentales` | Operador/supervisor, misma organización; caso ajeno/inexistente produce el mismo mensaje. Las reglas relevantes provienen de buscar el motivo registrado (k=3), sus complementos y las discrepancias. Conserva vigencia y conflictos. Aísla manipulación conocida; no altera original |
 | `listar_senales` | `caso_id: str` | Filas de señales del caso | Primero verifica visibilidad del caso; SQL parametrizado |

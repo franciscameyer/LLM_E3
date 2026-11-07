@@ -1,0 +1,165 @@
+{
+  "fecha_local": "2026-11-07",
+  "codigo_sha256": {
+    "agent.py": "d675d794cea6673be4dce15cae1927533c44699c1c87996c8a1762facfae7825",
+    "api.py": "d3b5ef7fc9b21d8ca414555dc79dbae31d636a0a97f882e4792f60211888be2a",
+    "bridge.py": "a3dc255e0cc819f5c522a99b2769fb138e252b44a492ceff0d4dbe244ed92285",
+    "check_delivery.py": "6101fe2d37583f7f2b0925a8f8c5714fa7863a5637fb9fc252a0b69c1c249960",
+    "cli.py": "278fa34e3ed6b043013dba0db8ec5e047413a5bebcc614d65588ffddecc0a70a",
+    "config.py": "d21ddd44619480d1303b017c5c3429e61444616d80036000a282f980bef2264c",
+    "evaluate.py": "72667cd71e0d15b744af7abd78426bb4e7705aed93c0589db49b8f569f5632f9",
+    "launch_model.py": "0fc7c6ed63faf90a0444413e6329e4e705b7d74fd1bed2876e4085462cdab207",
+    "mcp_server.py": "cafc39a99933ae4c1ae5ec06e318239419e38e2134d400392d515d9f562f28c3",
+    "rag.py": "d21ee42e27771fd9b48e0b6eda93f840cebdf3d65a98cf0eb982c7ac4d87d79e",
+    "regression_check.py": "4140740421de5cccfebd9068d8db7908b67650e0949cc11e961ad2a3e2fde3a7",
+    "security.py": "41a6a1831d204a99bebfdb0cfd808518c26f66714385de190c8d96d14644b934",
+    "store.py": "aa7618f2356bae105f5bca656188c35a0a907ef56d52b076546d205ab68c9790",
+    "validation.py": "52b99a1a1754d4d615f441ee672ccadfc92c032e5637b3725b6c96bcc1dfad3e",
+    "__init__.py": "af345a58ba4f592624b0709c8d2da15f9d315add0371e474e4b60138f128beba"
+  },
+  "golden_sha256": "b159f19d9942461eeafe20b5976ec8931bd904f32773543d826bd1c36da4c8c5",
+  "indice": {
+    "documentos": 7,
+    "fragmentos": 39,
+    "max_caracteres": 1800,
+    "inventario": [
+      {
+        "codigo": "CAT-SEN",
+        "version": "3",
+        "estado": "vigente",
+        "vigencia": "Desde el 1 de septiembre de 2026",
+        "desde": "2026-09-01",
+        "hasta": "",
+        "fuente": "CAT-SEN_catalogo_senales.md",
+        "titulo": "Catálogo de señales de MIRA",
+        "origen": "kit docente",
+        "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+        "tokens_aproximados": 752
+      },
+      {
+        "codigo": "FAQ-OPE",
+        "version": "2",
+        "estado": "vigente",
+        "vigencia": "Desde el 1 de octubre de 2026",
+        "desde": "2026-10-01",
+        "hasta": "",
+        "fuente": "FAQ-OPE_preguntas_frecuentes_operadores.md",
+        "titulo": "Preguntas frecuentes de operadores",
+        "origen": "kit docente",
+        "sha256": "ae22e500d1eb6dd031299d2d26dbaa3240c66278d2f4694b511e1c45598a3786",
+        "tokens_aproximados": 383
+      },
+      {
+        "codigo": "MAN-REV",
+        "version": "1",
+        "estado": "vigente",
+        "vigencia": "Desde el 15 de julio de 2026",
+        "desde": "2026-07-15",
+        "hasta": "",
+        "fuente": "MAN-REV_manual_revision_asistida.md",
+        "titulo": "Manual de revisión asistida para operadores",
+        "origen": "kit docente",
+        "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+        "tokens_aproximados": 607
+      },
+      {
+        "codigo": "POL-DEC",
+        "version": "1",
+        "estado": "derogada",
+        "vigencia": "2 de marzo de 2026 al 31 de agosto de 2026",
+        "desde": "2026-03-02",
+        "hasta": "2026-08-31",
+        "fuente": "POL-DEC_v1_derogada.md",
+        "titulo": "Política de decisión y umbrales",
+        "origen": "kit docente",
+        "sha256": "9e4371354966832cb053fceff37d7c2bf0ff84e61ed3df65a7d128901dde6550",
+        "tokens_aproximados": 359
+      },
+      {
+        "codigo": "POL-DEC",
+        "version": "2",
+        "estado": "vigente",
+        "vigencia": "Desde el 1 de septiembre de 2026",
+        "desde": "2026-09-01",
+        "hasta": "",
+        "fuente": "POL-DEC_v2_vigente.md",
+        "titulo": "Política de decisión y umbrales",
+        "origen": "kit docente",
+        "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+        "tokens_aproximados": 704
+      },
+      {
+        "codigo": "PRO-ANT",
+        "version": "1",
+        "estado": "vigente",
+        "vigencia": "Desde el 15 de julio de 2026",
+        "desde": "2026-07-15",
+        "hasta": "",
+        "fuente": "PRO-ANT_solicitud_antecedentes.md",
+        "titulo": "Procedimiento de solicitud de antecedentes",
+        "origen": "kit docente",
+        "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+        "tokens_aproximados": 471
+      },
+      {
+        "codigo": "MIRA-DESC",
+        "version": "1.4",
+        "estado": "contexto",
+        "vigencia": "No declarada como norma",
+        "desde": "",
+        "hasta": "",
+        "fuente": "MIRA_v1.4.md",
+        "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+        "origen": "Descripción",
+        "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+        "fecha_documento": "12 de agosto de 2026",
+        "fuente_original": "MIRA-descripcion-proyecto .docx",
+        "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+        "tokens_aproximados": 972
+      }
+    ]
+  },
+  "pruebas": {
+    "aprobadas": 44,
+    "fallidas": 0,
+    "evidencia": "pruebas.xml"
+  },
+  "contrastes": {
+    "evidencia": "contrastes.json",
+    "sha256": "fd3f3e685e3cdf4c370e384339621286a9b561ef4059e9049f24cc343ae2d428",
+    "control_estructural": "5/5",
+    "revision_contenido": "Codex",
+    "observaciones": {
+      "D01": "Expone 80/85, las condiciones del kit y el contraste bajo 60. Distingue expresamente el levantamiento de la política vigente. Las citas adicionales respaldan mínimos, fraude y aprobación doble.",
+      "D02": "Atribuye el rol diseñador a v1.4 y la aprobación de dos supervisores a POL-DEC v2. Identifica el contraste y cita ambas secciones.",
+      "D03": "Atribuye a la Descripción los requisitos de la pantalla del operador, evidencia y plazos, con §2.7.",
+      "D04": "Atribuye descarga, inalterabilidad y 90 días a §2.11 de v1.4. El aislamiento adicional está respaldado por §2.13.",
+      "D05": "Se abstiene ante la falta de plazo en el kit. Enumera temas de los fragmentos consultados, lo que alarga la respuesta sin atribuir un plazo a ninguno."
+    }
+  },
+  "golden": {
+    "ejecucion": "evaluation/ejecucion_06",
+    "preguntas": 20,
+    "sin_errores": 20,
+    "recall_at_6": "18/18 fragmentos",
+    "revision_agente": {
+      "tipo": "evaluacion_semantica_por_agente",
+      "revisor": "Codex",
+      "ejecucion_sha256": "1195953ef1f2274895194bbf676e509388c514a84e23f63ce3f080ec91e488e8",
+      "preguntas": 20,
+      "citas_respaldadas": 30,
+      "citas_emitidas": 30,
+      "precision_cita": 1.0,
+      "respuestas_fieles": 20,
+      "fidelidad": 1.0,
+      "conflicto_vigencia_correctos": 4,
+      "conflicto_vigencia_total": 4,
+      "manejo_conflicto_vigencia": 1.0,
+      "revision_humana": "Pendiente de muestra independiente y concordancia; esto no es aprobación del cliente.",
+      "unidad_cita": "Par (respuesta, ID de fragmento) único; las repeticiones del mismo ID dentro de una respuesta no se cuentan de nuevo.",
+      "fallos": [],
+      "juicios_sha256": "8813cc443198559d4288a2c26ec70c7587114bb4ddb580971550dde76bb78bd0"
+    }
+  },
+  "validaciones_pendientes": "Validación del cliente, contraste humano independiente y detalles de demostración con el docente."
+}

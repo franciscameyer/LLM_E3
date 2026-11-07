@@ -17,7 +17,8 @@ py -3.12 -m venv .venv
 ```
 
 Se espera importar 3 organizaciones, 8 usuarios, 14 casos, 68 señales, 15 evidencias,
-2 solicitudes originales y 2 cambios de umbral; índice de 6 documentos y 35 fragmentos.
+2 solicitudes originales y 2 cambios de umbral. El índice actual contiene 7
+documentos y 39 fragmentos a 1800 caracteres.
 Repetir `preparar` verifica originales y regenera el índice, sin resetear solicitudes.
 
 ## Configuración local del modelo
@@ -98,17 +99,18 @@ humana ni una muestra independiente de consultas nuevas.
 
 La comparación conserva el texto completo de cada objetivo del golden, aun cuando
 se divide en varios fragmentos. No basta recuperar el nuevo fragmento `:01`.
-Con k=6 se obtuvieron:
+Con el corpus ampliado y k=6 se obtuvieron estos resultados.
 
 | Límite | Fragmentos del corpus | Objetivos completos | Preguntas con todos sus objetivos | Contexto base medio (caracteres) |
 | --- | --- | --- | --- | --- |
-| 300 | 50 | 10/18 | 8/16 | 1117,60 |
-| 600 | 36 | 17/18 | 15/16 | 1678,10 |
-| 900 | 35 | 18/18 | 16/16 | 1728,85 |
-| 1800 | 35 | 18/18 | 16/16 | 1728,85 |
+| 300 | 67 | 10/18 | 8/16 | 1117,60 |
+| 600 | 45 | 17/18 | 15/16 | 1678,10 |
+| 900 | 41 | 18/18 | 16/16 | 1728,85 |
+| 1800 | 39 | 18/18 | 16/16 | 1728,85 |
 
-Se mantiene 1800: preserva secciones y tablas completas sin cambiar los IDs y
-reglas de conflicto existentes. Empata con 900; no se afirma que sea superior.
+Se mantiene 1800 porque preserva secciones y tablas completas y genera cuatro
+fragmentos para las cuatro secciones de la Descripción. 900 empata en el golden
+original y divide algunos extractos nuevos.
 300 reduce contexto pero pierde contenido; 600 pierde un objetivo. Esto mide
 recuperación conservadora de secciones completas, no fidelidad ni latencia de LLM.
 El ranking es BM25 más la relación explícita de conflicto del kit; complementos

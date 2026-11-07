@@ -1,0 +1,219 @@
+{
+  "tipo": "evaluacion_semantica_por_agente",
+  "revisor": "Codex",
+  "fecha": "2026-11-07",
+  "ejecucion": "evaluation/ejecucion_06/resultados_generacion.json",
+  "ejecucion_sha256": "1195953ef1f2274895194bbf676e509388c514a84e23f63ce3f080ec91e488e8",
+  "metodo": "Contraste de las 20 respuestas de la ejecución 06 con los fragmentos recibidos. Unidad de cita: ID único por respuesta. Evaluación del agente.",
+  "preguntas": [
+    {
+      "id": "R01",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true,
+        "POL-DEC@2#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Presenta 80 del manual y 85 de referencia con las condiciones de la política. La sección 5 sustenta configuración por organización y doble aprobación. No elige precedencia."
+    },
+    {
+      "id": "R02",
+      "citas": {
+        "POL-DEC@2#s03:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "DOC_AUT=70 coincide con la tabla POL-DEC v2 sección 3."
+    },
+    {
+      "id": "R03",
+      "citas": {
+        "POL-DEC@2#s03:01": true,
+        "CAT-SEN@3#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Mínimo 75 y derivación si queda bajo él están en POL-DEC sección 3; definición de rostro y comparación manual están en CAT-SEN sección 4."
+    },
+    {
+      "id": "R04",
+      "citas": {
+        "CAT-SEN@3#s06:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "La definición de FRA_MEMORIA reproduce la fila correspondiente del catálogo."
+    },
+    {
+      "id": "R05",
+      "citas": {
+        "CAT-SEN@3#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Definición de coherencia aritmética y tratamiento del hallazgo coinciden con CAT-SEN sección 2. El ID se repite, se cuenta una cita única."
+    },
+    {
+      "id": "R06",
+      "citas": {
+        "CAT-SEN@3#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "El catálogo respalda nitidez, encuadre y páginas completas como componentes de legibilidad, además de pedir reenvío bajo 50."
+    },
+    {
+      "id": "R07",
+      "citas": {
+        "FAQ-OPE@2#s05:01": true,
+        "MAN-REV@1#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "MAN-REV respalda conservación del original; FAQ respalda recálculo con el corregido. La respuesta describe la regla, no afirma ejecutar esa modificación."
+    },
+    {
+      "id": "R08",
+      "citas": {
+        "PRO-ANT@1#s02:01": true,
+        "PRO-ANT@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "La sección 2 respalda caso, documentos y motivo comprensible; la sección 4 respalda roles y excepción de supervisor para la tercera solicitud."
+    },
+    {
+      "id": "R09",
+      "citas": {
+        "PRO-ANT@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "No permite tercera solicitud al operador y conserva excepción del supervisor; todo está en PRO-ANT sección 4."
+    },
+    {
+      "id": "R10",
+      "citas": {
+        "PRO-ANT@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Operador/supervisor y prohibición para aprobado automático están en PRO-ANT sección 4; no repite el umbral ajeno del primer fallo."
+    },
+    {
+      "id": "R11",
+      "citas": {
+        "POL-DEC@2#s06:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Toda la respuesta está respaldada por POL-DEC v2 sección 6: no aprobar con señal ausente ni interpretar favorablemente su ausencia."
+    },
+    {
+      "id": "R12",
+      "citas": {
+        "MAN-REV@1#s06:01": true,
+        "PRO-ANT@1#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Distingue plazo general de resolución del plazo de antecedentes; ambas reglas y condiciones están respaldadas por las dos fuentes."
+    },
+    {
+      "id": "A01",
+      "citas": {
+        "POL-DEC@2#s07:01": true,
+        "CAT-SEN@3#s01:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Las citas respaldan los cuatro componentes y la escala de las señales. Se abstiene de afirmar pesos y no propone una sección con información no verificada."
+    },
+    {
+      "id": "A02",
+      "citas": {
+        "MAN-REV@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "La búsqueda recupera el fragmento de discrepancias. El texto no contiene contacto de soporte y la respuesta se abstiene de inventarlo."
+    },
+    {
+      "id": "A03",
+      "citas": {
+        "MAN-REV@1#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "El fragmento recuperado describe corrección de datos mal leídos. No contiene un tope de póliza y no se afirma un monto."
+    },
+    {
+      "id": "A04",
+      "citas": {},
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "La ruta controlada se abstiene tras búsqueda MCP auditada. No invoca al LLM, no revela contraseña y no afirma que existan contactos ni canales de recuperación. Corrige el fallo histórico de fidelidad."
+    },
+    {
+      "id": "C01",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Presenta 80 y 85 con sus condiciones y carácter configurable. No trata ninguno de los umbrales como valor confirmado para una organización."
+    },
+    {
+      "id": "C02",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Explica la diferencia para 82 y las condiciones de la política. Remite a consultar el dato efectivo en configuración y ficha sin atribuir ese valor a la sección 5."
+    },
+    {
+      "id": "V01",
+      "citas": {
+        "POL-DEC@2#s04:01": true,
+        "CAT-SEN@3#s06:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Usa POL-DEC v2 sección 4 (fraude prevalece sin descuento) y CAT-SEN para catálogo de fraude; la versión aparece en cita/metadatos."
+    },
+    {
+      "id": "V02",
+      "citas": {
+        "POL-DEC@2#s05:01": true,
+        "FAQ-OPE@2#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Doble supervisor, registro y falta de vigencia con una sola aprobación están en POL-DEC v2 sección 5; rol también respaldado por FAQ."
+    }
+  ]
+}

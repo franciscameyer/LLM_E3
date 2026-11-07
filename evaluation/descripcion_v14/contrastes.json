@@ -1,0 +1,1208 @@
+{
+  "modelo": {
+    "disponible": true,
+    "url": "http://127.0.0.1:8080/v1",
+    "modelos": [
+      "bonsai-27b"
+    ]
+  },
+  "extractos_sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+  "codigo_sha256": {
+    "agent.py": "d675d794cea6673be4dce15cae1927533c44699c1c87996c8a1762facfae7825",
+    "api.py": "d3b5ef7fc9b21d8ca414555dc79dbae31d636a0a97f882e4792f60211888be2a",
+    "bridge.py": "a3dc255e0cc819f5c522a99b2769fb138e252b44a492ceff0d4dbe244ed92285",
+    "check_delivery.py": "6101fe2d37583f7f2b0925a8f8c5714fa7863a5637fb9fc252a0b69c1c249960",
+    "cli.py": "278fa34e3ed6b043013dba0db8ec5e047413a5bebcc614d65588ffddecc0a70a",
+    "config.py": "d21ddd44619480d1303b017c5c3429e61444616d80036000a282f980bef2264c",
+    "evaluate.py": "72667cd71e0d15b744af7abd78426bb4e7705aed93c0589db49b8f569f5632f9",
+    "launch_model.py": "0fc7c6ed63faf90a0444413e6329e4e705b7d74fd1bed2876e4085462cdab207",
+    "mcp_server.py": "cafc39a99933ae4c1ae5ec06e318239419e38e2134d400392d515d9f562f28c3",
+    "rag.py": "d21ee42e27771fd9b48e0b6eda93f840cebdf3d65a98cf0eb982c7ac4d87d79e",
+    "regression_check.py": "4140740421de5cccfebd9068d8db7908b67650e0949cc11e961ad2a3e2fde3a7",
+    "security.py": "41a6a1831d204a99bebfdb0cfd808518c26f66714385de190c8d96d14644b934",
+    "store.py": "aa7618f2356bae105f5bca656188c35a0a907ef56d52b076546d205ab68c9790",
+    "validation.py": "52b99a1a1754d4d615f441ee672ccadfc92c032e5637b3725b6c96bcc1dfad3e",
+    "__init__.py": "af345a58ba4f592624b0709c8d2da15f9d315add0371e474e4b60138f128beba"
+  },
+  "preguntas": [
+    {
+      "id": "D01",
+      "pregunta": "¿Qué diferencias hay entre MIRA v1.4, el manual vigente y POL-DEC v2 para la aprobación automática con 80 o 85 puntos y el rechazo bajo 60?",
+      "estado_esperado": "conflicto",
+      "citas_esperadas": [
+        "MIRA-DESC@1.4#s01:01",
+        "MAN-REV@1#s01:01",
+        "POL-DEC@2#s02:01"
+      ],
+      "control_estructural": true,
+      "resultado": {
+        "estado": "conflicto",
+        "respuesta": "Hay dos conflictos obligatorios entre las fuentes. Primero, sobre el umbral de aprobación automática: el Manual de revisión asistida vigente afirma que los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente y no llegan a la bandeja del operador [MAN-REV@1#s01:01], mientras que la Política de decisión v2 fija como referencia 85 o más para aprobación automática, siempre que no haya señales de fraude activas y todas las señales con mínimo propio lo cumplan [POL-DEC@2#s02:01]. Además, la política indica que cada organización fija sus propios umbrales y que un cambio de umbral requiere aprobación de dos personas con rol de supervisor [POL-DEC@2#s05:01]. Segundo, sobre el rechazo bajo 60: la Descripción de MIRA v1.4, que es contexto de levantamiento y no norma vigente, indica que bajo 60 el caso se escala o se rechaza por riesgo alto [MIRA-DESC@1.4#s01:01], mientras que la Política de decisión v2 establece que menos de 60 implica escalamiento a revisión por un analista con rol de supervisor y que ningún caso se rechaza automáticamente, ya que el rechazo siempre lo decide y firma una persona [POL-DEC@2#s02:01]. La Descripción de MIRA v1.4 también menciona que la aprobación automática debe aplicarse a partir de 80 puntos cuando no hay señales de fraude activas y que, si alguna señal individual está por debajo de su mínimo, el caso se deriva a revisión aunque el puntaje total lo permita [MIRA-DESC@1.4#s01:01], lo cual es coherente con la sección 3 de la política que fija mínimos propios por señal [POL-DEC@2#s03:01] y con la sección 4 que establece que una señal de fraude activa deriva el caso a revisión cualquiera sea su puntaje [POL-DEC@2#s04:01]. En resumen: el Manual vigente usa 80 como umbral de aprobación automática, la política v2 usa 85 como referencia configurable por organización, y la descripción de MIRA v1.4 es un documento de levantamiento que contiene ambos valores y contempla el rechazo bajo 60, algo que la política vigente no contempla como automático.",
+        "citas": [
+          {
+            "codigo": "MAN-REV",
+            "version": "1",
+            "estado": "vigente",
+            "vigencia": "Desde el 15 de julio de 2026",
+            "desde": "2026-07-15",
+            "hasta": "",
+            "fuente": "MAN-REV_manual_revision_asistida.md",
+            "titulo": "Manual de revisión asistida para operadores",
+            "origen": "kit docente",
+            "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+            "id": "MAN-REV@1#s01:01",
+            "seccion": "1. Qué casos llegan a su bandeja",
+            "texto": "A su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+            "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 1. Qué casos llegan a su bandeja\nA su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha."
+          },
+          {
+            "codigo": "POL-DEC",
+            "version": "2",
+            "estado": "vigente",
+            "vigencia": "Desde el 1 de septiembre de 2026",
+            "desde": "2026-09-01",
+            "hasta": "",
+            "fuente": "POL-DEC_v2_vigente.md",
+            "titulo": "Política de decisión y umbrales",
+            "origen": "kit docente",
+            "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+            "id": "POL-DEC@2#s02:01",
+            "seccion": "2. Umbrales de referencia",
+            "texto": "Los valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+            "texto_busqueda": "POL-DEC Política de decisión y umbrales 2. Umbrales de referencia\nLos valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona."
+          },
+          {
+            "codigo": "MIRA-DESC",
+            "version": "1.4",
+            "estado": "contexto",
+            "vigencia": "No declarada como norma",
+            "desde": "",
+            "hasta": "",
+            "fuente": "MIRA_v1.4.md",
+            "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+            "origen": "Descripción",
+            "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+            "fecha_documento": "12 de agosto de 2026",
+            "fuente_original": "MIRA-descripcion-proyecto .docx",
+            "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+            "id": "MIRA-DESC@1.4#s01:01",
+            "seccion": "2.6 El nivel de confianza y la decisión",
+            "texto": "Cada caso analizado recibe un puntaje de confianza entre 0 y 100, que resume las señales obtenidas. El puntaje se acompaña de sus componentes, para que quien lo lea entienda qué lo empujó hacia arriba o hacia abajo: autenticidad de los documentos, coherencia biométrica, cruce entre fuentes y presencia de señales de fraude.\n\nEse puntaje se traduce en una decisión mediante umbrales configurables. Los valores de referencia son: sobre 85, el caso se aprueba automáticamente sin intervención humana; entre 60 y 84, se deriva a revisión asistida por un operador; bajo 60, se escala o se rechaza por riesgo alto. Estos rangos deben poder ajustarse por cliente y por tipo de proceso desde el propio diseñador de flujos, sin intervención de DPRIME.\n\nLa aprobación automática debe aplicarse a partir de 80 puntos cuando el caso no presente ninguna señal de fraude activa.\n\nCuando el puntaje sea suficiente pero alguna señal individual esté por debajo de su mínimo, el caso debe derivarse a revisión aunque el total lo permita. El detalle de qué señales tienen mínimo propio y cuáles son sus valores está pendiente de definir con el área de riesgo del cliente piloto.",
+            "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.6 El nivel de confianza y la decisión\nCada caso analizado recibe un puntaje de confianza entre 0 y 100, que resume las señales obtenidas. El puntaje se acompaña de sus componentes, para que quien lo lea entienda qué lo empujó hacia arriba o hacia abajo: autenticidad de los documentos, coherencia biométrica, cruce entre fuentes y presencia de señales de fraude.\n\nEse puntaje se traduce en una decisión mediante umbrales configurables. Los valores de referencia son: sobre 85, el caso se aprueba automáticamente sin intervención humana; entre 60 y 84, se deriva a revisión asistida por un operador; bajo 60, se escala o se rechaza por riesgo alto. Estos rangos deben poder ajustarse por cliente y por tipo de proceso desde el propio diseñador de flujos, sin intervención de DPRIME.\n\nLa aprobación automática debe aplicarse a partir de 80 puntos cuando el caso no presente ninguna señal de fraude activa.\n\nCuando el puntaje sea suficiente pero alguna señal individual esté por debajo de su mínimo, el caso debe derivarse a revisión aunque el total lo permita. El detalle de qué señales tienen mínimo propio y cuáles son sus valores está pendiente de definir con el área de riesgo del cliente piloto.",
+            "relevancia": 9.67
+          },
+          {
+            "codigo": "POL-DEC",
+            "version": "2",
+            "estado": "vigente",
+            "vigencia": "Desde el 1 de septiembre de 2026",
+            "desde": "2026-09-01",
+            "hasta": "",
+            "fuente": "POL-DEC_v2_vigente.md",
+            "titulo": "Política de decisión y umbrales",
+            "origen": "kit docente",
+            "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+            "id": "POL-DEC@2#s05:01",
+            "seccion": "5. Configuración por organización",
+            "texto": "Cada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+            "texto_busqueda": "POL-DEC Política de decisión y umbrales 5. Configuración por organización\nCada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+            "relevancia": 5.6529
+          },
+          {
+            "codigo": "POL-DEC",
+            "version": "2",
+            "estado": "vigente",
+            "vigencia": "Desde el 1 de septiembre de 2026",
+            "desde": "2026-09-01",
+            "hasta": "",
+            "fuente": "POL-DEC_v2_vigente.md",
+            "titulo": "Política de decisión y umbrales",
+            "origen": "kit docente",
+            "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+            "id": "POL-DEC@2#s03:01",
+            "seccion": "3. Mínimos por señal",
+            "texto": "Algunas señales tienen un mínimo propio. Si una de ellas queda bajo su mínimo, el caso se deriva a revisión aunque el puntaje total alcance el umbral de aprobación.\n\n| Señal | Mínimo |\n|---|---|\n| DOC_AUT, autenticidad documental | 70 |\n| BIO_ROSTRO, coincidencia de rostro | 75 |\n| CRUCE_MONTO, cruce de montos entre fuentes | 60 |\n| CRUCE_FECHA, cruce de fechas entre fuentes | 60 |\n\nEl resto de las señales no tiene mínimo propio y solo aporta al puntaje total.",
+            "texto_busqueda": "POL-DEC Política de decisión y umbrales 3. Mínimos por señal\nAlgunas señales tienen un mínimo propio. Si una de ellas queda bajo su mínimo, el caso se deriva a revisión aunque el puntaje total alcance el umbral de aprobación.\n\n| Señal | Mínimo |\n|---|---|\n| DOC_AUT, autenticidad documental | 70 |\n| BIO_ROSTRO, coincidencia de rostro | 75 |\n| CRUCE_MONTO, cruce de montos entre fuentes | 60 |\n| CRUCE_FECHA, cruce de fechas entre fuentes | 60 |\n\nEl resto de las señales no tiene mínimo propio y solo aporta al puntaje total.",
+            "relevancia": 7.0465
+          },
+          {
+            "codigo": "POL-DEC",
+            "version": "2",
+            "estado": "vigente",
+            "vigencia": "Desde el 1 de septiembre de 2026",
+            "desde": "2026-09-01",
+            "hasta": "",
+            "fuente": "POL-DEC_v2_vigente.md",
+            "titulo": "Política de decisión y umbrales",
+            "origen": "kit docente",
+            "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+            "id": "POL-DEC@2#s04:01",
+            "seccion": "4. Precedencia de las señales de fraude",
+            "texto": "Una señal de fraude activa deriva el caso a revisión, cualquiera sea su puntaje. Las señales de fraude no restan puntos: prevalecen sobre el puntaje. El catálogo de señales (CAT-SEN) identifica cuáles son señales de fraude.",
+            "texto_busqueda": "POL-DEC Política de decisión y umbrales 4. Precedencia de las señales de fraude\nUna señal de fraude activa deriva el caso a revisión, cualquiera sea su puntaje. Las señales de fraude no restan puntos: prevalecen sobre el puntaje. El catálogo de señales (CAT-SEN) identifica cuáles son señales de fraude.",
+            "relevancia": 5.8666
+          }
+        ],
+        "trazas": [
+          {
+            "id": "TR-2b9ac95c93e14b1bbb27ebedbeb944a1",
+            "fecha": "2026-11-07T21:04:45+00:00",
+            "usuario": "U-01",
+            "herramienta": "buscar_reglas",
+            "argumentos": {
+              "pregunta": "¿Qué diferencias hay entre MIRA v1.4, el manual vigente y POL-DEC v2 para la aprobación automática con 80 o 85 puntos y el rechazo bajo 60?",
+              "k": 6,
+              "historico": false
+            },
+            "ok": true,
+            "resultado": {
+              "datos": {
+                "fragmentos": [
+                  {
+                    "codigo": "MAN-REV",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "MAN-REV_manual_revision_asistida.md",
+                    "titulo": "Manual de revisión asistida para operadores",
+                    "origen": "kit docente",
+                    "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+                    "id": "MAN-REV@1#s01:01",
+                    "seccion": "1. Qué casos llegan a su bandeja",
+                    "texto": "A su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+                    "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 1. Qué casos llegan a su bandeja\nA su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha."
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s02:01",
+                    "seccion": "2. Umbrales de referencia",
+                    "texto": "Los valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 2. Umbrales de referencia\nLos valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona."
+                  },
+                  {
+                    "codigo": "MIRA-DESC",
+                    "version": "1.4",
+                    "estado": "contexto",
+                    "vigencia": "No declarada como norma",
+                    "desde": "",
+                    "hasta": "",
+                    "fuente": "MIRA_v1.4.md",
+                    "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+                    "origen": "Descripción",
+                    "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+                    "fecha_documento": "12 de agosto de 2026",
+                    "fuente_original": "MIRA-descripcion-proyecto .docx",
+                    "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+                    "id": "MIRA-DESC@1.4#s01:01",
+                    "seccion": "2.6 El nivel de confianza y la decisión",
+                    "texto": "Cada caso analizado recibe un puntaje de confianza entre 0 y 100, que resume las señales obtenidas. El puntaje se acompaña de sus componentes, para que quien lo lea entienda qué lo empujó hacia arriba o hacia abajo: autenticidad de los documentos, coherencia biométrica, cruce entre fuentes y presencia de señales de fraude.\n\nEse puntaje se traduce en una decisión mediante umbrales configurables. Los valores de referencia son: sobre 85, el caso se aprueba automáticamente sin intervención humana; entre 60 y 84, se deriva a revisión asistida por un operador; bajo 60, se escala o se rechaza por riesgo alto. Estos rangos deben poder ajustarse por cliente y por tipo de proceso desde el propio diseñador de flujos, sin intervención de DPRIME.\n\nLa aprobación automática debe aplicarse a partir de 80 puntos cuando el caso no presente ninguna señal de fraude activa.\n\nCuando el puntaje sea suficiente pero alguna señal individual esté por debajo de su mínimo, el caso debe derivarse a revisión aunque el total lo permita. El detalle de qué señales tienen mínimo propio y cuáles son sus valores está pendiente de definir con el área de riesgo del cliente piloto.",
+                    "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.6 El nivel de confianza y la decisión\nCada caso analizado recibe un puntaje de confianza entre 0 y 100, que resume las señales obtenidas. El puntaje se acompaña de sus componentes, para que quien lo lea entienda qué lo empujó hacia arriba o hacia abajo: autenticidad de los documentos, coherencia biométrica, cruce entre fuentes y presencia de señales de fraude.\n\nEse puntaje se traduce en una decisión mediante umbrales configurables. Los valores de referencia son: sobre 85, el caso se aprueba automáticamente sin intervención humana; entre 60 y 84, se deriva a revisión asistida por un operador; bajo 60, se escala o se rechaza por riesgo alto. Estos rangos deben poder ajustarse por cliente y por tipo de proceso desde el propio diseñador de flujos, sin intervención de DPRIME.\n\nLa aprobación automática debe aplicarse a partir de 80 puntos cuando el caso no presente ninguna señal de fraude activa.\n\nCuando el puntaje sea suficiente pero alguna señal individual esté por debajo de su mínimo, el caso debe derivarse a revisión aunque el total lo permita. El detalle de qué señales tienen mínimo propio y cuáles son sus valores está pendiente de definir con el área de riesgo del cliente piloto.",
+                    "relevancia": 9.67
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s03:01",
+                    "seccion": "3. Mínimos por señal",
+                    "texto": "Algunas señales tienen un mínimo propio. Si una de ellas queda bajo su mínimo, el caso se deriva a revisión aunque el puntaje total alcance el umbral de aprobación.\n\n| Señal | Mínimo |\n|---|---|\n| DOC_AUT, autenticidad documental | 70 |\n| BIO_ROSTRO, coincidencia de rostro | 75 |\n| CRUCE_MONTO, cruce de montos entre fuentes | 60 |\n| CRUCE_FECHA, cruce de fechas entre fuentes | 60 |\n\nEl resto de las señales no tiene mínimo propio y solo aporta al puntaje total.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 3. Mínimos por señal\nAlgunas señales tienen un mínimo propio. Si una de ellas queda bajo su mínimo, el caso se deriva a revisión aunque el puntaje total alcance el umbral de aprobación.\n\n| Señal | Mínimo |\n|---|---|\n| DOC_AUT, autenticidad documental | 70 |\n| BIO_ROSTRO, coincidencia de rostro | 75 |\n| CRUCE_MONTO, cruce de montos entre fuentes | 60 |\n| CRUCE_FECHA, cruce de fechas entre fuentes | 60 |\n\nEl resto de las señales no tiene mínimo propio y solo aporta al puntaje total.",
+                    "relevancia": 7.0465
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s04:01",
+                    "seccion": "4. Precedencia de las señales de fraude",
+                    "texto": "Una señal de fraude activa deriva el caso a revisión, cualquiera sea su puntaje. Las señales de fraude no restan puntos: prevalecen sobre el puntaje. El catálogo de señales (CAT-SEN) identifica cuáles son señales de fraude.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 4. Precedencia de las señales de fraude\nUna señal de fraude activa deriva el caso a revisión, cualquiera sea su puntaje. Las señales de fraude no restan puntos: prevalecen sobre el puntaje. El catálogo de señales (CAT-SEN) identifica cuáles son señales de fraude.",
+                    "relevancia": 5.8666
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s05:01",
+                    "seccion": "5. Configuración por organización",
+                    "texto": "Cada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 5. Configuración por organización\nCada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+                    "relevancia": 5.6529
+                  }
+                ],
+                "complementarios_conflicto": [],
+                "conflictos": [
+                  {
+                    "id": "CONF-01",
+                    "fragmentos": [
+                      "MAN-REV@1#s01:01",
+                      "POL-DEC@2#s02:01"
+                    ],
+                    "obligatorio": true,
+                    "descripcion": "MAN-REV vigente afirma aprobación desde 80 sin fraude; POL-DEC v2 fija referencia 85, condiciones por señal y configuración por organización. No elegir una fuente por cuenta propia."
+                  },
+                  {
+                    "id": "DESC-DECISION",
+                    "fragmentos": [
+                      "MIRA-DESC@1.4#s01:01",
+                      "POL-DEC@2#s02:01",
+                      "MAN-REV@1#s01:01"
+                    ],
+                    "obligatorio": true,
+                    "descripcion": "MIRA v1.4 §2.6 es contexto de levantamiento: contiene referencias de 85 y 80 y contempla escalamiento o rechazo bajo 60. Contrástala con MAN-REV v1 §1 y POL-DEC v2 §2, que establece escalamiento bajo 60 y no contempla rechazo automático. Atribuye cada regla a su fuente."
+                  }
+                ],
+                "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."
+              }
+            }
+          }
+        ],
+        "propuestas": [],
+        "conflictos": [
+          {
+            "id": "CONF-01",
+            "fragmentos": [
+              "MAN-REV@1#s01:01",
+              "POL-DEC@2#s02:01"
+            ],
+            "obligatorio": true,
+            "descripcion": "MAN-REV vigente afirma aprobación desde 80 sin fraude; POL-DEC v2 fija referencia 85, condiciones por señal y configuración por organización. No elegir una fuente por cuenta propia."
+          },
+          {
+            "id": "DESC-DECISION",
+            "fragmentos": [
+              "MIRA-DESC@1.4#s01:01",
+              "POL-DEC@2#s02:01",
+              "MAN-REV@1#s01:01"
+            ],
+            "obligatorio": true,
+            "descripcion": "MIRA v1.4 §2.6 es contexto de levantamiento: contiene referencias de 85 y 80 y contempla escalamiento o rechazo bajo 60. Contrástala con MAN-REV v1 §1 y POL-DEC v2 §2, que establece escalamiento bajo 60 y no contempla rechazo automático. Atribuye cada regla a su fuente."
+          }
+        ]
+      }
+    },
+    {
+      "id": "D02",
+      "pregunta": "¿Quién puede configurar los umbrales según MIRA v1.4 y qué exige POL-DEC v2?",
+      "estado_esperado": "conflicto",
+      "citas_esperadas": [
+        "MIRA-DESC@1.4#s04:01",
+        "POL-DEC@2#s05:01"
+      ],
+      "control_estructural": true,
+      "resultado": {
+        "estado": "conflicto",
+        "respuesta": "Según la Descripción de MIRA v1.4, la configuración de los umbrales de decisión corresponde a quien diseña flujos dentro de la organización [MIRA-DESC@1.4#s04:01]. POL-DEC v2, vigente desde el 1 de septiembre de 2026, exige que cada organización fije sus propios umbrales de aprobación y revisión, y que un cambio de umbral requiera la aprobación de dos personas con rol de supervisor de esa organización, quedando registrado con autor, aprobadores, fecha y valor anterior; un cambio con una sola aprobación no entra en vigor [POL-DEC@2#s05:01]. Existe un conflicto obligatorio entre ambas fuentes: la Descripción atribuye la configuración al diseñador de flujos, mientras que la política vigente exige la aprobación de dos supervisores para que el cambio entre en vigor [MIRA-DESC@1.4#s04:01][POL-DEC@2#s05:01].",
+        "citas": [
+          {
+            "codigo": "MIRA-DESC",
+            "version": "1.4",
+            "estado": "contexto",
+            "vigencia": "No declarada como norma",
+            "desde": "",
+            "hasta": "",
+            "fuente": "MIRA_v1.4.md",
+            "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+            "origen": "Descripción",
+            "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+            "fecha_documento": "12 de agosto de 2026",
+            "fuente_original": "MIRA-descripcion-proyecto .docx",
+            "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+            "id": "MIRA-DESC@1.4#s04:01",
+            "seccion": "2.13 Cuentas, perfiles y aislamiento",
+            "texto": "Cada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+            "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.13 Cuentas, perfiles y aislamiento\nCada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+            "relevancia": 2.4881
+          },
+          {
+            "codigo": "POL-DEC",
+            "version": "2",
+            "estado": "vigente",
+            "vigencia": "Desde el 1 de septiembre de 2026",
+            "desde": "2026-09-01",
+            "hasta": "",
+            "fuente": "POL-DEC_v2_vigente.md",
+            "titulo": "Política de decisión y umbrales",
+            "origen": "kit docente",
+            "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+            "id": "POL-DEC@2#s05:01",
+            "seccion": "5. Configuración por organización",
+            "texto": "Cada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+            "texto_busqueda": "POL-DEC Política de decisión y umbrales 5. Configuración por organización\nCada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor."
+          }
+        ],
+        "trazas": [
+          {
+            "id": "TR-2ca031923ced402985e7b41fbe5a0a01",
+            "fecha": "2026-11-07T21:05:03+00:00",
+            "usuario": "U-01",
+            "herramienta": "buscar_reglas",
+            "argumentos": {
+              "pregunta": "¿Quién puede configurar los umbrales según MIRA v1.4 y qué exige POL-DEC v2?",
+              "k": 6,
+              "historico": false
+            },
+            "ok": true,
+            "resultado": {
+              "datos": {
+                "fragmentos": [
+                  {
+                    "codigo": "MIRA-DESC",
+                    "version": "1.4",
+                    "estado": "contexto",
+                    "vigencia": "No declarada como norma",
+                    "desde": "",
+                    "hasta": "",
+                    "fuente": "MIRA_v1.4.md",
+                    "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+                    "origen": "Descripción",
+                    "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+                    "fecha_documento": "12 de agosto de 2026",
+                    "fuente_original": "MIRA-descripcion-proyecto .docx",
+                    "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+                    "id": "MIRA-DESC@1.4#s04:01",
+                    "seccion": "2.13 Cuentas, perfiles y aislamiento",
+                    "texto": "Cada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+                    "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.13 Cuentas, perfiles y aislamiento\nCada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+                    "relevancia": 2.4881
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s01:01",
+                    "seccion": "1. Propósito",
+                    "texto": "Esta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 1. Propósito\nEsta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+                    "relevancia": 5.7115
+                  },
+                  {
+                    "codigo": "CAT-SEN",
+                    "version": "3",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "CAT-SEN_catalogo_senales.md",
+                    "titulo": "Catálogo de señales de MIRA",
+                    "origen": "kit docente",
+                    "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+                    "id": "CAT-SEN@3#s06:01",
+                    "seccion": "6. Señales de fraude",
+                    "texto": "Una señal de fraude activa deriva el caso a revisión según POL-DEC.\n\n| Código | Qué indica |\n|---|---|\n| FRA_EDICION | El archivo muestra rastros de edición posterior a su emisión |\n| FRA_MEMORIA | La misma pieza de evidencia, o una casi idéntica, ya fue presentada en otro caso |\n| FRA_SINTETICO | La imagen o el documento presenta rasgos de contenido generado artificialmente |",
+                    "texto_busqueda": "CAT-SEN Catálogo de señales de MIRA 6. Señales de fraude\nUna señal de fraude activa deriva el caso a revisión según POL-DEC.\n\n| Código | Qué indica |\n|---|---|\n| FRA_EDICION | El archivo muestra rastros de edición posterior a su emisión |\n| FRA_MEMORIA | La misma pieza de evidencia, o una casi idéntica, ya fue presentada en otro caso |\n| FRA_SINTETICO | La imagen o el documento presenta rasgos de contenido generado artificialmente |",
+                    "relevancia": 5.4383
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s02:01",
+                    "seccion": "2. Umbrales de referencia",
+                    "texto": "Los valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 2. Umbrales de referencia\nLos valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+                    "relevancia": 5.3354
+                  },
+                  {
+                    "codigo": "CAT-SEN",
+                    "version": "3",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "CAT-SEN_catalogo_senales.md",
+                    "titulo": "Catálogo de señales de MIRA",
+                    "origen": "kit docente",
+                    "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+                    "id": "CAT-SEN@3#s01:01",
+                    "seccion": "1. Qué es una señal",
+                    "texto": "Una señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+                    "texto_busqueda": "CAT-SEN Catálogo de señales de MIRA 1. Qué es una señal\nUna señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+                    "relevancia": 4.7074
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s06:01",
+                    "seccion": "6. Señales faltantes",
+                    "texto": "Si un módulo falla o no entrega su señal, el caso no se aprueba con información parcial: se deriva a revisión indicando qué señal faltó. La ausencia de una señal nunca se interpreta como favorable.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 6. Señales faltantes\nSi un módulo falla o no entrega su señal, el caso no se aprueba con información parcial: se deriva a revisión indicando qué señal faltó. La ausencia de una señal nunca se interpreta como favorable.",
+                    "relevancia": 4.4736
+                  }
+                ],
+                "complementarios_conflicto": [
+                  {
+                    "codigo": "MAN-REV",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "MAN-REV_manual_revision_asistida.md",
+                    "titulo": "Manual de revisión asistida para operadores",
+                    "origen": "kit docente",
+                    "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+                    "id": "MAN-REV@1#s01:01",
+                    "seccion": "1. Qué casos llegan a su bandeja",
+                    "texto": "A su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+                    "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 1. Qué casos llegan a su bandeja\nA su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha."
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s05:01",
+                    "seccion": "5. Configuración por organización",
+                    "texto": "Cada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 5. Configuración por organización\nCada organización fija sus propios umbrales de aprobación y de revisión. Un cambio de umbral es un cambio de política de riesgo de la organización y no una configuración técnica: requiere la aprobación de dos personas con rol de supervisor de esa organización y queda registrado con su autor, sus aprobadores, la fecha y el valor anterior. Un cambio con una sola aprobación no entra en vigor."
+                  }
+                ],
+                "conflictos": [
+                  {
+                    "id": "CONF-01",
+                    "fragmentos": [
+                      "MAN-REV@1#s01:01",
+                      "POL-DEC@2#s02:01"
+                    ],
+                    "obligatorio": false,
+                    "descripcion": "Alerta de fuente: si usas la regla de aprobación del manual o de la política, presenta ambas y su conflicto 80/85. Si la pregunta trata otro tema, evita añadir esa regla ajena."
+                  },
+                  {
+                    "id": "DESC-UMBRALES",
+                    "fragmentos": [
+                      "MIRA-DESC@1.4#s04:01",
+                      "POL-DEC@2#s05:01"
+                    ],
+                    "obligatorio": true,
+                    "descripcion": "MIRA v1.4 §2.13 atribuye la configuración al diseñador. POL-DEC v2 §5 exige dos supervisores para aprobar el cambio. Distingue levantamiento, procedimiento vigente y valor configurado del caso."
+                  }
+                ],
+                "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."
+              }
+            }
+          }
+        ],
+        "propuestas": [],
+        "conflictos": [
+          {
+            "id": "CONF-01",
+            "fragmentos": [
+              "MAN-REV@1#s01:01",
+              "POL-DEC@2#s02:01"
+            ],
+            "obligatorio": false,
+            "descripcion": "Alerta de fuente: si usas la regla de aprobación del manual o de la política, presenta ambas y su conflicto 80/85. Si la pregunta trata otro tema, evita añadir esa regla ajena."
+          },
+          {
+            "id": "DESC-UMBRALES",
+            "fragmentos": [
+              "MIRA-DESC@1.4#s04:01",
+              "POL-DEC@2#s05:01"
+            ],
+            "obligatorio": true,
+            "descripcion": "MIRA v1.4 §2.13 atribuye la configuración al diseñador. POL-DEC v2 §5 exige dos supervisores para aprobar el cambio. Distingue levantamiento, procedimiento vigente y valor configurado del caso."
+          }
+        ]
+      }
+    },
+    {
+      "id": "D03",
+      "pregunta": "Según MIRA v1.4, ¿qué información debe ver el operador en la revisión asistida?",
+      "estado_esperado": "evidencia",
+      "citas_esperadas": [
+        "MIRA-DESC@1.4#s02:01"
+      ],
+      "control_estructural": true,
+      "resultado": {
+        "estado": "evidencia",
+        "respuesta": "Según la Descripción del proyecto MIRA v1.4, la revisión asistida debe mostrar al operador, en una sola pantalla, la evidencia del caso, el puntaje obtenido, el desglose de las señales y la razón por la cual el caso fue derivado [MIRA-DESC@1.4#s02:01]. Además, debe poder abrir cada pieza de evidencia, ver qué encontró la plataforma en ella y en qué parte del documento o de la imagen lo encontró [MIRA-DESC@1.4#s02:01]. La plataforma debe mostrar el tiempo restante y alertar cuando un caso lleve demasiado tiempo detenido [MIRA-DESC@1.4#s02:01].",
+        "citas": [
+          {
+            "codigo": "MIRA-DESC",
+            "version": "1.4",
+            "estado": "contexto",
+            "vigencia": "No declarada como norma",
+            "desde": "",
+            "hasta": "",
+            "fuente": "MIRA_v1.4.md",
+            "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+            "origen": "Descripción",
+            "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+            "fecha_documento": "12 de agosto de 2026",
+            "fuente_original": "MIRA-descripcion-proyecto .docx",
+            "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+            "id": "MIRA-DESC@1.4#s02:01",
+            "seccion": "2.7 La revisión asistida",
+            "texto": "Los casos que no se resuelven solos llegan a una bandeja de trabajo. Esta parte del producto casi no existe hoy y es, según el cliente piloto, la que decide si la plataforma se usa o no.\n\nEl operador debe ver, en una sola pantalla, la evidencia del caso, el puntaje obtenido, el desglose de las señales y —sobre todo— la razón por la cual el caso fue derivado. Debe poder abrir cada pieza de evidencia, ver qué encontró la plataforma en ella y en qué parte del documento o de la imagen lo encontró.\n\nEl operador resuelve el caso: aprueba, rechaza o solicita antecedentes adicionales. Su decisión y el motivo quedan registrados. Cuando la decisión del operador difiere de lo que la plataforma sugería, esa discrepancia debe quedar marcada de manera que el equipo de modelos pueda revisarla después.\n\nUn caso derivado a revisión debe resolverse dentro del plazo comprometido por el cliente con sus propios asegurados, de modo que la plataforma debe mostrar el tiempo restante y alertar cuando un caso lleve demasiado tiempo detenido.",
+            "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.7 La revisión asistida\nLos casos que no se resuelven solos llegan a una bandeja de trabajo. Esta parte del producto casi no existe hoy y es, según el cliente piloto, la que decide si la plataforma se usa o no.\n\nEl operador debe ver, en una sola pantalla, la evidencia del caso, el puntaje obtenido, el desglose de las señales y —sobre todo— la razón por la cual el caso fue derivado. Debe poder abrir cada pieza de evidencia, ver qué encontró la plataforma en ella y en qué parte del documento o de la imagen lo encontró.\n\nEl operador resuelve el caso: aprueba, rechaza o solicita antecedentes adicionales. Su decisión y el motivo quedan registrados. Cuando la decisión del operador difiere de lo que la plataforma sugería, esa discrepancia debe quedar marcada de manera que el equipo de modelos pueda revisarla después.\n\nUn caso derivado a revisión debe resolverse dentro del plazo comprometido por el cliente con sus propios asegurados, de modo que la plataforma debe mostrar el tiempo restante y alertar cuando un caso lleve demasiado tiempo detenido.",
+            "relevancia": 11.457
+          }
+        ],
+        "trazas": [
+          {
+            "id": "TR-a57fee8255cc4479af9f3f298ccfea08",
+            "fecha": "2026-11-07T21:05:12+00:00",
+            "usuario": "U-01",
+            "herramienta": "buscar_reglas",
+            "argumentos": {
+              "pregunta": "Según MIRA v1.4, ¿qué información debe ver el operador en la revisión asistida?",
+              "k": 6,
+              "historico": false
+            },
+            "ok": true,
+            "resultado": {
+              "datos": {
+                "fragmentos": [
+                  {
+                    "codigo": "MIRA-DESC",
+                    "version": "1.4",
+                    "estado": "contexto",
+                    "vigencia": "No declarada como norma",
+                    "desde": "",
+                    "hasta": "",
+                    "fuente": "MIRA_v1.4.md",
+                    "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+                    "origen": "Descripción",
+                    "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+                    "fecha_documento": "12 de agosto de 2026",
+                    "fuente_original": "MIRA-descripcion-proyecto .docx",
+                    "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+                    "id": "MIRA-DESC@1.4#s02:01",
+                    "seccion": "2.7 La revisión asistida",
+                    "texto": "Los casos que no se resuelven solos llegan a una bandeja de trabajo. Esta parte del producto casi no existe hoy y es, según el cliente piloto, la que decide si la plataforma se usa o no.\n\nEl operador debe ver, en una sola pantalla, la evidencia del caso, el puntaje obtenido, el desglose de las señales y —sobre todo— la razón por la cual el caso fue derivado. Debe poder abrir cada pieza de evidencia, ver qué encontró la plataforma en ella y en qué parte del documento o de la imagen lo encontró.\n\nEl operador resuelve el caso: aprueba, rechaza o solicita antecedentes adicionales. Su decisión y el motivo quedan registrados. Cuando la decisión del operador difiere de lo que la plataforma sugería, esa discrepancia debe quedar marcada de manera que el equipo de modelos pueda revisarla después.\n\nUn caso derivado a revisión debe resolverse dentro del plazo comprometido por el cliente con sus propios asegurados, de modo que la plataforma debe mostrar el tiempo restante y alertar cuando un caso lleve demasiado tiempo detenido.",
+                    "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.7 La revisión asistida\nLos casos que no se resuelven solos llegan a una bandeja de trabajo. Esta parte del producto casi no existe hoy y es, según el cliente piloto, la que decide si la plataforma se usa o no.\n\nEl operador debe ver, en una sola pantalla, la evidencia del caso, el puntaje obtenido, el desglose de las señales y —sobre todo— la razón por la cual el caso fue derivado. Debe poder abrir cada pieza de evidencia, ver qué encontró la plataforma en ella y en qué parte del documento o de la imagen lo encontró.\n\nEl operador resuelve el caso: aprueba, rechaza o solicita antecedentes adicionales. Su decisión y el motivo quedan registrados. Cuando la decisión del operador difiere de lo que la plataforma sugería, esa discrepancia debe quedar marcada de manera que el equipo de modelos pueda revisarla después.\n\nUn caso derivado a revisión debe resolverse dentro del plazo comprometido por el cliente con sus propios asegurados, de modo que la plataforma debe mostrar el tiempo restante y alertar cuando un caso lleve demasiado tiempo detenido.",
+                    "relevancia": 11.457
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s02:01",
+                    "seccion": "2. Umbrales de referencia",
+                    "texto": "Los valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 2. Umbrales de referencia\nLos valores de esta tabla son de referencia. Cada organización fija los suyos según la sección 5.\n\n| Puntaje de confianza | Decisión |\n|---|---|\n| 85 o más | Aprobación automática, solo si no hay señales de fraude activas y todas las señales con mínimo propio lo cumplen |\n| Entre 60 y 84 | Derivación a revisión asistida por un operador |\n| Menos de 60 | Escalamiento a revisión por un analista con rol de supervisor |\n\nNingún caso se rechaza automáticamente. El rechazo de un caso siempre lo decide y lo firma una persona.",
+                    "relevancia": 5.1554
+                  },
+                  {
+                    "codigo": "MAN-REV",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "MAN-REV_manual_revision_asistida.md",
+                    "titulo": "Manual de revisión asistida para operadores",
+                    "origen": "kit docente",
+                    "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+                    "id": "MAN-REV@1#s03:01",
+                    "seccion": "3. Decisiones disponibles",
+                    "texto": "| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+                    "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 3. Decisiones disponibles\n| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+                    "relevancia": 4.6431
+                  },
+                  {
+                    "codigo": "FAQ-OPE",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de octubre de 2026",
+                    "desde": "2026-10-01",
+                    "hasta": "",
+                    "fuente": "FAQ-OPE_preguntas_frecuentes_operadores.md",
+                    "titulo": "Preguntas frecuentes de operadores",
+                    "origen": "kit docente",
+                    "sha256": "ae22e500d1eb6dd031299d2d26dbaa3240c66278d2f4694b511e1c45598a3786",
+                    "id": "FAQ-OPE@2#s04:01",
+                    "seccion": "¿Quién define los umbrales de mi organización?",
+                    "texto": "Los supervisores de su organización, según la política de decisión y umbrales. Un operador no puede modificarlos.",
+                    "texto_busqueda": "FAQ-OPE Preguntas frecuentes de operadores ¿Quién define los umbrales de mi organización?\nLos supervisores de su organización, según la política de decisión y umbrales. Un operador no puede modificarlos.",
+                    "relevancia": 4.5958
+                  },
+                  {
+                    "codigo": "MIRA-DESC",
+                    "version": "1.4",
+                    "estado": "contexto",
+                    "vigencia": "No declarada como norma",
+                    "desde": "",
+                    "hasta": "",
+                    "fuente": "MIRA_v1.4.md",
+                    "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+                    "origen": "Descripción",
+                    "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+                    "fecha_documento": "12 de agosto de 2026",
+                    "fuente_original": "MIRA-descripcion-proyecto .docx",
+                    "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+                    "id": "MIRA-DESC@1.4#s04:01",
+                    "seccion": "2.13 Cuentas, perfiles y aislamiento",
+                    "texto": "Cada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+                    "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.13 Cuentas, perfiles y aislamiento\nCada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+                    "relevancia": 4.591
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s06:01",
+                    "seccion": "6. Señales faltantes",
+                    "texto": "Si un módulo falla o no entrega su señal, el caso no se aprueba con información parcial: se deriva a revisión indicando qué señal faltó. La ausencia de una señal nunca se interpreta como favorable.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 6. Señales faltantes\nSi un módulo falla o no entrega su señal, el caso no se aprueba con información parcial: se deriva a revisión indicando qué señal faltó. La ausencia de una señal nunca se interpreta como favorable.",
+                    "relevancia": 4.152
+                  }
+                ],
+                "complementarios_conflicto": [
+                  {
+                    "codigo": "MAN-REV",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "MAN-REV_manual_revision_asistida.md",
+                    "titulo": "Manual de revisión asistida para operadores",
+                    "origen": "kit docente",
+                    "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+                    "id": "MAN-REV@1#s01:01",
+                    "seccion": "1. Qué casos llegan a su bandeja",
+                    "texto": "A su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha.",
+                    "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 1. Qué casos llegan a su bandeja\nA su bandeja llegan los casos que MIRA no resolvió de forma automática. Los casos con puntaje de 80 o más y sin señales de fraude se aprueban automáticamente, por lo que no llegarán a su bandeja. Todo caso que vea tiene una razón de derivación, que aparece en la parte superior de la ficha."
+                  }
+                ],
+                "conflictos": [
+                  {
+                    "id": "CONF-01",
+                    "fragmentos": [
+                      "MAN-REV@1#s01:01",
+                      "POL-DEC@2#s02:01"
+                    ],
+                    "obligatorio": false,
+                    "descripcion": "Alerta de fuente: si usas la regla de aprobación del manual o de la política, presenta ambas y su conflicto 80/85. Si la pregunta trata otro tema, evita añadir esa regla ajena."
+                  }
+                ],
+                "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."
+              }
+            }
+          }
+        ],
+        "propuestas": [],
+        "conflictos": [
+          {
+            "id": "CONF-01",
+            "fragmentos": [
+              "MAN-REV@1#s01:01",
+              "POL-DEC@2#s02:01"
+            ],
+            "obligatorio": false,
+            "descripcion": "Alerta de fuente: si usas la regla de aprobación del manual o de la política, presenta ambas y su conflicto 80/85. Si la pregunta trata otro tema, evita añadir esa regla ajena."
+          }
+        ]
+      }
+    },
+    {
+      "id": "D04",
+      "pregunta": "¿Qué dice MIRA v1.4 sobre auditoría y conservación de la evidencia?",
+      "estado_esperado": "evidencia",
+      "citas_esperadas": [
+        "MIRA-DESC@1.4#s03:01"
+      ],
+      "control_estructural": true,
+      "resultado": {
+        "estado": "evidencia",
+        "respuesta": "MIRA v1.4, en la sección 2.11 «Trazabilidad y auditoría», establece que todo lo que la plataforma hace sobre un caso debe quedar registrado: qué evidencia entró, qué módulos se ejecutaron, en qué versión, qué devolvió cada uno, qué reglas se aplicaron, qué puntaje resultó, qué decisión se tomó y quién intervino [MIRA-DESC@1.4#s03:01]. Ese rastro debe poder consultarse desde la interfaz y descargarse [MIRA-DESC@1.4#s03:01]. El rastro es inalterable: ningún usuario, incluido el administrador de la cuenta del cliente y el personal de DPRIME, puede modificarlo ni eliminarlo [MIRA-DESC@1.4#s03:01]. Debe ser posible reconstruir una decisión pasada tal como se tomó, con las versiones de los módulos y del flujo que estaban vigentes en ese momento; una decisión que no se puede reproducir no se puede defender [MIRA-DESC@1.4#s03:01]. Respecto a la conservación, la evidencia y los resultados se conservan noventa días, plazo tras el cual la evidencia original se elimina y se conserva únicamente el registro de la decisión [MIRA-DESC@1.4#s03:01]. Además, la sección 2.13 «Cuentas, perfiles y aislamiento» indica que cada cliente es una organización independiente con sus propios usuarios, flujos, módulos activos, umbrales y datos, y que esa separación debe poder demostrarse ante una auditoría, no solo afirmarse [MIRA-DESC@1.4#s04:01].",
+        "citas": [
+          {
+            "codigo": "MIRA-DESC",
+            "version": "1.4",
+            "estado": "contexto",
+            "vigencia": "No declarada como norma",
+            "desde": "",
+            "hasta": "",
+            "fuente": "MIRA_v1.4.md",
+            "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+            "origen": "Descripción",
+            "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+            "fecha_documento": "12 de agosto de 2026",
+            "fuente_original": "MIRA-descripcion-proyecto .docx",
+            "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+            "id": "MIRA-DESC@1.4#s03:01",
+            "seccion": "2.11 Trazabilidad y auditoría",
+            "texto": "Todo lo que la plataforma hace sobre un caso debe quedar registrado: qué evidencia entró, qué módulos se ejecutaron, en qué versión, qué devolvió cada uno, qué reglas se aplicaron, qué puntaje resultó, qué decisión se tomó y quién intervino. Ese rastro debe poder consultarse desde la interfaz y descargarse.\n\nEl rastro es inalterable. Ningún usuario, incluido el administrador de la cuenta del cliente y el personal de DPRIME, puede modificarlo ni eliminarlo.\n\nDebe ser posible reconstruir una decisión pasada tal como se tomó, es decir, con las versiones de los módulos y del flujo que estaban vigentes en ese momento. Una decisión que no se puede reproducir no se puede defender.\n\nLa evidencia y los resultados se conservan noventa días, plazo tras el cual la evidencia original se elimina y se conserva únicamente el registro de la decisión.",
+            "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.11 Trazabilidad y auditoría\nTodo lo que la plataforma hace sobre un caso debe quedar registrado: qué evidencia entró, qué módulos se ejecutaron, en qué versión, qué devolvió cada uno, qué reglas se aplicaron, qué puntaje resultó, qué decisión se tomó y quién intervino. Ese rastro debe poder consultarse desde la interfaz y descargarse.\n\nEl rastro es inalterable. Ningún usuario, incluido el administrador de la cuenta del cliente y el personal de DPRIME, puede modificarlo ni eliminarlo.\n\nDebe ser posible reconstruir una decisión pasada tal como se tomó, es decir, con las versiones de los módulos y del flujo que estaban vigentes en ese momento. Una decisión que no se puede reproducir no se puede defender.\n\nLa evidencia y los resultados se conservan noventa días, plazo tras el cual la evidencia original se elimina y se conserva únicamente el registro de la decisión.",
+            "relevancia": 6.8839
+          },
+          {
+            "codigo": "MIRA-DESC",
+            "version": "1.4",
+            "estado": "contexto",
+            "vigencia": "No declarada como norma",
+            "desde": "",
+            "hasta": "",
+            "fuente": "MIRA_v1.4.md",
+            "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+            "origen": "Descripción",
+            "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+            "fecha_documento": "12 de agosto de 2026",
+            "fuente_original": "MIRA-descripcion-proyecto .docx",
+            "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+            "id": "MIRA-DESC@1.4#s04:01",
+            "seccion": "2.13 Cuentas, perfiles y aislamiento",
+            "texto": "Cada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+            "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.13 Cuentas, perfiles y aislamiento\nCada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+            "relevancia": 3.1914
+          }
+        ],
+        "trazas": [
+          {
+            "id": "TR-827764e935664428bb2b47bf35be78d5",
+            "fecha": "2026-11-07T21:05:19+00:00",
+            "usuario": "U-01",
+            "herramienta": "buscar_reglas",
+            "argumentos": {
+              "pregunta": "¿Qué dice MIRA v1.4 sobre auditoría y conservación de la evidencia?",
+              "k": 6,
+              "historico": false
+            },
+            "ok": true,
+            "resultado": {
+              "datos": {
+                "fragmentos": [
+                  {
+                    "codigo": "MIRA-DESC",
+                    "version": "1.4",
+                    "estado": "contexto",
+                    "vigencia": "No declarada como norma",
+                    "desde": "",
+                    "hasta": "",
+                    "fuente": "MIRA_v1.4.md",
+                    "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+                    "origen": "Descripción",
+                    "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+                    "fecha_documento": "12 de agosto de 2026",
+                    "fuente_original": "MIRA-descripcion-proyecto .docx",
+                    "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+                    "id": "MIRA-DESC@1.4#s03:01",
+                    "seccion": "2.11 Trazabilidad y auditoría",
+                    "texto": "Todo lo que la plataforma hace sobre un caso debe quedar registrado: qué evidencia entró, qué módulos se ejecutaron, en qué versión, qué devolvió cada uno, qué reglas se aplicaron, qué puntaje resultó, qué decisión se tomó y quién intervino. Ese rastro debe poder consultarse desde la interfaz y descargarse.\n\nEl rastro es inalterable. Ningún usuario, incluido el administrador de la cuenta del cliente y el personal de DPRIME, puede modificarlo ni eliminarlo.\n\nDebe ser posible reconstruir una decisión pasada tal como se tomó, es decir, con las versiones de los módulos y del flujo que estaban vigentes en ese momento. Una decisión que no se puede reproducir no se puede defender.\n\nLa evidencia y los resultados se conservan noventa días, plazo tras el cual la evidencia original se elimina y se conserva únicamente el registro de la decisión.",
+                    "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.11 Trazabilidad y auditoría\nTodo lo que la plataforma hace sobre un caso debe quedar registrado: qué evidencia entró, qué módulos se ejecutaron, en qué versión, qué devolvió cada uno, qué reglas se aplicaron, qué puntaje resultó, qué decisión se tomó y quién intervino. Ese rastro debe poder consultarse desde la interfaz y descargarse.\n\nEl rastro es inalterable. Ningún usuario, incluido el administrador de la cuenta del cliente y el personal de DPRIME, puede modificarlo ni eliminarlo.\n\nDebe ser posible reconstruir una decisión pasada tal como se tomó, es decir, con las versiones de los módulos y del flujo que estaban vigentes en ese momento. Una decisión que no se puede reproducir no se puede defender.\n\nLa evidencia y los resultados se conservan noventa días, plazo tras el cual la evidencia original se elimina y se conserva únicamente el registro de la decisión.",
+                    "relevancia": 6.8839
+                  },
+                  {
+                    "codigo": "MIRA-DESC",
+                    "version": "1.4",
+                    "estado": "contexto",
+                    "vigencia": "No declarada como norma",
+                    "desde": "",
+                    "hasta": "",
+                    "fuente": "MIRA_v1.4.md",
+                    "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+                    "origen": "Descripción",
+                    "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+                    "fecha_documento": "12 de agosto de 2026",
+                    "fuente_original": "MIRA-descripcion-proyecto .docx",
+                    "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+                    "id": "MIRA-DESC@1.4#s04:01",
+                    "seccion": "2.13 Cuentas, perfiles y aislamiento",
+                    "texto": "Cada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+                    "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.13 Cuentas, perfiles y aislamiento\nCada cliente es una organización independiente dentro de la plataforma, con sus propios usuarios, flujos, módulos activos, umbrales y datos. Bajo ninguna circunstancia un cliente puede ver información de otro, y esa separación debe poder demostrarse ante una auditoría, no solo afirmarse.\n\nDentro de una organización, los permisos deben distinguir al menos entre quien opera casos, quien diseña flujos, quien consulta indicadores y quien administra la cuenta. La configuración de los umbrales de decisión corresponde a quien diseña flujos.\n\nLos usuarios de los clientes se autentican con las credenciales que administra la propia plataforma. Los clientes de mayor tamaño exigen federar la autenticación contra su propio directorio corporativo.",
+                    "relevancia": 3.1914
+                  },
+                  {
+                    "codigo": "CAT-SEN",
+                    "version": "3",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "CAT-SEN_catalogo_senales.md",
+                    "titulo": "Catálogo de señales de MIRA",
+                    "origen": "kit docente",
+                    "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+                    "id": "CAT-SEN@3#s01:01",
+                    "seccion": "1. Qué es una señal",
+                    "texto": "Una señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+                    "texto_busqueda": "CAT-SEN Catálogo de señales de MIRA 1. Qué es una señal\nUna señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+                    "relevancia": 2.4226
+                  },
+                  {
+                    "codigo": "CAT-SEN",
+                    "version": "3",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "CAT-SEN_catalogo_senales.md",
+                    "titulo": "Catálogo de señales de MIRA",
+                    "origen": "kit docente",
+                    "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+                    "id": "CAT-SEN@3#s06:01",
+                    "seccion": "6. Señales de fraude",
+                    "texto": "Una señal de fraude activa deriva el caso a revisión según POL-DEC.\n\n| Código | Qué indica |\n|---|---|\n| FRA_EDICION | El archivo muestra rastros de edición posterior a su emisión |\n| FRA_MEMORIA | La misma pieza de evidencia, o una casi idéntica, ya fue presentada en otro caso |\n| FRA_SINTETICO | La imagen o el documento presenta rasgos de contenido generado artificialmente |",
+                    "texto_busqueda": "CAT-SEN Catálogo de señales de MIRA 6. Señales de fraude\nUna señal de fraude activa deriva el caso a revisión según POL-DEC.\n\n| Código | Qué indica |\n|---|---|\n| FRA_EDICION | El archivo muestra rastros de edición posterior a su emisión |\n| FRA_MEMORIA | La misma pieza de evidencia, o una casi idéntica, ya fue presentada en otro caso |\n| FRA_SINTETICO | La imagen o el documento presenta rasgos de contenido generado artificialmente |",
+                    "relevancia": 2.4226
+                  },
+                  {
+                    "codigo": "MIRA-DESC",
+                    "version": "1.4",
+                    "estado": "contexto",
+                    "vigencia": "No declarada como norma",
+                    "desde": "",
+                    "hasta": "",
+                    "fuente": "MIRA_v1.4.md",
+                    "titulo": "Descripción del proyecto MIRA · extractos para CU-1",
+                    "origen": "Descripción",
+                    "sha256": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6",
+                    "fecha_documento": "12 de agosto de 2026",
+                    "fuente_original": "MIRA-descripcion-proyecto .docx",
+                    "sha256_original": "904c977f1be7215352805e9d19cd96affbaa5c6fd1499aff09438b80b623d9de",
+                    "id": "MIRA-DESC@1.4#s02:01",
+                    "seccion": "2.7 La revisión asistida",
+                    "texto": "Los casos que no se resuelven solos llegan a una bandeja de trabajo. Esta parte del producto casi no existe hoy y es, según el cliente piloto, la que decide si la plataforma se usa o no.\n\nEl operador debe ver, en una sola pantalla, la evidencia del caso, el puntaje obtenido, el desglose de las señales y —sobre todo— la razón por la cual el caso fue derivado. Debe poder abrir cada pieza de evidencia, ver qué encontró la plataforma en ella y en qué parte del documento o de la imagen lo encontró.\n\nEl operador resuelve el caso: aprueba, rechaza o solicita antecedentes adicionales. Su decisión y el motivo quedan registrados. Cuando la decisión del operador difiere de lo que la plataforma sugería, esa discrepancia debe quedar marcada de manera que el equipo de modelos pueda revisarla después.\n\nUn caso derivado a revisión debe resolverse dentro del plazo comprometido por el cliente con sus propios asegurados, de modo que la plataforma debe mostrar el tiempo restante y alertar cuando un caso lleve demasiado tiempo detenido.",
+                    "texto_busqueda": "MIRA-DESC Descripción del proyecto MIRA · extractos para CU-1 2.7 La revisión asistida\nLos casos que no se resuelven solos llegan a una bandeja de trabajo. Esta parte del producto casi no existe hoy y es, según el cliente piloto, la que decide si la plataforma se usa o no.\n\nEl operador debe ver, en una sola pantalla, la evidencia del caso, el puntaje obtenido, el desglose de las señales y —sobre todo— la razón por la cual el caso fue derivado. Debe poder abrir cada pieza de evidencia, ver qué encontró la plataforma en ella y en qué parte del documento o de la imagen lo encontró.\n\nEl operador resuelve el caso: aprueba, rechaza o solicita antecedentes adicionales. Su decisión y el motivo quedan registrados. Cuando la decisión del operador difiere de lo que la plataforma sugería, esa discrepancia debe quedar marcada de manera que el equipo de modelos pueda revisarla después.\n\nUn caso derivado a revisión debe resolverse dentro del plazo comprometido por el cliente con sus propios asegurados, de modo que la plataforma debe mostrar el tiempo restante y alertar cuando un caso lleve demasiado tiempo detenido.",
+                    "relevancia": 2.4024
+                  },
+                  {
+                    "codigo": "PRO-ANT",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "PRO-ANT_solicitud_antecedentes.md",
+                    "titulo": "Procedimiento de solicitud de antecedentes",
+                    "origen": "kit docente",
+                    "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+                    "id": "PRO-ANT@1#s01:01",
+                    "seccion": "1. Cuándo solicitar antecedentes",
+                    "texto": "Se solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+                    "texto_busqueda": "PRO-ANT Procedimiento de solicitud de antecedentes 1. Cuándo solicitar antecedentes\nSe solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+                    "relevancia": 2.1521
+                  }
+                ],
+                "complementarios_conflicto": [],
+                "conflictos": [],
+                "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."
+              }
+            }
+          }
+        ],
+        "propuestas": [],
+        "conflictos": []
+      }
+    },
+    {
+      "id": "D05",
+      "pregunta": "¿Cuántos días de conservación de la evidencia exige la política vigente del kit?",
+      "estado_esperado": "abstencion",
+      "citas_esperadas": [],
+      "control_estructural": true,
+      "resultado": {
+        "estado": "abstencion",
+        "respuesta": "La política vigente del kit no contiene una norma sobre días de conservación de la evidencia. Los fragmentos recuperados tratan plazos de resolución de casos [MAN-REV@1#s06:01], definición de señales [CAT-SEN@3#s01:01], cuándo solicitar antecedentes [PRO-ANT@1#s01:01], decisiones disponibles [MAN-REV@1#s03:01], orden de revisión [MAN-REV@1#s02:01] y propósito de la política de decisión [POL-DEC@2#s01:01], pero ninguno establece un plazo de conservación de la evidencia. Falta información normativa sobre conservación; no se puede afirmar un número de días.",
+        "citas": [
+          {
+            "codigo": "MAN-REV",
+            "version": "1",
+            "estado": "vigente",
+            "vigencia": "Desde el 15 de julio de 2026",
+            "desde": "2026-07-15",
+            "hasta": "",
+            "fuente": "MAN-REV_manual_revision_asistida.md",
+            "titulo": "Manual de revisión asistida para operadores",
+            "origen": "kit docente",
+            "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+            "id": "MAN-REV@1#s06:01",
+            "seccion": "6. Plazos",
+            "texto": "Cada organización define el plazo de resolución de sus casos en días hábiles. La bandeja muestra el tiempo restante y marca en rojo los casos a los que les queda menos del 20 % del plazo. Un caso vencido no se cierra solo: la organización define si se cierra, se escala o se mantiene abierto.",
+            "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 6. Plazos\nCada organización define el plazo de resolución de sus casos en días hábiles. La bandeja muestra el tiempo restante y marca en rojo los casos a los que les queda menos del 20 % del plazo. Un caso vencido no se cierra solo: la organización define si se cierra, se escala o se mantiene abierto.",
+            "relevancia": 2.9585
+          },
+          {
+            "codigo": "CAT-SEN",
+            "version": "3",
+            "estado": "vigente",
+            "vigencia": "Desde el 1 de septiembre de 2026",
+            "desde": "2026-09-01",
+            "hasta": "",
+            "fuente": "CAT-SEN_catalogo_senales.md",
+            "titulo": "Catálogo de señales de MIRA",
+            "origen": "kit docente",
+            "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+            "id": "CAT-SEN@3#s01:01",
+            "seccion": "1. Qué es una señal",
+            "texto": "Una señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+            "texto_busqueda": "CAT-SEN Catálogo de señales de MIRA 1. Qué es una señal\nUna señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+            "relevancia": 2.4988
+          },
+          {
+            "codigo": "PRO-ANT",
+            "version": "1",
+            "estado": "vigente",
+            "vigencia": "Desde el 15 de julio de 2026",
+            "desde": "2026-07-15",
+            "hasta": "",
+            "fuente": "PRO-ANT_solicitud_antecedentes.md",
+            "titulo": "Procedimiento de solicitud de antecedentes",
+            "origen": "kit docente",
+            "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+            "id": "PRO-ANT@1#s01:01",
+            "seccion": "1. Cuándo solicitar antecedentes",
+            "texto": "Se solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+            "texto_busqueda": "PRO-ANT Procedimiento de solicitud de antecedentes 1. Cuándo solicitar antecedentes\nSe solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+            "relevancia": 2.2538
+          },
+          {
+            "codigo": "MAN-REV",
+            "version": "1",
+            "estado": "vigente",
+            "vigencia": "Desde el 15 de julio de 2026",
+            "desde": "2026-07-15",
+            "hasta": "",
+            "fuente": "MAN-REV_manual_revision_asistida.md",
+            "titulo": "Manual de revisión asistida para operadores",
+            "origen": "kit docente",
+            "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+            "id": "MAN-REV@1#s03:01",
+            "seccion": "3. Decisiones disponibles",
+            "texto": "| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+            "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 3. Decisiones disponibles\n| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+            "relevancia": 2.2207
+          },
+          {
+            "codigo": "MAN-REV",
+            "version": "1",
+            "estado": "vigente",
+            "vigencia": "Desde el 15 de julio de 2026",
+            "desde": "2026-07-15",
+            "hasta": "",
+            "fuente": "MAN-REV_manual_revision_asistida.md",
+            "titulo": "Manual de revisión asistida para operadores",
+            "origen": "kit docente",
+            "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+            "id": "MAN-REV@1#s02:01",
+            "seccion": "2. Orden recomendado para revisar un caso",
+            "texto": "1. Lea la razón de derivación.\n2. Revise las señales bajo su mínimo y las señales de fraude activas.\n3. Abra cada pieza de evidencia y verifique en qué parte del documento o de la imagen se encontró el hallazgo.\n4. Recién entonces consulte el puntaje total. Ver el puntaje al comienzo tiende a inclinar la decisión antes de revisar la evidencia.",
+            "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 2. Orden recomendado para revisar un caso\n1. Lea la razón de derivación.\n2. Revise las señales bajo su mínimo y las señales de fraude activas.\n3. Abra cada pieza de evidencia y verifique en qué parte del documento o de la imagen se encontró el hallazgo.\n4. Recién entonces consulte el puntaje total. Ver el puntaje al comienzo tiende a inclinar la decisión antes de revisar la evidencia.",
+            "relevancia": 2.1025
+          },
+          {
+            "codigo": "POL-DEC",
+            "version": "2",
+            "estado": "vigente",
+            "vigencia": "Desde el 1 de septiembre de 2026",
+            "desde": "2026-09-01",
+            "hasta": "",
+            "fuente": "POL-DEC_v2_vigente.md",
+            "titulo": "Política de decisión y umbrales",
+            "origen": "kit docente",
+            "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+            "id": "POL-DEC@2#s01:01",
+            "seccion": "1. Propósito",
+            "texto": "Esta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+            "texto_busqueda": "POL-DEC Política de decisión y umbrales 1. Propósito\nEsta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+            "relevancia": 1.8385
+          }
+        ],
+        "trazas": [
+          {
+            "id": "TR-28918b14c5a64f0baa604be2429b479f",
+            "fecha": "2026-11-07T21:05:31+00:00",
+            "usuario": "U-01",
+            "herramienta": "buscar_reglas",
+            "argumentos": {
+              "pregunta": "¿Cuántos días de conservación de la evidencia exige la política vigente del kit?",
+              "k": 6,
+              "historico": false
+            },
+            "ok": true,
+            "resultado": {
+              "datos": {
+                "fragmentos": [
+                  {
+                    "codigo": "MAN-REV",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "MAN-REV_manual_revision_asistida.md",
+                    "titulo": "Manual de revisión asistida para operadores",
+                    "origen": "kit docente",
+                    "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+                    "id": "MAN-REV@1#s06:01",
+                    "seccion": "6. Plazos",
+                    "texto": "Cada organización define el plazo de resolución de sus casos en días hábiles. La bandeja muestra el tiempo restante y marca en rojo los casos a los que les queda menos del 20 % del plazo. Un caso vencido no se cierra solo: la organización define si se cierra, se escala o se mantiene abierto.",
+                    "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 6. Plazos\nCada organización define el plazo de resolución de sus casos en días hábiles. La bandeja muestra el tiempo restante y marca en rojo los casos a los que les queda menos del 20 % del plazo. Un caso vencido no se cierra solo: la organización define si se cierra, se escala o se mantiene abierto.",
+                    "relevancia": 2.9585
+                  },
+                  {
+                    "codigo": "CAT-SEN",
+                    "version": "3",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "CAT-SEN_catalogo_senales.md",
+                    "titulo": "Catálogo de señales de MIRA",
+                    "origen": "kit docente",
+                    "sha256": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+                    "id": "CAT-SEN@3#s01:01",
+                    "seccion": "1. Qué es una señal",
+                    "texto": "Una señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+                    "texto_busqueda": "CAT-SEN Catálogo de señales de MIRA 1. Qué es una señal\nUna señal es el resultado individual que produce un módulo de análisis sobre una pieza de evidencia o sobre el conjunto del caso. Las señales de valor numérico van de 0 a 100, donde un valor mayor indica más confianza. Las señales de fraude son indicadores: están activas o inactivas.\n\nLos mínimos por señal no se definen en este catálogo sino en la política de decisión y umbrales (POL-DEC).",
+                    "relevancia": 2.4988
+                  },
+                  {
+                    "codigo": "PRO-ANT",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "PRO-ANT_solicitud_antecedentes.md",
+                    "titulo": "Procedimiento de solicitud de antecedentes",
+                    "origen": "kit docente",
+                    "sha256": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+                    "id": "PRO-ANT@1#s01:01",
+                    "seccion": "1. Cuándo solicitar antecedentes",
+                    "texto": "Se solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+                    "texto_busqueda": "PRO-ANT Procedimiento de solicitud de antecedentes 1. Cuándo solicitar antecedentes\nSe solicitan antecedentes cuando la evidencia del caso es insuficiente o no es utilizable para decidir: un documento ilegible, una página faltante, una boleta que no corresponde al caso o una captura biométrica fallida. La solicitud no es un rechazo encubierto: si la evidencia ya permite decidir, se decide.",
+                    "relevancia": 2.2538
+                  },
+                  {
+                    "codigo": "MAN-REV",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "MAN-REV_manual_revision_asistida.md",
+                    "titulo": "Manual de revisión asistida para operadores",
+                    "origen": "kit docente",
+                    "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+                    "id": "MAN-REV@1#s03:01",
+                    "seccion": "3. Decisiones disponibles",
+                    "texto": "| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+                    "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 3. Decisiones disponibles\n| Decisión | Cuándo usarla | Requisito |\n|---|---|---|\n| Aprobar | La evidencia respalda el caso y las alertas quedaron explicadas | Motivo breve |\n| Rechazar | La evidencia no respalda el caso o hay indicios fundados de fraude | Motivo obligatorio y comprensible para una persona que no participó del análisis |\n| Solicitar antecedentes | Falta evidencia o la recibida no es utilizable | Ver procedimiento PRO-ANT |\n\nEl asistente de la bandeja puede preparar una solicitud de antecedentes, pero nunca aprueba ni rechaza un caso. Esas decisiones las toma el operador.",
+                    "relevancia": 2.2207
+                  },
+                  {
+                    "codigo": "MAN-REV",
+                    "version": "1",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 15 de julio de 2026",
+                    "desde": "2026-07-15",
+                    "hasta": "",
+                    "fuente": "MAN-REV_manual_revision_asistida.md",
+                    "titulo": "Manual de revisión asistida para operadores",
+                    "origen": "kit docente",
+                    "sha256": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+                    "id": "MAN-REV@1#s02:01",
+                    "seccion": "2. Orden recomendado para revisar un caso",
+                    "texto": "1. Lea la razón de derivación.\n2. Revise las señales bajo su mínimo y las señales de fraude activas.\n3. Abra cada pieza de evidencia y verifique en qué parte del documento o de la imagen se encontró el hallazgo.\n4. Recién entonces consulte el puntaje total. Ver el puntaje al comienzo tiende a inclinar la decisión antes de revisar la evidencia.",
+                    "texto_busqueda": "MAN-REV Manual de revisión asistida para operadores 2. Orden recomendado para revisar un caso\n1. Lea la razón de derivación.\n2. Revise las señales bajo su mínimo y las señales de fraude activas.\n3. Abra cada pieza de evidencia y verifique en qué parte del documento o de la imagen se encontró el hallazgo.\n4. Recién entonces consulte el puntaje total. Ver el puntaje al comienzo tiende a inclinar la decisión antes de revisar la evidencia.",
+                    "relevancia": 2.1025
+                  },
+                  {
+                    "codigo": "POL-DEC",
+                    "version": "2",
+                    "estado": "vigente",
+                    "vigencia": "Desde el 1 de septiembre de 2026",
+                    "desde": "2026-09-01",
+                    "hasta": "",
+                    "fuente": "POL-DEC_v2_vigente.md",
+                    "titulo": "Política de decisión y umbrales",
+                    "origen": "kit docente",
+                    "sha256": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+                    "id": "POL-DEC@2#s01:01",
+                    "seccion": "1. Propósito",
+                    "texto": "Esta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+                    "texto_busqueda": "POL-DEC Política de decisión y umbrales 1. Propósito\nEsta política define cómo MIRA traduce el puntaje de confianza de un caso en una decisión, qué condiciones prevalecen sobre el puntaje y quién puede modificar los valores que gobiernan esa traducción. Aplica a todas las organizaciones que operan en la plataforma.",
+                    "relevancia": 1.8385
+                  }
+                ],
+                "complementarios_conflicto": [],
+                "conflictos": [],
+                "advertencia": "La relevancia léxica no demuestra que una pregunta tenga respuesta. Verificar evidencia antes de afirmar."
+              }
+            }
+          }
+        ],
+        "propuestas": [],
+        "conflictos": []
+      }
+    }
+  ]
+}

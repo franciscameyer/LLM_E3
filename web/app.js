@@ -37,7 +37,7 @@ function showSources(items = []) {
 function openSource(source) {
   $('dialog-kicker').textContent = `${source.codigo} · VERSIÓN ${source.version} · ${source.estado.toUpperCase()}`;
   $('dialog-title').textContent = source.seccion;
-  $('dialog-meta').textContent = `${source.fuente} · ${source.vigencia} · ${source.id}`;
+  $('dialog-meta').textContent = `${source.origen} · ${source.fuente} · ${source.vigencia} · ${source.id}`;
   $('dialog-body').textContent = source.texto; $('source-dialog').showModal();
 }
 function message(role, text, result) {
@@ -47,7 +47,12 @@ function message(role, text, result) {
   wrap.append(label, node('div', text, 'message-text'));
   if (result?.citas?.length) {
     const links = node('div', undefined, 'citation-links');
-    for (const source of result.citas) { const b = node('button', `${source.codigo} §${source.seccion.split('.')[0]} · v${source.version}`, 'citation-link'); b.addEventListener('click', () => openSource(source)); links.append(b); }
+    for (const source of result.citas) {
+      const section = source.seccion.match(/^\d+(?:\.\d+)*/)?.[0] ?? source.seccion.split('.')[0];
+      const button = node('button', `${source.codigo} §${section} · v${source.version}`, 'citation-link');
+      button.addEventListener('click', () => openSource(source));
+      links.append(button);
+    }
     wrap.append(links);
   }
   $('conversation').append(wrap); wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -157,6 +162,6 @@ $('logout').addEventListener('click', async () => { try { await post('/api/logou
 $('sources-tab').addEventListener('click', () => { $('source-list').hidden = false; $('trace-list').hidden = true; $('sources-tab').classList.add('active'); $('traces-tab').classList.remove('active'); $('sources-tab').setAttribute('aria-selected', 'true'); $('traces-tab').setAttribute('aria-selected', 'false'); });
 $('traces-tab').addEventListener('click', () => { $('source-list').hidden = true; $('trace-list').hidden = false; $('traces-tab').classList.add('active'); $('sources-tab').classList.remove('active'); $('sources-tab').setAttribute('aria-selected', 'false'); $('traces-tab').setAttribute('aria-selected', 'true'); });
 $('all-traces').addEventListener('click', async () => { try { const result = await api('/api/trazas'); if (!result.ok) throw new Error(result.error); state.traces = result.datos.reverse(); renderTraces(); $('traces-tab').click(); } catch (error) { $('app-error').textContent = error.message; } });
-$('corpus-button').addEventListener('click', async () => { try { const docs = await api('/api/corpus'); $('dialog-kicker').textContent = 'INVENTARIO DEL CORPUS'; $('dialog-title').textContent = 'Documentos del CU-1'; $('dialog-meta').textContent = 'Incluye versiones derogadas para comparación histórica; la recuperación predeterminada usa solo vigentes.'; $('dialog-body').textContent = docs.map((d) => `${d.codigo} · v${d.version} · ${d.estado}\n${d.titulo}\n${d.vigencia}\n${d.tokens_aproximados} tokens aprox. · ${d.fuente}`).join('\n\n'); $('source-dialog').showModal(); } catch (error) { $('app-error').textContent = error.message; } });
+$('corpus-button').addEventListener('click', async () => { try { const docs = await api('/api/corpus'); $('dialog-kicker').textContent = 'INVENTARIO DEL CORPUS'; $('dialog-title').textContent = 'Documentos del CU-1'; $('dialog-meta').textContent = 'Las consultas operativas usan fuentes vigentes. Pregunta por MIRA v1.4 para consultar la descripción del proyecto.'; $('dialog-body').textContent = docs.map((d) => `${d.codigo} · v${d.version} · ${d.estado}\n${d.titulo}\n${d.vigencia}\n${d.tokens_aproximados} tokens aprox. · ${d.origen} · ${d.fuente}`).join('\n\n'); $('source-dialog').showModal(); } catch (error) { $('app-error').textContent = error.message; } });
 $('proposal-form').addEventListener('submit', async (event) => { event.preventDefault(); event.submitter.disabled = true; $('proposal-error').textContent = ''; try { const result = await post('/api/propuestas', { caso_id: $('proposal-case').value, documentos: $('documents').value, motivo: $('reason').value }); addTrace(result.trazas); if (!result.ok) throw new Error(result.error); renderProposal(result.datos); $('proposal-dialog').close(); $('documents').value = ''; $('reason').value = ''; } catch (error) { $('proposal-error').textContent = error.message; } finally { event.submitter.disabled = false; } });
 (async () => { try { const list = await api('/api/usuarios'); for (const user of list) { const option = node('option', `${user.usuario_id} · ${user.nombre} · ${user.org_id}`); option.value = user.usuario_id; $('usuario').append(option); } try { await enter(await api('/api/session')); } catch {} } catch (error) { $('login-error').textContent = error.message; } })();

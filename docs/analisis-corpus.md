@@ -1,6 +1,7 @@
 # Corpus y discrepancias del CU-1
 
-Las seis fuentes son ficticias y provienen del kit docente. El inventario
+El corpus contiene seis fuentes ficticias del kit docente y un extracto de la
+Descripción del proyecto MIRA v1.4. El inventario
 automático conserva archivo, código, título, versión, estado, vigencia, huella
 SHA-256 y tamaño aproximado en tokens (palabras / 0,75; no es el tokenizador de Bonsai).
 
@@ -12,6 +13,7 @@ SHA-256 y tamaño aproximado en tokens (palabras / 0,75; no es el tokenizador de
 | FAQ-OPE | 2 | Vigente | 2026-10-01 |
 | MAN-REV | 1 | Vigente | 2026-07-15 |
 | PRO-ANT | 1 | Vigente | 2026-07-15 |
+| MIRA-DESC | 1.4 | Contexto de levantamiento | Documento del 2026-08-12, sin vigencia normativa declarada |
 
 ## Conflicto documental vigente
 
@@ -47,12 +49,28 @@ C-016 ya tiene dos solicitudes: U-01 no puede registrar la tercera; un superviso
 sí puede, después de confirmar. C-020 incluye un documento en portugués; no se
 inventa una política general de idiomas a partir de ese dato.
 
-## Material no disponible
+## Descripción MIRA v1.4
 
-No se suministraron en esta carpeta la Descripción de MIRA v1.4, sus entrevistas,
-las entregas 1 y 2 ni su retroalimentación. No se fabricaron esos documentos.
-El equipo debe contrastar esos antecedentes cuando estén disponibles. El corpus
-obligatorio es el del kit; agregar documentos pertinentes es opcional. Si se agregan,
-deben declararse en el inventario y no resolver silenciosamente contradicciones.
+Los extractos en `corpus/descripcion/MIRA_v1.4.md` reproducen §§2.6, 2.7, 2.11 y
+2.13. El inventario registra el origen `Descripción`, el documento original,
+su fecha y SHA-256. La recuperación de contexto se activa al pedir explícitamente
+la Descripción, el levantamiento o v1.4. Las políticas del kit mantienen sus IDs
+y su filtro de vigencia.
+
+- **Decisión.** §2.6 menciona aprobación sobre 85 y también a partir de 80. MAN-REV
+  v1 §1 usa 80 y POL-DEC v2 §2 usa 85 como referencia configurable y condicionada.
+  La Descripción admite escalar o rechazar bajo 60. POL-DEC v2 §2 indica escalamiento
+  y reserva el rechazo a una persona. Se exige citar las tres fuentes al contrastar.
+- **Configuración.** §§2.6 y 2.13 atribuyen la configuración al diseñador. POL-DEC
+  v2 §5 exige dos supervisores para aprobar el cambio. Se muestran ambos textos
+  y se distingue el procedimiento del dato configurado de una organización.
+- **Revisión y auditoría.** §§2.7 y 2.11 describen necesidades del producto, como
+  descargar el rastro y conservar evidencia durante 90 días. Las respuestas
+  atribuyen esas afirmaciones al levantamiento. El alcance implementado se verifica
+  mediante la especificación de CU-1 y las trazas de MCP.
+
+El capítulo 7 de entrevistas queda como antecedente para el equipo. Los artefactos
+y la retroalimentación de las entregas 1 y 2 quedan por contrastar.
+
 La pauta también menciona D1–D8 y v3.0 sin definirlos en las páginas adjuntas;
 el guion de demostración propuesto no se presenta como una transcripción de esos pasos.

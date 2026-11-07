@@ -42,8 +42,9 @@ def execute(name, arguments, fn):
 def buscar_reglas(pregunta: str, k: int = 6, historico: bool = False) -> dict:
     """Recupera fragmentos del corpus CU-1 con fuente, sección, versión y conflictos.
 
-    Por defecto solo documentos vigentes. historico=True sirve para comparar
-    versiones, nunca para tratar una norma derogada como vigente. La búsqueda
+    Las consultas operativas usan documentos vigentes. Mencionar la Descripción
+    de MIRA o v1.4 recupera también contexto de levantamiento. historico=True
+    permite comparar normas derogadas con las vigentes. La búsqueda
     no garantiza que la pregunta tenga respuesta. No contiene datos vivos de casos.
     """
     return execute("buscar_reglas", {"pregunta": pregunta, "k": k, "historico": historico},

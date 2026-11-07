@@ -187,6 +187,7 @@ async def answer(uid, sid, question):
                     # Compactar el historial evita repetir textos y auditorías de herramientas.
                     # Las llamadas originales permanecen completas en las trazas persistidas.
                     pinned = [i for c in conflicts if c.get("obligatorio", True) for i in c["fragmentos"]]
+                    pinned += [i for i in recent if fragments[i]["estado"] == "contexto"][:1]
                     if "POL-DEC@2#s05:01" in fragments:
                         pinned.append("POL-DEC@2#s05:01")
                     ordered = list(dict.fromkeys(pinned + recent))[:8]
@@ -201,6 +202,12 @@ async def answer(uid, sid, question):
                     known_case = any(o["herramienta"] == "consultar_caso" and o["resultado"].get("ok") for o in observations)
                     compact = [o for o in observations if not (known_case and o["herramienta"] == "listar_senales")]
                     instructions = SYSTEM
+                    if any(c["estado"] == "contexto" for c in selected):
+                        instructions += ("\nMIRA v1.4 es una descripción de levantamiento, de origen Descripción. "
+                            "Atribuye sus afirmaciones al documento y distingue los requisitos de la plataforma "
+                            "de lo implementado en CU-1. Si hay un conflicto obligatorio, explica la discrepancia "
+                            "con estado conflicto y cita todos los fragmentos indicados. Describe 80, 85, "
+                            "escalamiento y permisos con precisión cuando sean pertinentes.")
                     if json_mode:
                         instructions += ('\nPara solicitar una herramienta devuelve {"tool":"nombre","arguments":{...}}. '
                             'Para terminar, devuelve el JSON final. Herramientas: ' + json.dumps(tools, ensure_ascii=False))
@@ -308,11 +315,15 @@ async def answer(uid, sid, question):
                 mentioned = set(citations)
             if state != "abstencion" and not mentioned.issubset(set(citations)):
                 raise ValueError("Faltan citas en el texto para asociar las afirmaciones con las fuentes.")
+            cited = set(citations)
+            required = {i for conflict in conflicts
+                if conflict.get("obligatorio", True) or cited.intersection(conflict["fragmentos"])
+                for i in conflict["fragmentos"]}
             conflict_pair = {"MAN-REV@1#s01:01", "POL-DEC@2#s02:01"}
-            if (any(c.get("obligatorio", True) for c in conflicts) or set(citations) & conflict_pair) and state != "abstencion":
-                required = conflict_pair
-                if state != "conflicto" or not required.issubset(set(citations)):
-                    raise ValueError("El modelo omitió un conflicto entre fuentes vigentes. Se retuvo su respuesta; revisa el manual y la política.")
+            if cited & conflict_pair:
+                required.update(conflict_pair)
+            if required and state != "abstencion" and (state != "conflicto" or not required.issubset(cited)):
+                raise ValueError("El modelo omitió un conflicto documental o una fuente del contraste. Se retuvo su respuesta.")
             if re.search(r"\b(apruebo|he aprobado|he rechazado|queda aprobado|debe aprobarse de inmediato|se ha registrado la solicitud)\b", text, re.I):
                 raise ValueError("Se retuvo una respuesta que atribuía al asistente una decisión o un efecto no autorizado.")
             if asserts_unverified_threshold(text, data_warnings):

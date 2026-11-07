@@ -22,7 +22,7 @@ Cubren integridad del Excel importado, metadatos, vigencia, conflictos, roles,
 organizaciones, instrucciones en evidencia, SQL parametrizado, firma/caducidad,
 confirmaciones concurrentes, idempotencia, MCP externo, CSRF y errores del modelo.
 
-La versión actual pasa **40 pruebas**. Se conservaron dos ejecuciones de las
+La versión actual pasa **44 pruebas**. Se conservaron dos ejecuciones de las
 20 preguntas en `evaluation/ejecucion_01/` y `evaluation/ejecucion_02/`.
 La segunda registra 20 respuestas sin error de servicio o de contrato, abstención
 en 4/4 preguntas sin respuesta y 0/16 abstenciones en preguntas con respuesta.
@@ -108,8 +108,8 @@ No se relajó el control de citas para aceptar la respuesta retenida.
 3. Equipo humano: revisar una muestra independiente y medir concordancia con el
    evaluador automático; continuar revisión si hay desacuerdos. Planilla y procedimiento
    preparados. Repetir evaluación si cambia corpus, modelo o comportamiento.
-4. Equipo: contrastar MIRA v1.4/entrevistas y retroalimentación cuando aporte esos
-   antecedentes; no es obligatorio añadirlos al corpus del kit.
+4. Equipo: contrastar entrevistas y retroalimentación E1/E2. Los cuatro extractos
+   pertinentes de la Descripción MIRA v1.4 ya se incorporaron.
 5. Equipo: ensayo visual en el hardware definitivo, cliente externo y defensa individual.
 6. Informe/PPT: fuera del alcance solicitado al agente; siguen siendo entregables
    del curso y no se han generado.
@@ -142,6 +142,20 @@ Responsables, evidencia requerida y límites en `docs/validaciones-pendientes.md
   la primera evaluación del mismo agente es 8/8 para cantidad de citas, 8/8 para
   fidelidad y 3/3 para conflicto/vigencia. Se identifica como revisión del agente,
   no como sustitución de la muestra humana independiente ni aprobación del cliente.
+
+## Ampliación del corpus con MIRA v1.4
+
+El índice ahora reúne los seis documentos del kit y cuatro extractos de la
+Descripción v1.4. Los extractos tienen origen, fecha y huella del documento
+original. Al pedir un contraste de decisión o configuración, el asistente
+muestra las discrepancias y cita la Descripción junto a las políticas pertinentes.
+
+La ejecución 06 recuperó 18/18 fragmentos esperados a k=6 y completó las 20
+preguntas. La revisión de Codex consideró respaldadas 30/30 citas y fieles 20/20
+respuestas. También pasaron cinco consultas dirigidas, incluida la abstención
+sobre conservación cuando se pregunta solo por la política del kit. La evidencia
+está en `evaluation/descripcion_v14/resumen.json`. La validación del cliente y el
+contraste humano independiente siguen pendientes.
 
 ## Guion propuesto para la demo
 
