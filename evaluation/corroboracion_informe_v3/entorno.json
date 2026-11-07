@@ -1,0 +1,40 @@
+{
+  "fecha": "2026-11-07T19:46:47.904305-03:00",
+  "codigo_v3_0": "c555046cbc494f15f0880716f166dfcf327ffffd",
+  "codigo_funcional": "6e86c44",
+  "python": "3.12.14",
+  "plataforma": "Windows-11-10.0.26200-SP0",
+  "gpu": "NVIDIA GeForce RTX 5060 Ti, 8151 MiB",
+  "archivos_modelo": {
+    "llama-server.exe": {
+      "sha256": "d5897802f2bc893214fa86abf9b7276bf409f5f661751c4ef0e9981443a005f6",
+      "bytes": 10752
+    },
+    "Ternary-Bonsai-2-27B-PQ2_0.gguf": {
+      "sha256": "3907dc1658db1f78a9826bf8d5bcb8dc65db0d466388937af57f2294fae62ec1",
+      "bytes": 7206168928
+    }
+  },
+  "configuracion_servidor": {
+    "alias": "bonsai-27b",
+    "host": "127.0.0.1",
+    "port": 18081,
+    "ctx_size": 8192,
+    "n_gpu_layers": 55,
+    "parallel": 1,
+    "cache_type_k": "q4_0",
+    "cache_type_v": "q4_0",
+    "flash_attn": "on",
+    "batch_size": 512,
+    "ubatch_size": 128,
+    "jinja": true,
+    "reasoning": "off"
+  },
+  "parametros_generacion": {
+    "temperature": 0.1,
+    "max_tokens": 1000,
+    "enable_thinking": false,
+    "modo_herramientas": "native"
+  },
+  "observacion": "Intento inicial con todas las capas en GPU interrumpido por degradación de rendimiento. Medición final con 55 capas GPU y una sola petición por turno."
+}

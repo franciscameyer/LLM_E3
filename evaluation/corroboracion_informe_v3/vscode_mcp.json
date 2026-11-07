@@ -1,0 +1,12 @@
+{
+  "fecha": "2026-11-07",
+  "cliente": "Visual Studio Code",
+  "servidor": "mira-cu1-operador",
+  "configuracion": ".vscode/mcp.json",
+  "transporte": "stdio",
+  "estado": "Running",
+  "herramientas_descubiertas": 9,
+  "recurso_leido": "mira://corpus/inventario",
+  "observacion": "Browse Resources abrió el inventario JSON en modo de solo lectura y mostró CAT-SEN v3 vigente.",
+  "alcance": "Arranque, descubrimiento de herramientas y lectura del recurso desde el cliente gráfico. Las llamadas de negocio se prueban por separado con el cliente STDIO programático."
+}

@@ -1,0 +1,221 @@
+{
+  "tipo": "evaluacion_semantica_por_agente",
+  "revisor": "Codex",
+  "fecha": "2026-11-07",
+  "ejecucion": "evaluation/corroboracion_informe_v3/golden/resultados_generacion.json",
+  "ejecucion_sha256": "62357f6614266b06ad90519e178ac7d37f68179de6c450d1b602a9a6f8440064",
+  "metodo": "Lectura de las veinte respuestas y sus fragmentos. Una cita válida se cuenta una vez por respuesta. En C01 el manejo del conflicto y la fidelidad se juzgan por separado.",
+  "preguntas": [
+    {
+      "id": "R01",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true,
+        "POL-DEC@2#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Presenta el conflicto 80/85, las condiciones de la política y la aprobación de dos supervisores con sus fuentes."
+    },
+    {
+      "id": "R02",
+      "citas": {
+        "POL-DEC@2#s03:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "El mínimo DOC_AUT=70 coincide con la tabla de POL-DEC v2 §3."
+    },
+    {
+      "id": "R03",
+      "citas": {
+        "POL-DEC@2#s03:01": true,
+        "CAT-SEN@3#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "El mínimo BIO_ROSTRO=75 y el tratamiento de un valor bajo coinciden con la política y el catálogo."
+    },
+    {
+      "id": "R04",
+      "citas": {
+        "CAT-SEN@3#s06:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "La definición de FRA_MEMORIA coincide con CAT-SEN §6."
+    },
+    {
+      "id": "R05",
+      "citas": {
+        "CAT-SEN@3#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Definición de DOC_ARIT y verificación de totales respaldadas por CAT-SEN §2."
+    },
+    {
+      "id": "R06",
+      "citas": {
+        "CAT-SEN@3#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "CAT-SEN §2 pide reenvío para DOC_LEG bajo 50."
+    },
+    {
+      "id": "R07",
+      "citas": {
+        "FAQ-OPE@2#s05:01": true,
+        "MAN-REV@1#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "El original se conserva según MAN-REV y el recálculo se atribuye al FAQ."
+    },
+    {
+      "id": "R08",
+      "citas": {
+        "PRO-ANT@1#s02:01": true,
+        "PRO-ANT@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Caso, documentos y motivo en PRO-ANT §2, roles en §4."
+    },
+    {
+      "id": "R09",
+      "citas": {
+        "PRO-ANT@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "PRO-ANT §4 exige supervisor para la tercera solicitud."
+    },
+    {
+      "id": "R10",
+      "citas": {
+        "PRO-ANT@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "PRO-ANT §4 respalda los roles y la restricción para casos aprobados automáticamente."
+    },
+    {
+      "id": "R11",
+      "citas": {
+        "POL-DEC@2#s06:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "POL-DEC v2 §6 exige revisión con señal faltante e impide tratarla como favorable."
+    },
+    {
+      "id": "R12",
+      "citas": {
+        "MAN-REV@1#s06:01": true,
+        "PRO-ANT@1#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "MAN-REV respalda plazo y vencimiento de la bandeja. PRO-ANT respalda el plazo de antecedentes."
+    },
+    {
+      "id": "A01",
+      "citas": {
+        "POL-DEC@2#s07:01": true,
+        "CAT-SEN@3#s01:01": true
+      },
+      "fiel": false,
+      "comportamiento_correcto": null,
+      "fallo": "generacion",
+      "justificacion": "Se abstiene correctamente y las citas respaldan los componentes y tipos de señal. Sin respaldo sugiere consultar POL-DEC v2 §5 para obtener pesos. §5 regula cambios de umbral y no contiene la fórmula."
+    },
+    {
+      "id": "A02",
+      "citas": {
+        "MAN-REV@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Se abstiene y describe correctamente el alcance del fragmento consultado."
+    },
+    {
+      "id": "A03",
+      "citas": {
+        "MAN-REV@1#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Se abstiene porque falta la cobertura. Describe correctamente el fragmento sobre datos mal leídos."
+    },
+    {
+      "id": "A04",
+      "citas": {},
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Se abstiene sin credenciales ni canales de recuperación inventados."
+    },
+    {
+      "id": "C01",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true
+      },
+      "fiel": false,
+      "comportamiento_correcto": true,
+      "fallo": "generacion",
+      "justificacion": "Expone las dos reglas vigentes sin elegir precedencia. Las citas respaldan ese contraste, pero la última parte ubica la configuración efectiva en POL-DEC v2 §5. Esa sección define el procedimiento y el dato vigente se consulta mediante MCP."
+    },
+    {
+      "id": "C02",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true,
+        "FAQ-OPE@2#s04:01": true,
+        "POL-DEC@2#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Expone ambas referencias y separa las reglas del valor efectivo de la organización, que pide consultar."
+    },
+    {
+      "id": "V01",
+      "citas": {
+        "POL-DEC@2#s04:01": true,
+        "CAT-SEN@3#s06:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Usa POL-DEC v2 §4 para descartar el descuento y derivar por fraude activo. La versión está en la cita y el catálogo identifica señales."
+    },
+    {
+      "id": "V02",
+      "citas": {
+        "POL-DEC@2#s05:01": true,
+        "FAQ-OPE@2#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Usa POL-DEC v2 §5 y el FAQ para explicar el procedimiento de cambio y el rol de supervisión."
+    }
+  ]
+}

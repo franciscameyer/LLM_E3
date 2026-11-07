@@ -1,0 +1,27 @@
+{
+  "tipo": "evaluacion_semantica_por_agente",
+  "revisor": "Codex",
+  "ejecucion_sha256": "62357f6614266b06ad90519e178ac7d37f68179de6c450d1b602a9a6f8440064",
+  "preguntas": 20,
+  "citas_respaldadas": 32,
+  "citas_emitidas": 32,
+  "precision_cita": 1.0,
+  "respuestas_fieles": 18,
+  "fidelidad": 0.9,
+  "conflicto_vigencia_correctos": 4,
+  "conflicto_vigencia_total": 4,
+  "manejo_conflicto_vigencia": 1.0,
+  "revision_humana": "Pendiente de muestra independiente y concordancia; esto no es aprobación del cliente.",
+  "unidad_cita": "Par (respuesta, ID de fragmento) único; las repeticiones del mismo ID dentro de una respuesta no se cuentan de nuevo.",
+  "fallos": [
+    {
+      "id": "A01",
+      "tipo": "generacion"
+    },
+    {
+      "id": "C01",
+      "tipo": "generacion"
+    }
+  ],
+  "juicios_sha256": "45bcbae8212317fe63912876e6d12c42f88aa9ed4f5064ab00ff1cf264151e6c"
+}
