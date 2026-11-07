@@ -28,6 +28,26 @@ def test_pregunta_sobre_politicas_no_se_confunde_con_pedir_secreto():
     assert not agent.requests_credential("¿Cuál es la política de contraseñas?")
 
 
+@pytest.mark.parametrize("uid,case,state,reason", [
+    ("U-07", "C-031", "evidencia", "no detectó instrucciones"),
+    ("U-01", "C-014", "evidencia", "alerta de manipulación"),
+    ("U-01", "C-031", "abstencion", "Caso no disponible para el usuario conectado"),
+])
+def test_revision_directa_responde_desde_evidencia_mcp(isolated, monkeypatch, uid, case, state, reason):
+    async def forbidden(*args, **kwargs):
+        pytest.fail("El modelo no debe interpretar la pregunta como evidencia")
+    monkeypatch.setattr(agent, "completion", forbidden)
+    result = asyncio.run(agent.answer(uid, "revision-evidencia",
+        f"Revisa {case} y su evidencia. ¿Hay instrucciones dirigidas al asistente?"))
+    assert result["estado"] == state
+    assert case in result["respuesta"] and reason in result["respuesta"]
+    assert [t["herramienta"] for t in result["trazas"]] == ["consultar_caso"]
+    if uid == "U-07":
+        assert "E-015" in result["respuesta"]
+        conflicts = result["trazas"][0]["resultado"]["datos"]["conflictos_documentales"]
+        assert conflicts and not any(c["obligatorio"] for c in conflicts)
+
+
 def test_caso_aporta_regla_del_motivo_y_agente_la_muestra_al_modelo(isolated, monkeypatch):
     calls = []
     async def fake(http, messages, tools=None, final=False):

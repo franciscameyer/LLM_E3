@@ -87,6 +87,8 @@ def test_contraste_retiene_respuesta_que_omite_politica_vigente(isolated, monkey
         "¿Quién configura los umbrales según MIRA v1.4 y qué exige POL-DEC v2?"))
     assert result["estado"] == "error"
     assert "conflicto documental" in result["respuesta"]
+    assert "POL-DEC v2 (5. Configuración por organización)" in result["respuesta"]
+    assert {c["id"] for c in result["citas"]} == {"MIRA-DESC@1.4#s04:01", "POL-DEC@2#s05:01"}
 
 
 def test_conflicto_preserva_ambas_fuentes(isolated):

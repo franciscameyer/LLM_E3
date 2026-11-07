@@ -74,7 +74,11 @@ def consultar_caso(caso_id: str) -> dict:
         related = rules.get("fragmentos", []) + rules.get("complementarios_conflicto", [])
         related += [rag.fragmento(w["regla"]) for w in data["discrepancias"]]
         data["reglas_relevantes"] = list({c["id"]: c for c in related if c}.values())
-        data["conflictos_documentales"] = rules.get("conflictos", [])
+        # El motivo aporta contexto. La pregunta del operador determina qué
+        # contrastes son obligatorios.
+        data["conflictos_documentales"] = [
+            {**conflict, "obligatorio": False} for conflict in rules.get("conflictos", [])
+        ]
         return data
     return execute("consultar_caso", {"caso_id": caso_id}, read)
 

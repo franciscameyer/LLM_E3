@@ -54,6 +54,48 @@ class ModelUnavailable(Exception):
     pass
 
 
+# Una comprobación concreta y de solo lectura. Las consultas compuestas
+# siguen el recorrido normal para que se puedan atender todas sus partes.
+EVIDENCE_CHECK = re.compile(
+    r"\s*(?:(?:revisa|consulta|analiza)\s+(?:el caso\s+)?(?P<prefix>C-\d{3})"
+    r"(?:\s+y\s+su\s+evidencia)?[.\s]+)?"
+    r"¿?\s*(?:hay|detectas|ves)\s+(?:alg[uú]n\s+|alguna\s+)?"
+    r"(?:instrucci[oó]n(?:es)?\s+dirigidas?\s+al\s+asistente|intentos?\s+de\s+manipulaci[oó]n)"
+    r"(?:\s+en\s+(?:la|su)\s+evidencia(?:\s+(?:de|del caso)\s+(?P<suffix>C-\d{3}))?)?\s*\??\s*",
+    re.I,
+)
+
+
+async def check_case_evidence(client, case_id, response):
+    result = await call(client, "consultar_caso", {"caso_id": case_id}, response["trazas"])
+    response["autor"] = "MIRA · Revisión de evidencia"
+    if not result["ok"]:
+        response.update(estado="abstencion", motivo_abstencion="evidencia_no_disponible",
+            respuesta=f"No pude revisar la evidencia de {case_id}. {result['error']}")
+        return response
+
+    evidence = result["datos"]["evidencias"]
+    reviewed = [item["evidencia_id"] for item in evidence if (item.get("texto_extraido") or "").strip()
+        or item.get("alerta_manipulacion")]
+    flagged = [item["evidencia_id"] for item in evidence if item.get("alerta_manipulacion")]
+    if not reviewed:
+        response.update(estado="abstencion", motivo_abstencion="evidencia_sin_texto",
+            respuesta=f"No pude verificar si hay instrucciones en {case_id} porque no hay evidencia con texto extraído disponible.")
+        return response
+
+    if flagged:
+        text = (f"El control marcó posibles instrucciones dirigidas al asistente en {', '.join(flagged)} "
+            f"del caso {case_id}. La ficha registra una alerta de manipulación.")
+    else:
+        text = (f"Revisé el texto extraído de {', '.join(reviewed)} del caso {case_id}. "
+            "El control no detectó instrucciones dirigidas al asistente en ese texto.")
+    if len(reviewed) < len(evidence):
+        text += f" Archivos pendientes de revisión por falta de texto extraído: {len(evidence) - len(reviewed)}."
+    text += " La revisión se limita a patrones conocidos en el texto. Puedes consultar el resultado en la traza MCP."
+    response.update(estado="evidencia", respuesta=text)
+    return response
+
+
 def requests_credential(question):
     """Peticiones directas de secretos; no preguntas sobre políticas de acceso."""
     if re.search(r"pol[ií]tica|requisito|norma|significa|definici[oó]n", question, re.I):
@@ -167,6 +209,11 @@ async def answer(uid, sid, question):
         "citas": [], "trazas": traces, "propuestas": proposals, "conflictos": conflicts}
     try:
         async with connection(uid, sid) as client:
+            inspection = EVIDENCE_CHECK.fullmatch(question)
+            if inspection:
+                case_ids = {value.upper() for value in inspection.groupdict().values() if value}
+                if len(case_ids) == 1:
+                    return await check_case_evidence(client, case_ids.pop(), response)
             tools = await schemas(client)
             evidence = await call(client, "buscar_reglas", {"pregunta": question, "k": 6}, traces)
             if not evidence["ok"]:
@@ -323,7 +370,18 @@ async def answer(uid, sid, question):
             if cited & conflict_pair:
                 required.update(conflict_pair)
             if required and state != "abstencion" and (state != "conflicto" or not required.issubset(cited)):
-                raise ValueError("El modelo omitió un conflicto documental o una fuente del contraste. Se retuvo su respuesta.")
+                missing = sorted(required - cited)
+                response["citas"] = [fragments[i] for i in sorted(required) if i in fragments]
+                if missing:
+                    names = [
+                        f"{fragments[i]['codigo']} v{fragments[i]['version']} ({fragments[i]['seccion']})"
+                        if i in fragments else i
+                        for i in missing
+                    ]
+                    reason = "La respuesta sobre el conflicto documental dejó fuentes del contraste sin citar: " + ", ".join(names) + "."
+                else:
+                    reason = "La respuesta citó las fuentes del contraste, pero no señaló que discrepan."
+                raise ValueError(f"{reason} Puedes revisar las fuentes del contraste o usar «Solo documentos».")
             if re.search(r"\b(apruebo|he aprobado|he rechazado|queda aprobado|debe aprobarse de inmediato|se ha registrado la solicitud)\b", text, re.I):
                 raise ValueError("Se retuvo una respuesta que atribuía al asistente una decisión o un efecto no autorizado.")
             if asserts_unverified_threshold(text, data_warnings):
