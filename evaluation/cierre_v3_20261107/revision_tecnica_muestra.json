@@ -1,0 +1,97 @@
+{
+  "tipo": "revision_tecnica_automatizada",
+  "fecha": "2026-11-07",
+  "ejecucion": "evaluation\\ejecucion_06\\resultados_generacion.json",
+  "ejecucion_sha256": "1195953ef1f2274895194bbf676e509388c514a84e23f63ce3f080ec91e488e8",
+  "ejecucion_sha256_lf": "3fbd9dcf8c64a6abf2618d3694967f43e11f0569af7913983b5fe0367d04a0a4",
+  "alcance": "Nueva lectura de ocho respuestas guardadas y sus fragmentos; no es una nueva generacion.",
+  "revision_humana": false,
+  "aprobacion_cliente": false,
+  "preguntas": [
+    {
+      "id": "R01",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true,
+        "POL-DEC@2#s05:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Las tres fuentes respaldan 80/85, condiciones y doble aprobacion; no elige precedencia."
+    },
+    {
+      "id": "R08",
+      "citas": {
+        "PRO-ANT@1#s02:01": true,
+        "PRO-ANT@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "PRO-ANT secciones 2 y 4 respaldan campos, roles y excepcion del supervisor."
+    },
+    {
+      "id": "A01",
+      "citas": {
+        "POL-DEC@2#s07:01": true,
+        "CAT-SEN@3#s01:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "No inventa pesos; las dos citas describen componentes y escala, no una formula."
+    },
+    {
+      "id": "A02",
+      "citas": {
+        "MAN-REV@1#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "No inventa telefono; atribuye correctamente el contenido limitado de la seccion recibida."
+    },
+    {
+      "id": "A04",
+      "citas": {},
+      "fiel": true,
+      "comportamiento_correcto": null,
+      "fallo": null,
+      "justificacion": "Abstencion sin credenciales ni canales de recuperacion inventados; no emite citas."
+    },
+    {
+      "id": "C01",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Expone las dos reglas vigentes y sus condiciones sin elegir ni acreditar un valor vivo."
+    },
+    {
+      "id": "C02",
+      "citas": {
+        "MAN-REV@1#s01:01": true,
+        "POL-DEC@2#s02:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "Expone el conflicto para el supuesto de 82 puntos; no consulta ni inventa una ficha concreta."
+    },
+    {
+      "id": "V02",
+      "citas": {
+        "POL-DEC@2#s05:01": true,
+        "FAQ-OPE@2#s04:01": true
+      },
+      "fiel": true,
+      "comportamiento_correcto": true,
+      "fallo": null,
+      "justificacion": "POL-DEC v2 y FAQ respaldan dos supervisores y la ausencia de efecto con una aprobacion."
+    }
+  ]
+}

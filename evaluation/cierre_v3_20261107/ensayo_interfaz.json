@@ -1,0 +1,37 @@
+{
+  "fecha": "2026-11-07",
+  "tipo": "ensayo_interfaz_real_sin_generacion",
+  "url": "http://127.0.0.1:8765",
+  "usuario": "U-01",
+  "observaciones": [
+    {
+      "paso": "D1",
+      "resultado": "Se abrieron MAN-REV v1 seccion 1 y POL-DEC v2 seccion 2, con texto completo y metadatos."
+    },
+    {
+      "paso": "D2",
+      "resultado": "La consulta de credenciales mostro Informacion insuficiente sin inventar recuperacion."
+    },
+    {
+      "paso": "D3",
+      "resultado": "Solo documentos mostro Conflicto entre fuentes y las dos citas; no se ejecuto generacion."
+    },
+    {
+      "paso": "D4",
+      "resultado": "Se expandio confirmar_solicitud; se vieron argumentos, resultado y autorizacion omitida."
+    },
+    {
+      "paso": "D5",
+      "resultado": "Boton deshabilitado hasta marcar confirmacion; se registro SA-MIRA-3dc42f83032a y cambio de estado en C-011."
+    },
+    {
+      "paso": "D6",
+      "resultado": "La revision directa de C-014 mostro la alerta de E-007 y el limite de patrones conocidos."
+    }
+  ],
+  "base": "Temporal aislada importada del kit; se conservaron los registros originales.",
+  "limites": [
+    "No acredita respuestas nuevas de Bonsai.",
+    "No acredita ensayo de defensa con todos los integrantes ni pregunta sorpresa de otra persona."
+  ]
+}

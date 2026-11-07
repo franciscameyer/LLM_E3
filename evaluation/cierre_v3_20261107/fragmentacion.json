@@ -1,0 +1,2029 @@
+{
+  "fecha": "2026-11-07T22:10:21.006925+00:00",
+  "k": 6,
+  "metodo": "Mismas preguntas y texto esperado del golden original. Cada objetivo es una sección completa; cuenta como encontrado solo si se recuperan TODAS sus partes dentro de k. También se informa recall por subfragmento, cuyo denominador varía con la fragmentación.",
+  "busqueda": "BM25 con las reglas de conflicto existentes; no es BM25 puro. Los complementos fuera de k no se cuentan.",
+  "corpus_sha256": {
+    "CAT-SEN_catalogo_senales.md": "7b24f755fc8fb18f4bdd3b072f4a4bb4dd92c1b277a3e48974609f9c0a528a42",
+    "FAQ-OPE_preguntas_frecuentes_operadores.md": "ae22e500d1eb6dd031299d2d26dbaa3240c66278d2f4694b511e1c45598a3786",
+    "MAN-REV_manual_revision_asistida.md": "47cc2e9ed26c10223534a434e3fd51803dccc702becdf7318a289b92237dd8b0",
+    "POL-DEC_v1_derogada.md": "9e4371354966832cb053fceff37d7c2bf0ff84e61ed3df65a7d128901dde6550",
+    "POL-DEC_v2_vigente.md": "09cfe1ca0ffe22ae5ab9886e22036c597f76f14cba7bf7a69e2975fc0d758e4d",
+    "PRO-ANT_solicitud_antecedentes.md": "474932b9b210573ebdcd077040ec26f9ed2a3908533f2a430d731c068475448e",
+    "MIRA_v1.4.md": "fbfe52331352e232f0836c14bd133bedd4fa6f759eb1301e03802dbf75d5c8f6"
+  },
+  "experimentos": [
+    {
+      "max_caracteres": 300,
+      "fragmentos": 67,
+      "firma_fragmentacion": "ca3cd85f524cf915b13be6dd6245b5d23c01927093bcf903a828fdb53ad08865",
+      "objetivos_completos": 10,
+      "objetivos_totales": 18,
+      "recall_contenido_completo_at_k": 0.5555555555555556,
+      "recall_subfragmentos_at_k": 0.7419354838709677,
+      "subfragmentos_encontrados": 23,
+      "subfragmentos_esperados": 31,
+      "preguntas_completas": 8,
+      "preguntas_con_respuesta": 16,
+      "caracteres_contexto_promedio": 1117.6,
+      "preguntas": [
+        {
+          "id": "R01",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01",
+                "POL-DEC@2#s02:02"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01",
+                "POL-DEC@2#s02:02"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s02:02",
+            "MAN-REV@1#s03:01",
+            "PRO-ANT@1#s04:02",
+            "FAQ-OPE@2#s01:01"
+          ],
+          "caracteres_contexto_base": 1268,
+          "fallo": null
+        },
+        {
+          "id": "R02",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01",
+                "POL-DEC@2#s03:02"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01",
+                "POL-DEC@2#s03:02"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s07:01",
+            "POL-DEC@2#s03:02",
+            "MAN-REV@1#s02:01"
+          ],
+          "caracteres_contexto_base": 1410,
+          "fallo": null
+        },
+        {
+          "id": "R03",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01",
+                "POL-DEC@2#s03:02"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01",
+                "POL-DEC@2#s03:02"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:02",
+            "MAN-REV@1#s02:01"
+          ],
+          "caracteres_contexto_base": 1409,
+          "fallo": null
+        },
+        {
+          "id": "R04",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s06:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s06:01",
+                "CAT-SEN@3#s06:02"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s06:01"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s01:02",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:01"
+          ],
+          "caracteres_contexto_base": 1371,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "R05",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01",
+                "CAT-SEN@3#s02:02",
+                "CAT-SEN@3#s02:03"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01",
+                "CAT-SEN@3#s02:02"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:02",
+            "FAQ-OPE@2#s06:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s02:01",
+            "CAT-SEN@3#s05:01"
+          ],
+          "caracteres_contexto_base": 1355,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "R06",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01",
+                "CAT-SEN@3#s02:02",
+                "CAT-SEN@3#s02:03"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01",
+                "CAT-SEN@3#s02:03"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:03",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s02:01",
+            "CAT-SEN@3#s05:01"
+          ],
+          "caracteres_contexto_base": 1267,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "R07",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s05:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s05:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s05:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "FAQ-OPE@2#s05:01",
+            "MAN-REV@1#s05:01",
+            "CAT-SEN@3#s02:01"
+          ],
+          "caracteres_contexto_base": 530,
+          "fallo": null
+        },
+        {
+          "id": "R08",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s02:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s02:01"
+              ],
+              "partes_recuperadas": [],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s01:02",
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s04:02",
+            "PRO-ANT@1#s05:01"
+          ],
+          "caracteres_contexto_base": 1052,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "R09",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01",
+                "PRO-ANT@1#s04:02"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "MAN-REV@1#s03:03",
+            "FAQ-OPE@2#s01:01",
+            "PRO-ANT@1#s01:02",
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s01:01"
+          ],
+          "caracteres_contexto_base": 1101,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "R10",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01",
+                "PRO-ANT@1#s04:02"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01",
+                "PRO-ANT@1#s04:02"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:02",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s04:01",
+            "MAN-REV@1#s01:01",
+            "PRO-ANT@1#s01:02",
+            "FAQ-OPE@2#s03:01"
+          ],
+          "caracteres_contexto_base": 1017,
+          "fallo": null
+        },
+        {
+          "id": "R11",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s06:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s06:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s01:01",
+            "MAN-REV@1#s03:03",
+            "CAT-SEN@3#s01:02",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:01"
+          ],
+          "caracteres_contexto_base": 1240,
+          "fallo": null
+        },
+        {
+          "id": "R12",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s06:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s06:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s06:01",
+            "PRO-ANT@1#s05:01",
+            "FAQ-OPE@2#s05:01",
+            "PRO-ANT@1#s03:01",
+            "POL-DEC@2#s01:01",
+            "FAQ-OPE@2#s04:01"
+          ],
+          "caracteres_contexto_base": 1178,
+          "fallo": null
+        },
+        {
+          "id": "A01",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "POL-DEC@2#s07:01",
+            "POL-DEC@2#s02:01",
+            "CAT-SEN@3#s01:01",
+            "MAN-REV@1#s02:02",
+            "POL-DEC@2#s01:01",
+            "PRO-ANT@1#s05:01"
+          ],
+          "caracteres_contexto_base": 1408,
+          "fallo": null
+        },
+        {
+          "id": "A02",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s04:01"
+          ],
+          "caracteres_contexto_base": 179,
+          "fallo": null
+        },
+        {
+          "id": "A03",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "caracteres_contexto_base": 180,
+          "fallo": null
+        },
+        {
+          "id": "A04",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "CAT-SEN@3#s06:02",
+            "CAT-SEN@3#s01:02",
+            "CAT-SEN@3#s03:02",
+            "CAT-SEN@3#s04:02",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s03:01"
+          ],
+          "caracteres_contexto_base": 917,
+          "fallo": null
+        },
+        {
+          "id": "C01",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01",
+                "POL-DEC@2#s02:02"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "MAN-REV@1#s03:03",
+            "POL-DEC@2#s06:01",
+            "POL-DEC@2#s01:01",
+            "MAN-REV@1#s02:02"
+          ],
+          "caracteres_contexto_base": 1304,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "C02",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01",
+                "POL-DEC@2#s02:02"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s03:03"
+          ],
+          "caracteres_contexto_base": 1270,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "V01",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s04:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s04:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "CAT-SEN@3#s06:01",
+            "POL-DEC@2#s07:01",
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s01:01"
+          ],
+          "caracteres_contexto_base": 1554,
+          "fallo": null
+        },
+        {
+          "id": "V02",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s05:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s05:01",
+                "POL-DEC@2#s05:02"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s05:01"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s03:02",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s02:02",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s05:01"
+          ],
+          "caracteres_contexto_base": 1342,
+          "fallo": "recuperacion"
+        }
+      ]
+    },
+    {
+      "max_caracteres": 600,
+      "fragmentos": 45,
+      "firma_fragmentacion": "1517818018deee466b0b196e5c0311a48030895a1de04debe0ed94f96ad90fef",
+      "objetivos_completos": 17,
+      "objetivos_totales": 18,
+      "recall_contenido_completo_at_k": 0.9444444444444444,
+      "recall_subfragmentos_at_k": 0.95,
+      "subfragmentos_encontrados": 19,
+      "subfragmentos_esperados": 20,
+      "preguntas_completas": 15,
+      "preguntas_con_respuesta": 16,
+      "caracteres_contexto_promedio": 1678.1,
+      "preguntas": [
+        {
+          "id": "R01",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s01:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s04:01",
+            "POL-DEC@2#s05:01"
+          ],
+          "caracteres_contexto_base": 1965,
+          "fallo": null
+        },
+        {
+          "id": "R02",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "caracteres_contexto_base": 2390,
+          "fallo": null
+        },
+        {
+          "id": "R03",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "caracteres_contexto_base": 2206,
+          "fallo": null
+        },
+        {
+          "id": "R04",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s06:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s06:01"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s02:02",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s02:01"
+          ],
+          "caracteres_contexto_base": 1605,
+          "fallo": null
+        },
+        {
+          "id": "R05",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01",
+                "CAT-SEN@3#s02:02"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "contenido_completo": false
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s06:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "PRO-ANT@1#s01:01"
+          ],
+          "caracteres_contexto_base": 2061,
+          "fallo": "recuperacion"
+        },
+        {
+          "id": "R06",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01",
+                "CAT-SEN@3#s02:02"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01",
+                "CAT-SEN@3#s02:02"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "CAT-SEN@3#s02:02",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01"
+          ],
+          "caracteres_contexto_base": 1741,
+          "fallo": null
+        },
+        {
+          "id": "R07",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s05:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s05:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s05:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "FAQ-OPE@2#s05:01",
+            "MAN-REV@1#s05:01",
+            "CAT-SEN@3#s02:01"
+          ],
+          "caracteres_contexto_base": 851,
+          "fallo": null
+        },
+        {
+          "id": "R08",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s02:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s02:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "caracteres_contexto_base": 1699,
+          "fallo": null
+        },
+        {
+          "id": "R09",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "FAQ-OPE@2#s01:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "PRO-ANT@1#s03:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "caracteres_contexto_base": 2010,
+          "fallo": null
+        },
+        {
+          "id": "R10",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "MAN-REV@1#s01:01",
+            "FAQ-OPE@2#s03:01",
+            "MAN-REV@1#s06:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "caracteres_contexto_base": 1878,
+          "fallo": null
+        },
+        {
+          "id": "R11",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s06:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s06:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s01:01",
+            "MAN-REV@1#s03:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s04:01"
+          ],
+          "caracteres_contexto_base": 2066,
+          "fallo": null
+        },
+        {
+          "id": "R12",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s06:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s06:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s06:01",
+            "PRO-ANT@1#s05:01",
+            "FAQ-OPE@2#s05:01",
+            "PRO-ANT@1#s03:01",
+            "POL-DEC@2#s01:01",
+            "FAQ-OPE@2#s04:01"
+          ],
+          "caracteres_contexto_base": 1367,
+          "fallo": null
+        },
+        {
+          "id": "A01",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s02:01",
+            "PRO-ANT@1#s05:01",
+            "POL-DEC@2#s01:01"
+          ],
+          "caracteres_contexto_base": 1979,
+          "fallo": null
+        },
+        {
+          "id": "A02",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s04:01"
+          ],
+          "caracteres_contexto_base": 179,
+          "fallo": null
+        },
+        {
+          "id": "A03",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "caracteres_contexto_base": 180,
+          "fallo": null
+        },
+        {
+          "id": "A04",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "CAT-SEN@3#s02:02",
+            "POL-DEC@2#s01:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01",
+            "MAN-REV@1#s01:01"
+          ],
+          "caracteres_contexto_base": 1723,
+          "fallo": null
+        },
+        {
+          "id": "C01",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s06:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01"
+          ],
+          "caracteres_contexto_base": 1882,
+          "fallo": null
+        },
+        {
+          "id": "C02",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "caracteres_contexto_base": 1940,
+          "fallo": null
+        },
+        {
+          "id": "V01",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s04:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s04:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s07:01",
+            "POL-DEC@2#s03:01"
+          ],
+          "caracteres_contexto_base": 1944,
+          "fallo": null
+        },
+        {
+          "id": "V02",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s05:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s05:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s05:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s03:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s05:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "caracteres_contexto_base": 1896,
+          "fallo": null
+        }
+      ]
+    },
+    {
+      "max_caracteres": 900,
+      "fragmentos": 41,
+      "firma_fragmentacion": "a9b6dd75e6d53067d0bac878b99e9fcf3b50f926cdadfa8dd05a1da6796693ab",
+      "objetivos_completos": 18,
+      "objetivos_totales": 18,
+      "recall_contenido_completo_at_k": 1.0,
+      "recall_subfragmentos_at_k": 1.0,
+      "subfragmentos_encontrados": 18,
+      "subfragmentos_esperados": 18,
+      "preguntas_completas": 16,
+      "preguntas_con_respuesta": 16,
+      "caracteres_contexto_promedio": 1728.85,
+      "preguntas": [
+        {
+          "id": "R01",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s01:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s04:01",
+            "POL-DEC@2#s05:01"
+          ],
+          "caracteres_contexto_base": 1965,
+          "fallo": null
+        },
+        {
+          "id": "R02",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "caracteres_contexto_base": 2546,
+          "fallo": null
+        },
+        {
+          "id": "R03",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "caracteres_contexto_base": 2206,
+          "fallo": null
+        },
+        {
+          "id": "R04",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s06:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s06:01"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s06:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s03:01"
+          ],
+          "caracteres_contexto_base": 1914,
+          "fallo": null
+        },
+        {
+          "id": "R05",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s06:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "PRO-ANT@1#s01:01"
+          ],
+          "caracteres_contexto_base": 2217,
+          "fallo": null
+        },
+        {
+          "id": "R06",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01"
+          ],
+          "caracteres_contexto_base": 1742,
+          "fallo": null
+        },
+        {
+          "id": "R07",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s05:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s05:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s05:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "FAQ-OPE@2#s05:01",
+            "MAN-REV@1#s05:01",
+            "CAT-SEN@3#s02:01"
+          ],
+          "caracteres_contexto_base": 1007,
+          "fallo": null
+        },
+        {
+          "id": "R08",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s02:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s02:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "caracteres_contexto_base": 1699,
+          "fallo": null
+        },
+        {
+          "id": "R09",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "FAQ-OPE@2#s01:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "MAN-REV@1#s03:01",
+            "PRO-ANT@1#s03:01"
+          ],
+          "caracteres_contexto_base": 2010,
+          "fallo": null
+        },
+        {
+          "id": "R10",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "MAN-REV@1#s01:01",
+            "FAQ-OPE@2#s03:01",
+            "MAN-REV@1#s06:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "caracteres_contexto_base": 1878,
+          "fallo": null
+        },
+        {
+          "id": "R11",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s06:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s06:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s01:01",
+            "MAN-REV@1#s03:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s04:01"
+          ],
+          "caracteres_contexto_base": 2066,
+          "fallo": null
+        },
+        {
+          "id": "R12",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s06:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s06:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s06:01",
+            "PRO-ANT@1#s05:01",
+            "FAQ-OPE@2#s05:01",
+            "PRO-ANT@1#s03:01",
+            "POL-DEC@2#s01:01",
+            "FAQ-OPE@2#s04:01"
+          ],
+          "caracteres_contexto_base": 1367,
+          "fallo": null
+        },
+        {
+          "id": "A01",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s02:01",
+            "PRO-ANT@1#s05:01",
+            "POL-DEC@2#s01:01"
+          ],
+          "caracteres_contexto_base": 1979,
+          "fallo": null
+        },
+        {
+          "id": "A02",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s04:01"
+          ],
+          "caracteres_contexto_base": 179,
+          "fallo": null
+        },
+        {
+          "id": "A03",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "caracteres_contexto_base": 180,
+          "fallo": null
+        },
+        {
+          "id": "A04",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "POL-DEC@2#s01:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01",
+            "MAN-REV@1#s01:01",
+            "CAT-SEN@3#s01:01"
+          ],
+          "caracteres_contexto_base": 1960,
+          "fallo": null
+        },
+        {
+          "id": "C01",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s06:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01"
+          ],
+          "caracteres_contexto_base": 1882,
+          "fallo": null
+        },
+        {
+          "id": "C02",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "caracteres_contexto_base": 1940,
+          "fallo": null
+        },
+        {
+          "id": "V01",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s04:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s04:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s07:01"
+          ],
+          "caracteres_contexto_base": 1944,
+          "fallo": null
+        },
+        {
+          "id": "V02",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s05:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s05:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s05:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s03:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s05:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "caracteres_contexto_base": 1896,
+          "fallo": null
+        }
+      ]
+    },
+    {
+      "max_caracteres": 1800,
+      "fragmentos": 39,
+      "firma_fragmentacion": "7bfbe6c09630d8639407b417b1764e05d225dde253781d6506441184fae55f32",
+      "objetivos_completos": 18,
+      "objetivos_totales": 18,
+      "recall_contenido_completo_at_k": 1.0,
+      "recall_subfragmentos_at_k": 1.0,
+      "subfragmentos_encontrados": 18,
+      "subfragmentos_esperados": 18,
+      "preguntas_completas": 16,
+      "preguntas_con_respuesta": 16,
+      "caracteres_contexto_promedio": 1728.85,
+      "preguntas": [
+        {
+          "id": "R01",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s01:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s04:01",
+            "POL-DEC@2#s05:01"
+          ],
+          "caracteres_contexto_base": 1965,
+          "fallo": null
+        },
+        {
+          "id": "R02",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "caracteres_contexto_base": 2546,
+          "fallo": null
+        },
+        {
+          "id": "R03",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s03:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s03:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s03:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s03:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s02:01",
+            "POL-DEC@2#s02:01"
+          ],
+          "caracteres_contexto_base": 2206,
+          "fallo": null
+        },
+        {
+          "id": "R04",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s06:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s06:01"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s06:01",
+            "FAQ-OPE@2#s02:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s03:01"
+          ],
+          "caracteres_contexto_base": 1914,
+          "fallo": null
+        },
+        {
+          "id": "R05",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "FAQ-OPE@2#s06:01",
+            "CAT-SEN@3#s04:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "PRO-ANT@1#s01:01"
+          ],
+          "caracteres_contexto_base": 2217,
+          "fallo": null
+        },
+        {
+          "id": "R06",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "CAT-SEN@3#s02:01",
+              "partes_necesarias": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "partes_recuperadas": [
+                "CAT-SEN@3#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "CAT-SEN@3#s02:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01"
+          ],
+          "caracteres_contexto_base": 1742,
+          "fallo": null
+        },
+        {
+          "id": "R07",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s05:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s05:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s05:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "FAQ-OPE@2#s05:01",
+            "MAN-REV@1#s05:01",
+            "CAT-SEN@3#s02:01"
+          ],
+          "caracteres_contexto_base": 1007,
+          "fallo": null
+        },
+        {
+          "id": "R08",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s02:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s02:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "PRO-ANT@1#s03:01",
+            "PRO-ANT@1#s02:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "caracteres_contexto_base": 1699,
+          "fallo": null
+        },
+        {
+          "id": "R09",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "FAQ-OPE@2#s01:01",
+            "PRO-ANT@1#s01:01",
+            "PRO-ANT@1#s05:01",
+            "MAN-REV@1#s03:01",
+            "PRO-ANT@1#s03:01"
+          ],
+          "caracteres_contexto_base": 2010,
+          "fallo": null
+        },
+        {
+          "id": "R10",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "PRO-ANT@1#s04:01",
+              "partes_necesarias": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "partes_recuperadas": [
+                "PRO-ANT@1#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s04:01",
+            "PRO-ANT@1#s01:01",
+            "MAN-REV@1#s01:01",
+            "FAQ-OPE@2#s03:01",
+            "MAN-REV@1#s06:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "caracteres_contexto_base": 1878,
+          "fallo": null
+        },
+        {
+          "id": "R11",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s06:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s06:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s06:01",
+            "CAT-SEN@3#s01:01",
+            "MAN-REV@1#s03:01",
+            "FAQ-OPE@2#s02:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s04:01"
+          ],
+          "caracteres_contexto_base": 2066,
+          "fallo": null
+        },
+        {
+          "id": "R12",
+          "tipo": "respuesta",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s06:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s06:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s06:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s06:01",
+            "PRO-ANT@1#s05:01",
+            "FAQ-OPE@2#s05:01",
+            "PRO-ANT@1#s03:01",
+            "POL-DEC@2#s01:01",
+            "FAQ-OPE@2#s04:01"
+          ],
+          "caracteres_contexto_base": 1367,
+          "fallo": null
+        },
+        {
+          "id": "A01",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s02:01",
+            "PRO-ANT@1#s05:01",
+            "POL-DEC@2#s01:01"
+          ],
+          "caracteres_contexto_base": 1979,
+          "fallo": null
+        },
+        {
+          "id": "A02",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s04:01"
+          ],
+          "caracteres_contexto_base": 179,
+          "fallo": null
+        },
+        {
+          "id": "A03",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "MAN-REV@1#s05:01"
+          ],
+          "caracteres_contexto_base": 180,
+          "fallo": null
+        },
+        {
+          "id": "A04",
+          "tipo": "sin_respuesta",
+          "objetivos": [],
+          "recuperados": [
+            "POL-DEC@2#s01:01",
+            "CAT-SEN@3#s05:01",
+            "CAT-SEN@3#s03:01",
+            "CAT-SEN@3#s04:01",
+            "MAN-REV@1#s01:01",
+            "CAT-SEN@3#s01:01"
+          ],
+          "caracteres_contexto_base": 1960,
+          "fallo": null
+        },
+        {
+          "id": "C01",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s06:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s07:01",
+            "MAN-REV@1#s02:01"
+          ],
+          "caracteres_contexto_base": 1882,
+          "fallo": null
+        },
+        {
+          "id": "C02",
+          "tipo": "conflicto",
+          "objetivos": [
+            {
+              "referencia_original": "MAN-REV@1#s01:01",
+              "partes_necesarias": [
+                "MAN-REV@1#s01:01"
+              ],
+              "partes_recuperadas": [
+                "MAN-REV@1#s01:01"
+              ],
+              "contenido_completo": true
+            },
+            {
+              "referencia_original": "POL-DEC@2#s02:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s02:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s02:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "MAN-REV@1#s01:01",
+            "POL-DEC@2#s02:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "MAN-REV@1#s03:01"
+          ],
+          "caracteres_contexto_base": 1940,
+          "fallo": null
+        },
+        {
+          "id": "V01",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s04:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s04:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s04:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "POL-DEC@2#s04:01",
+            "FAQ-OPE@2#s02:01",
+            "CAT-SEN@3#s06:01",
+            "CAT-SEN@3#s01:01",
+            "POL-DEC@2#s03:01",
+            "POL-DEC@2#s07:01"
+          ],
+          "caracteres_contexto_base": 1944,
+          "fallo": null
+        },
+        {
+          "id": "V02",
+          "tipo": "version",
+          "objetivos": [
+            {
+              "referencia_original": "POL-DEC@2#s05:01",
+              "partes_necesarias": [
+                "POL-DEC@2#s05:01"
+              ],
+              "partes_recuperadas": [
+                "POL-DEC@2#s05:01"
+              ],
+              "contenido_completo": true
+            }
+          ],
+          "recuperados": [
+            "PRO-ANT@1#s03:01",
+            "FAQ-OPE@2#s04:01",
+            "POL-DEC@2#s05:01",
+            "POL-DEC@2#s02:01",
+            "POL-DEC@2#s01:01",
+            "POL-DEC@2#s06:01"
+          ],
+          "caracteres_contexto_base": 1896,
+          "fallo": null
+        }
+      ]
+    }
+  ],
+  "golden_sha256": "3413ed99209ca526f9d22115ef44c9809d1e5591bb4277c8dacbef54032e2b7c",
+  "evaluador_sha256": "0fe8d4cd461d808f24e403e32aaf02831b7e149b293934cca05b6dc34607c9ff"
+}

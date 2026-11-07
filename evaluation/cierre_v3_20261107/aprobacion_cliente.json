@@ -1,0 +1,14 @@
+{
+  "representante": "Francisca Meyer",
+  "rol": "Representante del cliente de E3",
+  "fecha_local": "2026-11-07",
+  "decision": "aprobado",
+  "alcance": "20 preguntas y expectativas del golden version 1.0",
+  "golden_version": "1.0",
+  "golden_sha256": "3413ed99209ca526f9d22115ef44c9809d1e5591bb4277c8dacbef54032e2b7c",
+  "golden_sha256_lf": "b159f19d9942461eeafe20b5976ec8931bd904f32773543d826bd1c36da4c8c5",
+  "evidencia": "Confirmacion explicita comunicada por el usuario en este chat",
+  "texto_confirmacion": "Francisca Meyer revisó y aprueba las 20 preguntas y expectativas",
+  "firma_digital": false,
+  "observacion": "Se conserva el archivo golden original y su historial; la aprobacion se registra por separado. No constituye revision humana de las respuestas generadas."
+}

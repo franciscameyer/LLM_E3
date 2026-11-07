@@ -1,0 +1,23 @@
+{
+  "tipo": "concordancia_entre_revisiones_tecnicas_no_humanas",
+  "ejecucion_sha256": "1195953ef1f2274895194bbf676e509388c514a84e23f63ce3f080ec91e488e8",
+  "revision_previa_sha256": "8813cc443198559d4288a2c26ec70c7587114bb4ddb580971550dde76bb78bd0",
+  "preguntas": 8,
+  "citas_respaldadas": 14,
+  "citas_emitidas": 14,
+  "fidelidad": {
+    "acuerdos": 8,
+    "comparados": 8
+  },
+  "conflicto_vigencia": {
+    "acuerdos": 3,
+    "comparados": 3
+  },
+  "cantidad_citas_respaldadas": {
+    "acuerdos": 8,
+    "comparados": 8
+  },
+  "discrepancias": [],
+  "concordancia_humana": null,
+  "limite": "No sustituye la muestra humana ni constituye validacion del cliente."
+}

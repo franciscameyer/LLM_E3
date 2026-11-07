@@ -1,0 +1,70 @@
+{
+  "fecha": "2026-11-07",
+  "codigo_base": "6e86c44",
+  "version_tecnica": "v3.0",
+  "integrantes": [
+    "Francisca Meyer",
+    "Lukas Scheel",
+    "Sebastian Rodriguez"
+  ],
+  "representante_cliente": "Francisca Meyer",
+  "pruebas": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "47",
+      "time": "83.875",
+      "timestamp": "2026-11-07T19:10:48.914345-03:00",
+      "hostname": "DESKTOP-F4B3GND"
+    }
+  ],
+  "codigo_sha256_lf": {
+    "agent.py": "e237f798609b3c96e115606f7600adfd7e4f3b9f20b1e934d819e7436fa49e39",
+    "api.py": "d3b5ef7fc9b21d8ca414555dc79dbae31d636a0a97f882e4792f60211888be2a",
+    "bridge.py": "a3dc255e0cc819f5c522a99b2769fb138e252b44a492ceff0d4dbe244ed92285",
+    "check_delivery.py": "6101fe2d37583f7f2b0925a8f8c5714fa7863a5637fb9fc252a0b69c1c249960",
+    "cli.py": "278fa34e3ed6b043013dba0db8ec5e047413a5bebcc614d65588ffddecc0a70a",
+    "config.py": "d21ddd44619480d1303b017c5c3429e61444616d80036000a282f980bef2264c",
+    "evaluate.py": "72667cd71e0d15b744af7abd78426bb4e7705aed93c0589db49b8f569f5632f9",
+    "launch_model.py": "0fc7c6ed63faf90a0444413e6329e4e705b7d74fd1bed2876e4085462cdab207",
+    "mcp_server.py": "f1046bcf15498690a02a9db3d888de13f8f47f42695689fff99ee8c0f7621edf",
+    "rag.py": "d21ee42e27771fd9b48e0b6eda93f840cebdf3d65a98cf0eb982c7ac4d87d79e",
+    "regression_check.py": "4140740421de5cccfebd9068d8db7908b67650e0949cc11e961ad2a3e2fde3a7",
+    "security.py": "41a6a1831d204a99bebfdb0cfd808518c26f66714385de190c8d96d14644b934",
+    "store.py": "aa7618f2356bae105f5bca656188c35a0a907ef56d52b076546d205ab68c9790",
+    "validation.py": "52b99a1a1754d4d615f441ee672ccadfc92c032e5637b3725b6c96bcc1dfad3e",
+    "__init__.py": "af345a58ba4f592624b0709c8d2da15f9d315add0371e474e4b60138f128beba"
+  },
+  "estado": "Cierre de comprobaciones sin Bonsai; validaciones humanas y ensayo completo pendientes.",
+  "generacion_nueva": false,
+  "aprobacion_cliente": "aprobacion_cliente.json",
+  "muestra_tecnica": "revision_tecnica_muestra.json",
+  "concordancia_humana": null,
+  "ensayo_api": "ensayo_api_sin_bonsai.json",
+  "ensayo_interfaz": "ensayo_interfaz.json",
+  "cliente_externo": "mcp_externo.json",
+  "pendientes": [
+    "Revision humana de ocho respuestas y concordancia.",
+    "Correccion docente de E2 no localizada.",
+    "Ensayo de generacion, cliente grafico y pregunta sorpresa con participantes.",
+    "Instrucciones docentes adicionales de D1-D8 o v3.0, si existen."
+  ],
+  "evidencias_sha256_lf": {
+    "antes_confirmacion.json": "ebc4c6b69b971d45af2d3f8af61540f3130b2734c857fdd8ee2afb7676bb9c21",
+    "aprobacion_cliente.json": "32ddaa9b0f83b23c99fdd0a5a54579cc0f73ba94c8ff96d648515866719d4157",
+    "concordancia_tecnica.json": "dc9fde446c99843f54ba0a3d41d8cf17fc10ded92cb1e8e1e15f880b53e8a7d8",
+    "despues_confirmacion.json": "23c9e465cf5fab18fbcb8570946de85e6ad7beba04a9cb6da7f1de7df1c83ebb",
+    "ensayo_api.py": "635bff0012af913c3fea2fa9b11d19fc627522326c5cd3683c381fd08f96eae4",
+    "ensayo_api_sin_bonsai.json": "d28ee861993da5f2a86c67215766179a7204c30309bc059b5346814418a5a664",
+    "ensayo_interfaz.json": "8ec3dd66f791a5ab69e7131467fa9769734cb1978d57fadeced2a3975e8c0327",
+    "fragmentacion.json": "164981a192cbe43dc874679e420f513babddaf4b5e453e1a74184b1c317206a2",
+    "mcp_externo.json": "3199944fb75184297689db7686e961e47d66338a78d3155539cb390f5a4a6475",
+    "muestra_humana_ejecucion06.csv": "50e44d47531408acc6ec429723542e3c1d65c47cb098206540c5d70baeab6370",
+    "preparar_revision.py": "8fccd02355d794de2fee0667af97949f1bcca89cb8a711354f30144773106856",
+    "pruebas.xml": "94bd643caa73186c96a2e48b68f5d70f75d80fd2c74aaa6c94e4a5f45026ef07",
+    "README.md": "00f5eda52f85eb8c552afe5894a7e00da04c95a736f27e9673d58391398583f9",
+    "revision_tecnica_muestra.json": "2f519c9647520d6158f66223876547474fe0f0c3f8f64406cb92adf053a5e7c2"
+  }
+}

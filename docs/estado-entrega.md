@@ -1,5 +1,7 @@
 # Estado de la implementación y de la entrega académica
 
+**Estado vigente del 07-11-2026:** cierre técnico sin Bonsai, golden aprobado por Francisca Meyer, 47 pruebas actuales aprobadas y ensayo de API/interfaz registrado. Informe Markdown disponible; PDF y PPT finales pendientes. Los apartados siguientes conservan el historial de cierres anteriores y sus pendientes de entonces. Consultar `docs/validaciones-pendientes.md` para el estado actualizado.
+
 ## Implementado
 
 - CU-1 con frontend web español, API, modelo local y servidor MCP propio por STDIO.

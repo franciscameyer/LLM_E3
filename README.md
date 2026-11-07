@@ -6,7 +6,9 @@ datos del kit mediante un servidor MCP propio. El modelo de generación es tu
 
 ## Abrir en este equipo
 
-El entorno `.venv` ya está instalado y el kit está importado e indexado.
+En una copia nueva, instala primero Python 3.12 y ejecuta `Instalar-MIRA.ps1`.
+Configura también las rutas de llama.cpp y Bonsai en `.env`. El repositorio no
+incluye el entorno virtual, el índice generado ni los pesos del modelo.
 
 1. Abre `Iniciar-Bonsai.cmd` con doble clic o ejecútalo en la terminal:
 
@@ -201,18 +203,20 @@ umbrales y permisos conservan las citas de cada fuente.
 - `evaluation/descripcion_v14/`: pruebas, contrastes con la Descripción y comparación
   de fragmentación. `evaluation/ejecucion_06/` conserva la reevaluación del golden.
 
-Las respuestas esperadas siguen **pendientes de validación por el representante
-del cliente**. La revisión semántica del agente se declara como automatizada:
-falta una muestra humana independiente y su concordancia. Los resultados no
-son métricas aprobadas por el cliente. D1–D8 y la etiqueta v3.0 requieren
-aclaración del docente; el guion técnico es una propuesta del proyecto.
+Francisca Meyer aprobó las veinte preguntas y expectativas del golden el
+7 de noviembre de 2026, según confirmación explícita comunicada por el usuario.
+El registro y las huellas están en `evaluation/cierre_v3_20261107/aprobacion_cliente.json`.
+Falta la muestra humana independiente de respuestas y su concordancia; aprobar
+las expectativas no valida automáticamente las salidas generadas. El guion
+`docs/guion-demostracion-v3.md` organiza D1–D8 según los ocho resultados de P2;
+la etiqueta técnica v3.0 no implica una confirmación docente adicional.
 
 ## Instalar en otro equipo
 
 Instala Python 3.12 y ejecuta `Instalar-MIRA.ps1`. También puedes crear `.venv` con
 `py -3.12 -m venv .venv`, instalar `requirements-lock.txt` y ejecutar `preparar`.
-El entorno actual se creó con el Python 3.12 del runtime de Codex; si cambia esa
-instalación, recrea el entorno con tu instalación estable de Python 3.12.
+Usa una instalación estable de Python 3.12 al crear el entorno; las verificaciones
+temporales registradas no sustituyen la instalación en el equipo de la demo.
 
 No copies `.data/session.key` ni la base activa como si fueran fuentes del kit.
 Para una demo nueva, utiliza otra carpeta de datos con `MIRA_DATA_DIR`; la carga
@@ -223,3 +227,12 @@ creará una nueva base a partir del Excel sin borrar la ejecución anterior.
 - [Bonsai: ficha del modelo y servidor llama.cpp](https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf)
 - [llama.cpp: servidor y llamadas a herramientas](https://github.com/ggml-org/llama.cpp/tree/master/tools/server)
 - [FastMCP: cliente por STDIO](https://gofastmcp.com/clients/transports)
+
+## Cierre técnico de la versión v3.0
+
+El informe está en `INFORME_ENTREGA_3.md`. El cierre del 7 de noviembre conserva
+47 pruebas aprobadas y un ensayo sin generación en `evaluation/cierre_v3_20261107/`.
+El golden fue aprobado por Francisca Meyer; la revisión humana de respuestas y el
+ensayo completo con Bonsai siguen pendientes. Ver `docs/validaciones-pendientes.md`
+y el guion `docs/guion-demostracion-v3.md`. La etiqueta técnica no acredita esos
+pendientes como completados.
